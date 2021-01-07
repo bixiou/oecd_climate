@@ -1,4 +1,3 @@
-# .First.sys()
 library(utils)
 
 # options(download.file.method = "wget"); # For Ubuntu 14.04
@@ -110,7 +109,7 @@ decrit <- function(variable, miss = FALSE, weights = NULL, numbers = FALSE, data
     if (length(weights)!=length(variable)) {
       warning("Lengths of weight and variable differ, non-weighted results are provided")
       weights <- NULL
-  } }
+    } }
   if (length(annotation(variable))>0 & !numbers) {
     if (!miss) {
       # if (is.element("Oui", levels(as.factor(variable))) | grepl("(char)", annotation(variable)) | is.element("quotient", levels(as.factor(variable)))  | is.element("Pour", levels(as.factor(variable))) | is.element("Plutôt", levels(as.factor(variable))) ) { describe(as.factor(variable[variable!="" & !is.na(variable)]), weights = weights[variable!="" & !is.na(variable)], descript=Label(variable)) }
@@ -128,35 +127,65 @@ decrit <- function(variable, miss = FALSE, weights = NULL, numbers = FALSE, data
       else describe(variable[variable!="" & !is.missing(variable)], weights = weights[variable!="" & !is.missing(variable)], descript=paste(length(which(is.missing(variable))), "missing obs.", Label(variable)))
     } else describe(variable[variable!=""], weights = weights[variable!=""])  }
 }
-decrit <- function(variable, miss = FALSE, weights = NULL, numbers = FALSE, data = e, which = NULL, weight = T) { # TODO!: allow for boolean weights
-  # if (!missing(data)) variable <- data[[variable]]
-  if (is.character(variable) & length(variable)==1) variable <- data[[variable]]
-  if (!missing(which)) variable <- variable[which] 
-  if (weight) { 
-    # if (length(variable) > 1) warning("Field 'variable' is a vector instead of a character, weight will not be used.")
-    if (missing(weights)) weights <- data[["weight"]]  #  if (missing(data)) warning("Field 'data' is missing, weight will not be used.") else { 
-    if (!missing(which)) weights <- weights[which]
-    if (length(weights)!=length(variable)) {
-      warning("Lengths of weight and variable differ, non-weighted results are provided")
-      weights <- NULL
-  } }
-  if (length(annotation(variable))>0 & !numbers) {
-    if (!miss) {
-      # if (is.element("Oui", levels(as.factor(variable))) | grepl("(char)", annotation(variable)) | is.element("quotient", levels(as.factor(variable)))  | is.element("Pour", levels(as.factor(variable))) | is.element("Plutôt", levels(as.factor(variable))) ) { describe(as.factor(variable[variable!="" & !is.na(variable)]), weights = weights[variable!="" & !is.na(variable)], descript=Label(variable)) }
-      # else { describe(variable[variable!="" & !is.na(variable)], weights = weights[variable!="" & !is.na(variable)], descript=Label(variable)) }
-      if (length(which(!is.na(suppressWarnings(as.numeric(levels(as.factor(variable)))))))==0) { describe(as.factor(variable[variable!=""]), weights = weights[variable!=""], descript=Label(variable)) } # encore avant:  & !is.na(variable), avant: (length(which(is.numeric(levels(as.factor(variable)))))==0)
-      else { describe(as.numeric(as.vector(variable[variable!=""])), weights = weights[variable!=""], descript=Label(variable)) } # avant:  & !is.na(variable)
-    }
-    else {
-      if (length(which(suppressWarnings(!is.na(as.numeric(levels(as.factor(variable)))))))>10) describe(include.missings(variable[variable!="" & !is.na(variable)]), weights = weights[variable!="" & !is.na(variable)], descript=Label(variable)) # encore avant:  & !is.na(variable), avant: (length(which(is.numeric(levels(as.factor(variable)))))==0)
-      else describe(as.factor(include.missings(variable[variable!="" & !is.na(variable)])), weights = weights[variable!="" & !is.na(variable)], descript=Label(variable)) }
-  }
-  else {  
-    if (length(annotation(variable))>0) {
-      if (miss) describe(variable[variable!=""], weights = weights[variable!=""], descript=Label(variable))
-      else describe(variable[variable!="" & !is.missing(variable)], weights = weights[variable!="" & !is.missing(variable)], descript=paste(length(which(is.missing(variable))), "missing obs.", Label(variable)))
-    } else describe(variable[variable!=""], weights = weights[variable!=""])  }
-}
+
+# decrit <- function(variable, miss = FALSE, weights = NULL, numbers = FALSE, data = e, which = NULL, weight = T) { # TODO!: allow for boolean weights
+#   # if (!missing(data)) variable <- data[[variable]]
+#   if (is.character(variable) & length(variable)==1) variable <- data[[variable]]
+#   if (!missing(which)) variable <- variable[which] 
+#   if (weight) { 
+#     # if (length(variable) > 1) warning("Field 'variable' is a vector instead of a character, weight will not be used.")
+#     if (missing(weights)) weights <- data[["weight"]]  #  if (missing(data)) warning("Field 'data' is missing, weight will not be used.") else { 
+#     if (!missing(which)) weights <- weights[which]
+#     if (length(weights)!=length(variable)) {
+#       warning("Lengths of weight and variable differ, non-weighted results are provided")
+#       weights <- NULL
+#     } }
+#   if (length(annotation(variable))>0 & !numbers) {
+#     if (!miss) {
+#       # if (is.element("Oui", levels(as.factor(variable))) | grepl("(char)", annotation(variable)) | is.element("quotient", levels(as.factor(variable)))  | is.element("Pour", levels(as.factor(variable))) | is.element("Plutôt", levels(as.factor(variable))) ) { describe(as.factor(variable[variable!="" & !is.na(variable)]), weights = weights[variable!="" & !is.na(variable)], descript=Label(variable)) }
+#       # else { describe(variable[variable!="" & !is.na(variable)], weights = weights[variable!="" & !is.na(variable)], descript=Label(variable)) }
+#       if (length(which(!is.na(suppressWarnings(as.numeric(levels(as.factor(variable)))))))==0) { describe(as.factor(variable[variable!=""]), weights = weights[variable!=""], descript=Label(variable)) } # encore avant:  & !is.na(variable), avant: (length(which(is.numeric(levels(as.factor(variable)))))==0)
+#       else { describe(as.numeric(as.vector(variable[variable!=""])), weights = weights[variable!=""], descript=Label(variable)) } # avant:  & !is.na(variable)
+#     }
+#     else {
+#       if (length(which(suppressWarnings(!is.na(as.numeric(levels(as.factor(variable)))))))>10) describe(include.missings(variable[variable!="" & !is.na(variable)]), weights = weights[variable!="" & !is.na(variable)], descript=Label(variable)) # encore avant:  & !is.na(variable), avant: (length(which(is.numeric(levels(as.factor(variable)))))==0)
+#       else describe(as.factor(include.missings(variable[variable!="" & !is.na(variable)])), weights = weights[variable!="" & !is.na(variable)], descript=Label(variable)) }
+#   }
+#   else {  
+#     if (length(annotation(variable))>0) {
+#       if (miss) describe(variable[variable!=""], weights = weights[variable!=""], descript=Label(variable))
+#       else describe(variable[variable!="" & !is.missing(variable)], weights = weights[variable!="" & !is.missing(variable)], descript=paste(length(which(is.missing(variable))), "missing obs.", Label(variable)))
+#     } else describe(variable[variable!=""], weights = weights[variable!=""])  }
+# }
+# decrit <- function(variable, miss = FALSE, weights = NULL, numbers = FALSE, data = e, which = NULL, weight = T) { # TODO!: allow for boolean weights
+#   # if (!missing(data)) variable <- data[[variable]]
+#   if (is.character(variable) & length(variable)==1) variable <- data[[variable]]
+#   if (!missing(which)) variable <- variable[which] 
+#   if (weight) { 
+#     # if (length(variable) > 1) warning("Field 'variable' is a vector instead of a character, weight will not be used.")
+#     if (missing(weights)) weights <- data[["weight"]]  #  if (missing(data)) warning("Field 'data' is missing, weight will not be used.") else { 
+#     if (!missing(which)) weights <- weights[which]
+#     if (length(weights)!=length(variable)) {
+#       warning("Lengths of weight and variable differ, non-weighted results are provided")
+#       weights <- NULL
+#     } }
+#   if (length(annotation(variable))>0 & !numbers) {
+#     if (!miss) {
+#       # if (is.element("Oui", levels(as.factor(variable))) | grepl("(char)", annotation(variable)) | is.element("quotient", levels(as.factor(variable)))  | is.element("Pour", levels(as.factor(variable))) | is.element("Plutôt", levels(as.factor(variable))) ) { describe(as.factor(variable[variable!="" & !is.na(variable)]), weights = weights[variable!="" & !is.na(variable)], descript=Label(variable)) }
+#       # else { describe(variable[variable!="" & !is.na(variable)], weights = weights[variable!="" & !is.na(variable)], descript=Label(variable)) }
+#       if (length(which(!is.na(suppressWarnings(as.numeric(levels(as.factor(variable)))))))==0) { describe(as.factor(variable[variable!=""]), weights = weights[variable!=""], descript=Label(variable)) } # encore avant:  & !is.na(variable), avant: (length(which(is.numeric(levels(as.factor(variable)))))==0)
+#       else { describe(as.numeric(as.vector(variable[variable!=""])), weights = weights[variable!=""], descript=Label(variable)) } # avant:  & !is.na(variable)
+#     }
+#     else {
+#       if (length(which(suppressWarnings(!is.na(as.numeric(levels(as.factor(variable)))))))>10) describe(include.missings(variable[variable!="" & !is.na(variable)]), weights = weights[variable!="" & !is.na(variable)], descript=Label(variable)) # encore avant:  & !is.na(variable), avant: (length(which(is.numeric(levels(as.factor(variable)))))==0)
+#       else describe(as.factor(include.missings(variable[variable!="" & !is.na(variable)])), weights = weights[variable!="" & !is.na(variable)], descript=Label(variable)) }
+#   }
+#   else {  
+#     if (length(annotation(variable))>0) {
+#       if (miss) describe(variable[variable!=""], weights = weights[variable!=""], descript=Label(variable))
+#       else describe(variable[variable!="" & !is.missing(variable)], weights = weights[variable!="" & !is.missing(variable)], descript=paste(length(which(is.missing(variable))), "missing obs.", Label(variable)))
+#     } else describe(variable[variable!=""], weights = weights[variable!=""])  }
+# }
 export_stats_desc <- function(data, file, miss = TRUE, sorted_by_n = FALSE, return = FALSE, fill_extern = FALSE) {
   original_width <- getOption("width")
   options(width = 10000)
@@ -194,38 +223,38 @@ CImedian <- function(vec) { # 95% confidence interval
   return(paste(res[paste('ci.lower')], res[paste('ci.median')], res[paste('ci.upper')], length(which(!is.na(vec) & vec!=-1)))) 
 }
 clean_number <- function(vec, high_numbers='') { 
-   numeric_vec <- as.numeric(gsub(",", ".", gsub("[[:alpha:]  !#$%&')?/(@:;€_-]","",vec)))
-   if (high_numbers=='remove') { is.na(numeric_vec) <- numeric_vec>10000 }
-   else if (high_numbers=='divide') { numeric_vec[numeric_vec>10000 & !is.na(numeric_vec)] <- numeric_vec[numeric_vec>10000 & !is.na(numeric_vec)]/12 }
-   else if (high_numbers=='divide&remove') { 
-     numeric_vec[numeric_vec>10000 & !is.na(numeric_vec)] <- numeric_vec[numeric_vec>10000 & !is.na(numeric_vec)]/12
-     is.na(numeric_vec) <- numeric_vec>6000 }
-   return(numeric_vec)
+  numeric_vec <- as.numeric(gsub(",", ".", gsub("[[:alpha:]  !#$%&')?/(@:;€_-]","",vec)))
+  if (high_numbers=='remove') { is.na(numeric_vec) <- numeric_vec>10000 }
+  else if (high_numbers=='divide') { numeric_vec[numeric_vec>10000 & !is.na(numeric_vec)] <- numeric_vec[numeric_vec>10000 & !is.na(numeric_vec)]/12 }
+  else if (high_numbers=='divide&remove') { 
+    numeric_vec[numeric_vec>10000 & !is.na(numeric_vec)] <- numeric_vec[numeric_vec>10000 & !is.na(numeric_vec)]/12
+    is.na(numeric_vec) <- numeric_vec>6000 }
+  return(numeric_vec)
 }
 uc <- function(nb_pers, nb_14_et_plus) {
   # https://www.insee.fr/fr/metadonnees/definition/c1802
   return(1 + 0.5 * pmax(0, nb_14_et_plus - 1) + 0.3 * pmax(0, nb_pers - nb_14_et_plus))
 }
 quotient <- function(nb_pers, nb_adultes) {
-	# https://droit-finances.commentcamarche.com/contents/907-quotient-familial-calcul-du-nombre-de-parts-fiscales
-	# nb de parts fiscales en fonction de la situation et de nb_pers = 1 / 2 / 3 / 4 / 5
-	# marie: x / 2 / 2.5 / 3 / 4 --- en concubinage: x / 1 / 1.5 /2 / 3 (= marie - 1) --- seul: 1 / 2 / 2.5 / 3.5 / 4.5
-	return((nb_pers == 1) + (nb_pers == 2)*2 + (nb_pers == 3)*2.5 + (nb_pers == 4)*3 + (nb_pers > 4)*pmin(6, nb_pers - 1) + (nb_adultes==1)*(nb_pers > 3)*0.5 )
+  # https://droit-finances.commentcamarche.com/contents/907-quotient-familial-calcul-du-nombre-de-parts-fiscales
+  # nb de parts fiscales en fonction de la situation et de nb_pers = 1 / 2 / 3 / 4 / 5
+  # marie: x / 2 / 2.5 / 3 / 4 --- en concubinage: x / 1 / 1.5 /2 / 3 (= marie - 1) --- seul: 1 / 2 / 2.5 / 3.5 / 4.5
+  return((nb_pers == 1) + (nb_pers == 2)*2 + (nb_pers == 3)*2.5 + (nb_pers == 4)*3 + (nb_pers > 4)*pmin(6, nb_pers - 1) + (nb_adultes==1)*(nb_pers > 3)*0.5 )
 }
 irpp <- function(rev, nb_adultes, nb_pers) {
-	# quotient <- (nb_pers < 2) + (nb_pers == 2) * 2 + (nb_pers == 3) * 2.5 + (nb_pers == 4) * 3 + (nb_pers > 4) * pmin(6, nb_pers - 1)
-	income <- 0.9334 * rev / quotient(nb_pers, nb_adultes) # (1 + (0.029 * 1.28))*0.9 : passage au brut (+28% en moyenne), CSG+CRDS non déductibles (2,90%), puis abattement de 10%
-	ir <- 0
-	ir <- ir + (income - 12815.25*12) * 0.45 * (income > 12815.25*12)
-	ir <- ir + (pmin(income, 12676*12) - 6051.42*12) * 0.41  * (income > 6051.42*12)
-	ir <- ir + (pmin(income, 6051.42*12) - 2257.17*12) * 0.3  * (income > 2257.17*12)
-	ir <- ir + (pmin(income, 2257.17*12) - 817.25*12) * 0.14  * (income > 817.25*12)
-	
-	ir <- quotient(nb_pers, nb_adultes) * ir
-	seuil_decote <- (nb_adultes>1)*2585/12 + (nb_adultes<=1)*1569/12
-	# decote <- (1920 - 0.75 * ir) * (marie & ir<2560) + (1165 - 0.75 * ir) * (!(marie) & ir<1553)
-	decote <- (ir < seuil_decote) * 0.75 * (seuil_decote - ir)
-	return(pmax((ir-decote),0)) # vrai calcul
+  # quotient <- (nb_pers < 2) + (nb_pers == 2) * 2 + (nb_pers == 3) * 2.5 + (nb_pers == 4) * 3 + (nb_pers > 4) * pmin(6, nb_pers - 1)
+  income <- 0.9334 * rev / quotient(nb_pers, nb_adultes) # (1 + (0.029 * 1.28))*0.9 : passage au brut (+28% en moyenne), CSG+CRDS non déductibles (2,90%), puis abattement de 10%
+  ir <- 0
+  ir <- ir + (income - 12815.25*12) * 0.45 * (income > 12815.25*12)
+  ir <- ir + (pmin(income, 12676*12) - 6051.42*12) * 0.41  * (income > 6051.42*12)
+  ir <- ir + (pmin(income, 6051.42*12) - 2257.17*12) * 0.3  * (income > 2257.17*12)
+  ir <- ir + (pmin(income, 2257.17*12) - 817.25*12) * 0.14  * (income > 817.25*12)
+  
+  ir <- quotient(nb_pers, nb_adultes) * ir
+  seuil_decote <- (nb_adultes>1)*2585/12 + (nb_adultes<=1)*1569/12
+  # decote <- (1920 - 0.75 * ir) * (marie & ir<2560) + (1165 - 0.75 * ir) * (!(marie) & ir<1553)
+  decote <- (ir < seuil_decote) * 0.75 * (seuil_decote - ir)
+  return(pmax((ir-decote),0)) # vrai calcul
 }
 
 
@@ -390,7 +419,7 @@ oui_non <- function(vars, file, labels = vars, data = s, display_value = T, sort
   # api_create(bars, filename=file, sharing="public")
   return(bars) # bugs most often than not
 }
-data5 <- function(vars, data=e1, miss=T, weights=T, rev=FALSE) {
+data5 <- function(vars, data=e, miss=T, weights=T, rev=FALSE) {
   matrice <- c()
   colors <-  c(rainbow(4, end=4/15), "forestgreen") # c("red", "orange", "yellow", "green", "darkgreen") # rainbow(5, end=1/3)
   for (var in vars) {
@@ -412,7 +441,8 @@ data5 <- function(vars, data=e1, miss=T, weights=T, rev=FALSE) {
   else return(matrice)
   # return(as.data.frame(matrice))
 }
-data1 <- function(vars, data=e1, weights=T) {
+data1 <- function(vars, data=e, weights=T) {
+  if (is.null(data[['weight']])) weights <- F # TODO? warning
   res <- c()
   for (var in vars) {
     if (weights) { res <- c(res, sum(data[['weight']][which(data[[var]]==TRUE)])/sum(data[['weight']][which(data[[var]]==TRUE | data[[var]]==FALSE)])) }
@@ -420,7 +450,7 @@ data1 <- function(vars, data=e1, weights=T) {
   }
   return( matrix(res, ncol=length(vars)) )
 }
-dataN <- function(var, data=e1, miss=T, weights = T, return = "", fr=T, rev=FALSE, rev_legend = FALSE) {
+dataN <- function(var, data=e, miss=T, weights = T, return = "", fr=F, rev=FALSE, rev_legend = FALSE) {
   if (is.null(data[['weight']])) weights <- F # TODO? warning
   mat <- c()
   if (is.character(data[[var]]) | (is.numeric(data[[var]]) & !grepl("item", class(data[[var]]))) | is.logical(data[[var]])) v <- as.factor(data[[var]]) # before: no is.logical
@@ -430,37 +460,40 @@ dataN <- function(var, data=e1, miss=T, weights = T, return = "", fr=T, rev=FALS
   else levels <- labels(v)@.Data
   levels <- levels[!(levels %in% c("NSP", "PNR", "Non concerné·e"))]
   if (rev_legend) levels <- rev(levels) # new (05/20)
+  if (weights) N <- sum(data[['weight']][!is.missing(v) & (!(v %in% c("NSP", "Non concerné·e")))])
+  else N <- length(which(!is.missing(v) & (!(v %in% c("NSP", "Non concerné·e")))))
   for (val in levels) { # before: no %in% nowhere below
-    if (weights) mat <- c(mat, sum(data[['weight']][which(v==val)])/sum(data[['weight']][!is.missing(v) & (!(v %in% c("NSP", "Non concerné·e")))]))
-    else mat <- c(mat, length(which(v==val))/length(which(!is.missing(v) & (!(v %in% c("NSP", "Non concerné·e")))))) }
+    if (weights) mat <- c(mat, sum(data[['weight']][which(v==val)])/N)
+    else mat <- c(mat, length(which(v==val))/N) }
   if (rev) mat <- rev(mat)
   if (miss) {
     if (is.null(annotation(v))) {
-      if (weights) mat <- c(mat, sum(data[['weight']][which(is.na(v) | v %in% c("NSP", "Non concerné·e"))])/sum(data[['weight']][!is.missing(v) & (!(v %in% c("NSP", "Non concerné·e")))]))
-      else mat <- c(mat, length(which(is.na(v) | v %in% c("NSP", "Non concerné·e")))/length(which(!is.missing(v) & (!(v %in% c("NSP", "Non concerné·e"))))))
+      if (weights) mat <- c(mat, sum(data[['weight']][which(is.na(v) | v %in% c("NSP", "Non concerné·e"))])/N)
+      else mat <- c(mat, length(which(is.na(v) | v %in% c("NSP", "Non concerné·e")))/N)
     } else  {
-      if (weights) mat <- c(mat, sum(data[['weight']][which(is.missing(v) & !is.na(v))])/sum(data[['weight']][!is.missing(v)]))
-      else mat <- c(mat, length(which(is.missing(v) & !is.na(v)))/length(which(!is.missing(v)))) } }
+      if (weights) mat <- c(mat, sum(data[['weight']][which(is.missing(v) & !is.na(v))])/N) # was defined without " & (!(v %in% c("NSP", "Non concerné·e")))" here and line below
+      else mat <- c(mat, length(which(is.missing(v) & !is.na(v)))/N) } } # mais ça semble équivalent pck les NSP sont missing dans ces cas-là
   if (max(nchar(levels))==3 & 'Oui' %in% levels & 'Non' %in% levels) { if (which(levels=='Non') < which(levels=='Oui')) mat[2:1] <- mat[1:2]; levels[c(which(levels=='Oui'),which(levels=='Non'))] <- c('Non', 'Oui') }
   if ((return %in% c("levels", "legend")) & miss & fr) return(c(levels, 'NSP'))
   else if ((return %in% c("levels", "legend")) & miss & (!(fr))) return(c(levels, 'PNR'))
   else if ((return %in% c("levels", "legend")) & (!(miss))) return(levels)
+  else if (return == "N") return(N)
   else return(matrix(mat, ncol=1))
 }
-dataKN <- function(vars, data=e1, miss=T, weights = T, return = "", fr=T, rev=FALSE) {
+dataKN <- function(vars, data=e, miss=T, weights = T, return = "", fr=F, rev=FALSE) {
   if (is.logical(data[[vars[1]]])) return(data1(vars, data, weights))
   else {
     res <- c()
     for (var in vars) res <- c(res, dataN(var, data, miss, weights, return, fr, rev))
     return(matrix(res, ncol=length(vars))) }
 }
-dataN2 <- function(var, df = list(c, e1), miss=T, weights = T, fr=T, rev=FALSE, return = "") {
+dataN2 <- function(var, df = list(c, e), miss=T, weights = T, fr=F, rev=FALSE, return = "") {
   if (return %in% c("levels", "legend")) return(dataN(var, df[[1]], miss = miss, weights = weights, fr = fr, rev = rev, return = return))
   else return(cbind(dataN(var, df[[1]], miss = miss, weights = weights, fr = fr, rev = rev), dataN(var, df[[2]], miss = miss, weights = weights, fr = fr, rev = rev))) }
-dataN3 <- function(var, df = list(e2, e1, c), miss=T, weights = T, fr=T, rev=FALSE, return = "") {
+dataN3 <- function(var, df = list(e2, e, c), miss=T, weights = T, fr=F, rev=FALSE, return = "") {
   if (return %in% c("levels", "legend")) return(dataN(var, df[[1]], miss = miss, weights = weights, fr = fr, rev = rev, return = return))
   else return(cbind(dataN(var, df[[1]], miss = miss, weights = weights, fr = fr, rev = rev), dataN(var, df[[2]], miss = miss, weights = weights, fr = fr, rev = rev), dataN(var, df[[3]], miss = miss, weights = weights, fr = fr, rev = rev))) }
-data12 <- function(vars, df = list(e1, e2), miss=T, weights = T, fr=T, rev=FALSE, return = "") {
+data12 <- function(vars, df = list(e, e2), miss=T, weights = T, fr=F, rev=FALSE, return = "") {
   if (length(vars)==1) return(dataN2(var=vars, df=list(df[[2]], df[[1]]), miss=miss, weights=weights, fr=fr, rev=rev, return=return))
   else {
     init <- T 
@@ -474,7 +507,7 @@ data12 <- function(vars, df = list(e1, e2), miss=T, weights = T, fr=T, rev=FALSE
     }
     return(data)
   } }
-barres12 <- function(vars, df=list(e1, e2), labels, legend=hover, comp = "V2", miss=T, weights = T, fr=T, rev=T, color=c(), rev_color = FALSE, hover=legend, sort=TRUE, thin=T, return="", showLegend=T) {
+barres12 <- function(vars, df=list(e, e2), labels, legend=hover, comp = "V2", miss=T, weights = T, fr=F, rev=T, color=c(), rev_color = FALSE, hover=legend, sort=TRUE, thin=T, return="", showLegend=T) {
   if (missing(vars) & missing(legend) & missing(hover)) warning('hover or legend must be given')
   if (!missing(miss)) nsp <- miss
   data1 <- dataKN(vars, data=df[[1]], miss=miss, weights = weights, return = "", fr=fr, rev=rev)
@@ -487,8 +520,8 @@ barres12 <- function(vars, df=list(e1, e2), labels, legend=hover, comp = "V2", m
   else if (return=="labels") return(labels12(labels[agree], en = !fr))
   else if (return=="legend") return(legend)
   else return(barres(data = data12(vars[agree], df = df, miss=miss, weights = weights, fr=fr, rev=rev, return = ""), 
-                labels=labels12(labels[agree], en = !fr, comp = comp), legend=legend, 
-                miss=miss, weights = weights, fr=fr, rev=rev, color=color, rev_color = rev_color, hover=hover, sort=F, thin=thin, showLegend=showLegend))
+                     labels=labels12(labels[agree], en = !fr, comp = comp), legend=legend, 
+                     miss=miss, weights = weights, fr=fr, rev=rev, color=color, rev_color = rev_color, hover=hover, sort=F, thin=thin, showLegend=showLegend))
 }
 
 labels12 <- function(labels, en=F, comp = "V2") {
@@ -539,13 +572,14 @@ order_agree <- function(data, miss, rev = T, n = ncol(data)) {
     if (nrow(data)==5 | nrow(data)==6) { for (i in 1:n) { agree <- c(agree, data[4, i] + data[5, i]) } }
     else if (nrow(data)==7) { for (i in 1:n) { agree <- c(agree, data[6, i] + data[7, i]) } }
     else { for (i in 1:n) { agree <- c(agree, data[1, i]) } } }
-return(order(agree, decreasing = rev)) }
+  return(order(agree, decreasing = rev)) }
 barres <- function(data, vars, file, title="", labels, color=c(), rev_color = FALSE, hover=legend, nsp=TRUE, sort=TRUE, legend=hover, showLegend=T, margin_r=0, margin_l=NA, online=FALSE, 
-                   display_values=T, thin=T, legend_x=NA, show_ticks=T, xrange=NA, save = FALSE, df=e1, miss=T, weights = T, fr=T, rev=T, grouped = F) {
+                   display_values=T, thin=T, legend_x=NA, show_ticks=T, xrange=NA, save = FALSE, df=e, miss=T, weights = T, fr=F, rev=T, grouped = F, error_margin = F, color_margin = '#00000033', N = NA) {
   if (missing(vars) & missing(legend) & missing(hover)) warning('hover or legend must be given')
   if (!missing(miss)) nsp <- miss
   if (missing(data) & !missing(vars)) {
     data <- dataKN(vars, data=df, miss=miss, weights = weights, return = "", fr=fr, rev=rev)
+    N <- dataN(vars[1], data=df, miss=miss, weights = weights, return = "N")
     if (missing(legend) & missing(hover)) { 
       if (is.logical(df[[vars[1]]])) hover <- legend <- labels # data1(var = vars[1], data=df, weights = weights)
       else hover <- legend <- dataN(var = vars[1], data=df, miss=miss, weights = weights, return = "legend", fr=fr, rev_legend = rev) } }
@@ -581,7 +615,7 @@ barres <- function(data, vars, file, title="", labels, color=c(), rev_color = FA
     value <- c()
     for (i in 1:length(hover)) { 
       hover[i] <- paste(hover[i], "<br>Choisi dans ", round(100*data[1, i]), "% des réponses", sep="")
-      value[i] <- paste(round(100*data[1, i]), '%', sep='') }
+      value[i] <- paste(round(100*data[1, i]), '%', sep='') } # '%  '
     hovers <- matrix(hover, nrow=length(hover))
     values <- matrix(value, nrow=length(hover))
   }
@@ -591,12 +625,12 @@ barres <- function(data, vars, file, title="", labels, color=c(), rev_color = FA
       for (i in 1:(length(hover)-1)) { 
         for (j in 1:length(labels)) {
           hovers <- c(hovers, paste(hover[i], '<br>', round(100*data[i, j]/(1+data[length(hover), j])), '% des réponses<br>', round(100*data[i, j]), '% des réponses exprimées') )
-          values <- c(values, paste(round(100*data[i, j]/(1+data[length(hover), j])), '%', sep=''))
+          values <- c(values, paste(round(100*data[i, j]/(1+data[length(hover), j])), '%', sep='')) # '%  '
         }
       }
       for (j in 1:length(labels)) {
         hovers <- c(hovers, paste(hover[length(hover)], '<br>', round(100*data[length(hover), j]/(1+data[length(hover), j])), '% des réponses<br>') )
-        values <- c(values, paste(round(100*data[length(hover), j]/(1+data[length(hover), j])), '%', sep=''))
+        values <- c(values, paste(round(100*data[length(hover), j]/(1+data[length(hover), j])), '%', sep='')) # '%  '
       }
     }
     else {
@@ -605,7 +639,7 @@ barres <- function(data, vars, file, title="", labels, color=c(), rev_color = FA
       for (i in 1:length(hover)) { 
         for (j in 1:length(labels)) {
           hovers <- c(hovers, paste(hover[i], '<br>', round(100*data[i, j]), '% des réponses exprimées<br>') )
-          values <- c(values, paste(round(100*data[i, j]), '%', sep=''))
+          values <- c(values, paste(round(100*data[i, j]), '%', sep='')) # '%  '
         }
       }  
     }
@@ -614,7 +648,8 @@ barres <- function(data, vars, file, title="", labels, color=c(), rev_color = FA
   }
   if (!(display_values)) values <- replace(values, T, '')
   
-  bars <- plot_ly(x = data[1,], y = labels, type = 'bar', orientation = 'h', text = values[,1], textposition = 'auto', # sort=FALSE, 
+  bars <- plot_ly(x = data[1,], y = labels, type = 'bar', orientation = 'h', text = values[,1], textposition = 'auto', 
+                  error_x = list(visible = error_margin, array=qnorm(1-0.05/2)*sqrt(data[1,]*(1-data[1,])/(N-1)), color = color_margin), # sort=FALSE, 
                   hoverinfo = hovers[,1], name=legend[1], marker = list(color = color[1], line = list(color = 'white'))) %>% # , width = 0
     
     layout(xaxis = list(title = "",
@@ -661,20 +696,21 @@ barres <- function(data, vars, file, title="", labels, color=c(), rev_color = FA
                     text = labels,
                     font = list(family = 'Arial', size = 14, color = 'black'),
                     showarrow = FALSE, align = 'right') # %>%
-    # Legend in the Yes/No case
-    if ((setequal(legend, c('Yes', 'No', 'PNR')) | setequal(legend, c('Oui', 'Non', 'NSP')))) { 
-      bars <- bars %>% add_annotations(xref = 'x', yref = 'paper',
-                    x = c(0.1, 0.9, 1.1),
-                    y = 1.5,
-                    text = legend,
-                    font = list(family = 'Arial', size = 16, color = 'black'),
-                    showarrow = FALSE) } # %>%
+  # Legend in the Yes/No case
+  if ((setequal(legend, c('Yes', 'No', 'PNR')) | setequal(legend, c('Oui', 'Non', 'NSP')))) { 
+    bars <- bars %>% add_annotations(xref = 'x', yref = 'paper',
+                                     x = c(0.1, 0.9, 1.1),
+                                     y = 1.5,
+                                     text = legend,
+                                     font = list(family = 'Arial', size = 16, color = 'black'),
+                                     showarrow = FALSE) } # %>%
   # print(nrow(data))
   # print(hover)
   # print(nrow(hovers))
   # print(ncol(hovers))
   if (nrow(data)>1) { for (i in 2:nrow(data)) { # evaluate=TRUE, 
-    bars <- add_trace(bars, x = data[i,], name=legend[i], text = values[,i], hoverinfo = 'text', hovertext = hovers[,i], marker = list(color = color[i]))
+    bars <- add_trace(bars, x = data[i,], name=legend[i], text = values[,i], hoverinfo = 'text', hovertext = hovers[,i], marker = list(color = color[i]), 
+                      error_x = list(visible = error_margin, array=qnorm(1-0.05/2)*sqrt(data[i,]*(1-data[i,])/(N-1)), color = color_margin)) # width thickness (in px)
   } }
   if (online) { api_create(bars, filename=file, sharing="public") }
   if (!missing(file) & save) save_plotly(bars, filename = file) # new
@@ -684,7 +720,7 @@ barres <- function(data, vars, file, title="", labels, color=c(), rev_color = FA
 # dev.copy(png, filename="test.png") # save plot from R (not plotly)
 # dev.off()
 # orca(example, file = "image.png") # BEST METHOD, cf. below
-save_plotly <- function(plot, filename = deparse(substitute(plot)), folder = '../images/', width = dev.size('px')[1], height = dev.size('px')[2], method='orca', trim = T) {
+save_plotly <- function(plot, filename = deparse(substitute(plot)), folder = '../figures/', width = dev.size('px')[1], height = dev.size('px')[2], method='orca', trim = T) {
   file <- paste(folder, filename, ".png", sep='')
   if (grepl('webshot', method)) { # four times faster: 2.5s (vs. 10s) but saves useless widgets and doesn't exactly respect the display
     saveWidget(politiques_1, 'temp.html')

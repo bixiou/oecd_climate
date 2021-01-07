@@ -625,7 +625,7 @@ convert <- function(e, country) {
               # "standard_incidence_rural", "investments_incidence_rural", "tax_transfers_incidence_rural", "standard_incidence_self", "investments_incidence_self", "tax_transfers_incidence_self", 
               # "future_gdp", "envi", "equal_quota", "country_should_act", "insulation_compulsory", "flight_quota_1000km", "flight_quota_3000km", "flight_quota_one_trip", "ban_incentives"
               )) {
-    e[j][[1]] <- as.item(as.factor(e[j][[1]]), missing.values = c("PNR", "", NA), annotation=paste(attr(e[j][[1]], "label"), "(char)")) 
+    e[j][[1]] <- as.item(as.factor(e[j][[1]]), missing.values = c("PNR", "", NA), annotation=paste(attr(e[j][[1]], "label"))) 
   }
 
   for (j in names(e)) {
@@ -983,7 +983,7 @@ convert <- function(e, country) {
   
   e$wtp <- as.numeric(as.vector(gsub('[[:alpha:] $]', '', e$wtp))) # /!\ Careful with different currencies and use of cents vs. currency (for US $, not pb as cents are not used)
   
-  # TODO: CC_affected, label should_act_condition & vote, nb_policies_supported, score_knowlege_CC, score_trust, zipcode, race, standard of living
+  # TODO: heating, CC_affected, label should_act_condition & vote, nb_policies_supported, score_knowlege_CC, score_trust, zipcode, race, standard of living
   
   e$left_right <- pmax(-2,pmin(2,-2 * e$far_left - 1*e$left + 1*e$right + 2 * e$far_right))
   is.na(e$left_right) <- (e$left_right == 0) & !e$center

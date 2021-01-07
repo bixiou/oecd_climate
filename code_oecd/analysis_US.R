@@ -2,7 +2,7 @@
 decrit("finished", data = e)
 decrit("excluded", data = e)
 decrit("language", data = e)
-decrit("urban_category", data = e) # 82% 1 TODO check
+decrit("urban_category", data = e) 
 decrit("treatment_policy", data = e)
 decrit("treatment_climate", data = e)
 decrit("variant_flight_quota", data = e)
