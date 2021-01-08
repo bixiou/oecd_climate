@@ -6,6 +6,9 @@ Paths = c("/Users/Bluebii/Library/Mobile Documents/com~apple~CloudDocs/TRAVAIL/J
 names(Paths) = c("Bluebii", "afabre")
 setwd(Paths[Sys.info()[7]])
 
+source(".Rprofile")
+
+
 us <- readRDS("../data/US_pilot_clean.rds")
 
 
@@ -69,6 +72,8 @@ us$treatment_agg <- as.factor(us$treatment_agg)
 
 ##### 2. Regressions #####
 
+
+## Block: CC (attitudes and risks)
 control_variables <- c("race_white_only", "gender_dum", "children", "college", "employment_agg", "income_factor", "age_agg", "vote_dum", "treatment_agg")
 cov_lab = c("White only", "Male", "Children", "No college", "Retired" ,"Student", "Working", "Income Q2", "Income Q3", "Income Q4","30-49", "50-87", "Non voting", "Other", "Trump", "Climate treatment only", "No treatment", "Policy treatment only")
 
@@ -97,7 +102,7 @@ us$CC_exists_no <- (us$CC_exists == -1)
 us$CC_exists_nat <- (us$CC_exists == 0)
 us$CC_exists_anthro <- (us$CC_exists == 1)
 
-temp <- desc_table(dep_vars = c("CC_exists_no", "CC_exists_nat", "CC_exists_anthro"), filename = "CC_exists",
+desc_table(dep_vars = c("CC_exists_no", "CC_exists_nat", "CC_exists_anthro"), filename = "CC_exists",
                    dep.var.labels = c("not a reality","mainly due to natural climate variability", "mainly due to human activity"),
                    dep.var.caption = c("Climate change is…"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
@@ -170,3 +175,30 @@ temp <- desc_table(dep_vars = c("effect_policies_opportunity", "effect_policies_
 temp <- desc_table(dep_vars = c("kaya_techno", "kaya_waste", "kaya_wealth", "kaya_overconsumption", "kaya_overpopulation", "kaya_none"), filename = "kaya",
           dep.var.labels = c("Use of technologies that emit GHG", "Level of waste", "High standards of living", "Overconsumption", "Overpopulation", "None of them"),
           dep.var.caption = c("Which issues need to be addressed to halt CC?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+
+## Block International burden-sharing
+
+# Level for PP to tackle CC
+desc_table(dep_vars = c("scale_local", "scale_state", "state_federal", "scale_global"), filename = "scale",
+           dep.var.labels = c("Local","State", "Federal", "Global"),
+           dep.var.caption = c("The right level to implement policies to tackle CC is:"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+
+# Burden
+us$dummy_burden_sharing_income <- 0
+us[us$burden_sharing_income >= 1, "dummy_burden_sharing_income"] <- 1
+us$dummy_burden_sharing_emissions <- 0
+us[us$burden_sharing_emissions >= 1, "dummy_burden_sharing_emissions"] <- 1
+us$dummy_burden_sharing_cumulative <- 0
+us[us$burden_sharing_cumulative >= 1, "dummy_burden_sharing_cumulative"] <- 1
+us$dummy_burden_sharing_rich_pay <- 0
+us[us$burden_sharing_rich_pay >= 1, "dummy_burden_sharing_rich_pay"] <- 1
+us$dummy_burden_sharing_poor_receive <- 0
+us[us$burden_sharing_poor_receive >= 1, "dummy_burden_sharing_poor_receive"] <- 1
+
+desc_table(dep_vars = c("dummy_burden_sharing_income", "dummy_burden_sharing_emissions", "dummy_burden_sharing_cumulative", "dummy_burden_sharing_rich_pay", "dummy_burden_sharing_poor_receive"), filename = "burden_sharing",
+           dep.var.labels = c("Pay in proportion to income","Pay in proportion to current emissions", "Pay in proportion to past emissions (from 1990)", "Richest pay alone", "Richest pay, and even more to help vulnerable countries"),
+           dep.var.caption = c("Which countries bear should bear the costs of fighting CC?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+
+us$CC_talks_never <-- (us$CC_talks == -1)
+us$CC_talks_yearly <-- (us$CC_talks == 0)
+us$CC_talks_monthly <-- (us$CC_talks == 1)
