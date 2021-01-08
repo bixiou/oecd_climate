@@ -129,20 +129,20 @@ temp <- desc_table(dep_vars = c("CC_responsible_each", "CC_responsible_rich", "C
                   dep.var.caption = c("Which of the following is predominantly responsible for CC?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 ## Possible to halt CC
-us$CC_stoppable_no_infl <-- (us$CC_stoppable == "No influence")
-us$CC_stoppable_adapt <-- (us$CC_stoppable == "Better to adapt")
-us$CC_stoppable_should <-- (us$CC_stoppable == "Should but not happening")
-us$CC_stoppable_policies <-- (us$CC_stoppable == "Policies & awareness will")
-us$CC_stoppable_progress <-- (us$CC_stoppable == "Progress will suffice")
+us$CC_stoppable_no_infl <- (us$CC_stoppable == "No influence")
+us$CC_stoppable_adapt <- (us$CC_stoppable == "Better to adapt")
+us$CC_stoppable_should <- (us$CC_stoppable == "Should but not happening")
+us$CC_stoppable_policies <- (us$CC_stoppable == "Policies & awareness will")
+us$CC_stoppable_progress <- (us$CC_stoppable == "Progress will suffice")
 
 temp <- desc_table(dep_vars = c("CC_stoppable_no_infl", "CC_stoppable_adapt", "CC_stoppable_should", "CC_stoppable_policies", "CC_stoppable_progress"), filename = "CC_stoppable",
           dep.var.labels = c("Human have no noticeable influence","Better live with CC than try to halt it",  "Should stop emmissions, but not going to happen", "Ambitious policies and awareness will succeed", "Technologies and habits will suffice"),
           dep.var.caption = c("Can humanity halt CC?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 ## Talks about CC
-us$CC_talks_never <-- (us$CC_talks == -1)
-us$CC_talks_yearly <-- (us$CC_talks == 0)
-us$CC_talks_monthly <-- (us$CC_talks == 1)
+us$CC_talks_never <- (us$CC_talks == -1)
+us$CC_talks_yearly <- (us$CC_talks == 0)
+us$CC_talks_monthly <- (us$CC_talks == 1)
 
 temp <- desc_table(dep_vars = c("CC_talks_never", "CC_talks_yearly", "CC_talks_monthly"), filename = "CC_talks",
           dep.var.labels = c("Never","Yearly",  "Monthly"),
@@ -154,7 +154,7 @@ temp <- desc_table(dep_vars = c("CC_affected_1960", "CC_affected_1990", "CC_affe
           dep.var.caption = c("Which generations will be seriously affected by CC?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 ## Sustainable lifestyle
-us$dummy_change_lifestyle <-- (us$change_lifestyle == "Yes")
+us$dummy_change_lifestyle <- (us$change_lifestyle == "Yes")
 
 temp <- desc_table(dep_vars = c("dummy_change_lifestyle"), filename = "change_lifestyle",
           dep.var.labels = c("Willing to change lifestyle"),
@@ -200,145 +200,182 @@ desc_table(dep_vars = c("dummy_burden_sharing_income", "dummy_burden_sharing_emi
            dep.var.caption = c("Which countries bear should bear the costs of fighting CC?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 # Equal quota
-us$equal_quota_no_vul <-- (us$equal_quota == 2)
-us$equal_quota_yes <-- (us$equal_quota == 1)
-us$equal_quota_no_indiv <-- (us$equal_quota == 0)
-us$equal_quota_no_gf <-- (us$equal_quota == -1)
-us$equal_quota_no_restrict <-- (us$equal_quota == -2)
+us$equal_quota_no_vul <- (us$equal_quota == 2)
+us$equal_quota_yes <- (us$equal_quota == 1)
+us$equal_quota_no_indiv <- (us$equal_quota == 0)
+us$equal_quota_no_gf <- (us$equal_quota == -1)
+us$equal_quota_no_restrict <- (us$equal_quota == -2)
 
 desc_table(dep_vars = c("equal_quota_no_vul", "equal_quota_yes", "equal_quota_no_gf", "equal_quota_no_indiv", "equal_quota_no_restrict"), filename = "equal_quota",
            dep.var.labels = c("No, should compensate the poorest","Yes", "No, if pollute more, more rights", "No, not at individual level", "No, no restrictions of emissions"),
            dep.var.caption = c("Are you in favor of a system of equal quota to emit GHG at individual levels, with monetary compensation and tax?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 # US should act
-us$country_should_act_yes <-- (us$country_should_act == 1)
-us$country_should_act_inter <-- (us$country_should_act == 0)
-us$country_should_act_no <-- (us$country_should_act == -1)
+us$country_should_act_yes <- (us$country_should_act == 1)
+us$country_should_act_inter <- (us$country_should_act == 0)
+us$country_should_act_no <- (us$country_should_act == -1)
 
 desc_table(dep_vars = c("country_should_act_yes", "country_should_act_inter", "country_should_act_no"), filename = "country_should_act",
            dep.var.labels = c("Yes", "Only if fair international agreement", "No"),
            dep.var.caption = c("Should the U.S. take measures to fight CC?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 # Conditions to act
-us$country_should_act_condition_comp <-- (us$country_should_act_condition == "Compensation")
-us$country_should_act_condition_freerid <-- (us$country_should_act_condition == "Free-riding")
-us$country_should_act_condition_recip <-- (us$country_should_act_condition == "Reciprocity")
+us$country_should_act_condition_comp <- (us$country_should_act_condition == "Compensation")
+us$country_should_act_condition_freerid <- (us$country_should_act_condition == "Free-riding")
+us$country_should_act_condition_recip <- (us$country_should_act_condition == "Reciprocity")
 
 desc_table(dep_vars = c("country_should_act_condition_comp", "country_should_act_condition_recip", "country_should_act_condition_freerid"), filename = "country_should_act_condition",
            dep.var.labels = c("U.S. more ambitious, if others less", "U.S. more ambitious, if others as well", "U.S. less ambitious, if others are"),
            dep.var.caption = c("How what the U.S. should do depends on what other countries do?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 # Approve propositions
-us$dummy_pro_global_assembly <-- (us$pro_global_assembly == "Yes")
-us$dummy_pro_global_tax <-- (us$pro_global_tax == "Yes")
-us$dummy_pro_tax_1p <-- (us$pro_tax_1p == "Yes")
+us$dummy_pro_global_assembly <- (us$pro_global_assembly == "Yes")
+us$dummy_pro_global_tax <- (us$pro_global_tax == "Yes")
+us$dummy_pro_tax_1p <- (us$pro_tax_1p == "Yes")
 
 desc_table(dep_vars = c("dummy_pro_global_assembly", "dummy_pro_global_tax", "dummy_pro_tax_1p"), filename = "pro_inter",
            dep.var.labels = c("Global democratic assembly to fight CC", "Global tax on GHG emissions funding a global basic income ($30/month/adult)", "Global tax on top 1% to finance poorest countries"),
            dep.var.caption = c("Approve those measures"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 ## Block Pref 1: emission tax_transferss
-us$dummy_tax_transfers_exists <-- (us$tax_transfers_exists == "Yes")
-us$dummy_tax_transfers_trust <-- (us$tax_transfers_exists == "Yes")
-us$dummy_tax_transfers_effective <-- (us$tax_transfers_effective == "Yes")
-us$tax_transfers_employment_pos <-- (us$tax_transfers_employment == 1)
-us$tax_transfers_side_effects_pos <-- (us$tax_transfers_side_effects == 1)
-us$tax_transfers_support <-- (us$tax_transfers_support == 1)
+us$dummy_tax_transfers_exists <- (us$tax_transfers_exists == "Yes")
+us$dummy_tax_transfers_trust <- (us$tax_transfers_exists == "Yes")
+us$dummy_tax_transfers_effective <- (us$tax_transfers_effective == "Yes")
+us$tax_transfers_employment_pos <- (us$tax_transfers_employment == 1)
+us$tax_transfers_side_effects_pos <- (us$tax_transfers_side_effects == 1)
+us$tax_transfers_support <- (us$tax_transfers_support == 1)
 
 desc_table(dep_vars = c("dummy_tax_transfers_exists", "dummy_tax_transfers_trust", "dummy_tax_transfers_effective", "tax_transfers_employment_pos", "tax_transfers_side_effects_pos", "tax_transfers_support"), filename = "tax_transfers_opinion",
            dep.var.labels = c("Does exist", "Trust federal gov.", "Effective", "Positive impact on jobs", "Positive side effects", "Support"),
            dep.var.caption = c("C02 emission limit for cars policy in the U.S."), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 #would win
-us$tax_transfers_incidence_poor_win <-- (us$tax_transfers_incidence_poor == 1)
-us$tax_transfers_incidence_middle_win <-- (us$tax_transfers_incidence_middle == 1)
-us$tax_transfers_incidence_rich_win <-- (us$tax_transfers_incidence_rich == 1)
-us$tax_transfers_incidence_urban_win <-- (us$tax_transfers_incidence_urban == 1)
-us$tax_transfers_incidence_rural_win <-- (us$tax_transfers_incidence_rural == 1)
-us$tax_transfers_incidence_self_win <-- (us$tax_transfers_incidence_self == 1)
+us$tax_transfers_incidence_poor_win <- (us$tax_transfers_incidence_poor == 1)
+us$tax_transfers_incidence_middle_win <- (us$tax_transfers_incidence_middle == 1)
+us$tax_transfers_incidence_rich_win <- (us$tax_transfers_incidence_rich == 1)
+us$tax_transfers_incidence_urban_win <- (us$tax_transfers_incidence_urban == 1)
+us$tax_transfers_incidence_rural_win <- (us$tax_transfers_incidence_rural == 1)
+us$tax_transfers_incidence_self_win <- (us$tax_transfers_incidence_self == 1)
 
 desc_table(dep_vars = c("tax_transfers_incidence_poor_win", "tax_transfers_incidence_middle_win", "tax_transfers_incidence_rich_win", "tax_transfers_incidence_urban_win", "tax_transfers_incidence_rural_win", "tax_transfers_incidence_self_win"), filename = "tax_transfers_winner",
            dep.var.labels = c("Poorest", "Middle class", "Richest", "Urban", "Rural", "Own household"),
            dep.var.caption = c("Winners of emission limits for cars policy"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 #would lose
-us$tax_transfers_incidence_poor_lose <-- (us$tax_transfers_incidence_poor == -1)
-us$tax_transfers_incidence_middle_lose <-- (us$tax_transfers_incidence_middle == -1)
-us$tax_transfers_incidence_rich_lose <-- (us$tax_transfers_incidence_rich == -1)
-us$tax_transfers_incidence_urban_lose <-- (us$tax_transfers_incidence_urban == -1)
-us$tax_transfers_incidence_rural_lose <-- (us$tax_transfers_incidence_rural == -1)
-us$tax_transfers_incidence_self_lose <-- (us$tax_transfers_incidence_self == -1)
+us$tax_transfers_incidence_poor_lose <- (us$tax_transfers_incidence_poor == -1)
+us$tax_transfers_incidence_middle_lose <- (us$tax_transfers_incidence_middle == -1)
+us$tax_transfers_incidence_rich_lose <- (us$tax_transfers_incidence_rich == -1)
+us$tax_transfers_incidence_urban_lose <- (us$tax_transfers_incidence_urban == -1)
+us$tax_transfers_incidence_rural_lose <- (us$tax_transfers_incidence_rural == -1)
+us$tax_transfers_incidence_self_lose <- (us$tax_transfers_incidence_self == -1)
 
 desc_table(dep_vars = c("tax_transfers_incidence_poor_lose", "tax_transfers_incidence_middle_lose", "tax_transfers_incidence_rich_lose", "tax_transfers_incidence_urban_lose", "tax_transfers_incidence_rural_lose", "tax_transfers_incidence_self_lose"), filename = "tax_transfers_loser",
            dep.var.labels = c("Poorest", "Middle class", "Richest", "Urban", "Rural", "Own household"),
            dep.var.caption = c("Losers of emission limits for cars policy"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 ## Block Pref 2: green investments
-us$dummy_investments_trust <-- (us$investments_exists == "Yes")
-us$dummy_investments_effective <-- (us$investments_effective == "Yes")
-us$investments_employment_pos <-- (us$investments_employment == 1)
-us$investments_side_effects_pos <-- (us$investments_side_effects == 1)
-us$investments_support <-- (us$investments_support == 1)
+us$dummy_investments_trust <- (us$investments_exists == "Yes")
+us$dummy_investments_effective <- (us$investments_effective == "Yes")
+us$investments_employment_pos <- (us$investments_employment == 1)
+us$investments_side_effects_pos <- (us$investments_side_effects == 1)
+us$investments_support <- (us$investments_support == 1)
 
 desc_table(dep_vars = c("dummy_investments_trust", "dummy_investments_effective", "investments_employment_pos", "investments_side_effects_pos", "investments_support"), filename = "investments_opinion",
            dep.var.labels = c("Trust federal gov.", "Effective", "Positive impact on jobs", "Positive side effects", "Support"),
            dep.var.caption = c("C02 emission limit for cars policy in the U.S."), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 #would win
-us$investments_incidence_poor_win <-- (us$investments_incidence_poor == 1)
-us$investments_incidence_middle_win <-- (us$investments_incidence_middle == 1)
-us$investments_incidence_rich_win <-- (us$investments_incidence_rich == 1)
-us$investments_incidence_urban_win <-- (us$investments_incidence_urban == 1)
-us$investments_incidence_rural_win <-- (us$investments_incidence_rural == 1)
-us$investments_incidence_self_win <-- (us$investments_incidence_self == 1)
+us$investments_incidence_poor_win <- (us$investments_incidence_poor == 1)
+us$investments_incidence_middle_win <- (us$investments_incidence_middle == 1)
+us$investments_incidence_rich_win <- (us$investments_incidence_rich == 1)
+us$investments_incidence_urban_win <- (us$investments_incidence_urban == 1)
+us$investments_incidence_rural_win <- (us$investments_incidence_rural == 1)
+us$investments_incidence_self_win <- (us$investments_incidence_self == 1)
 
 desc_table(dep_vars = c("investments_incidence_poor_win", "investments_incidence_middle_win", "investments_incidence_rich_win", "investments_incidence_urban_win", "investments_incidence_rural_win", "investments_incidence_self_win"), filename = "investments_winner",
            dep.var.labels = c("Poorest", "Middle class", "Richest", "Urban", "Rural", "Own household"),
            dep.var.caption = c("Winners of emission limits for cars policy"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 #would lose
-us$investments_incidence_poor_lose <-- (us$investments_incidence_poor == -1)
-us$investments_incidence_middle_lose <-- (us$investments_incidence_middle == -1)
-us$investments_incidence_rich_lose <-- (us$investments_incidence_rich == -1)
-us$investments_incidence_urban_lose <-- (us$investments_incidence_urban == -1)
-us$investments_incidence_rural_lose <-- (us$investments_incidence_rural == -1)
-us$investments_incidence_self_lose <-- (us$investments_incidence_self == -1)
+us$investments_incidence_poor_lose <- (us$investments_incidence_poor == -1)
+us$investments_incidence_middle_lose <- (us$investments_incidence_middle == -1)
+us$investments_incidence_rich_lose <- (us$investments_incidence_rich == -1)
+us$investments_incidence_urban_lose <- (us$investments_incidence_urban == -1)
+us$investments_incidence_rural_lose <- (us$investments_incidence_rural == -1)
+us$investments_incidence_self_lose <- (us$investments_incidence_self == -1)
 
 desc_table(dep_vars = c("investments_incidence_poor_lose", "investments_incidence_middle_lose", "investments_incidence_rich_lose", "investments_incidence_urban_lose", "investments_incidence_rural_lose", "investments_incidence_self_lose"), filename = "investments_loser",
            dep.var.labels = c("Poorest", "Middle class", "Richest", "Urban", "Rural", "Own household"),
            dep.var.caption = c("Losers of emission limits for cars policy"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 ## Block Pref 3: tax and dividend
-us$dummy_tax_transfers_trust <-- (us$tax_transfers_exists == "Yes")
-us$dummy_tax_transfers_effective <-- (us$tax_transfers_effective == "Yes")
-us$tax_transfers_employment_pos <-- (us$tax_transfers_employment == 1)
-us$tax_transfers_side_effects_pos <-- (us$tax_transfers_side_effects == 1)
-us$tax_transfers_support <-- (us$tax_transfers_support == 1)
+us$dummy_tax_transfers_trust <- (us$tax_transfers_exists == "Yes")
+us$dummy_tax_transfers_effective <- (us$tax_transfers_effective == "Yes")
+us$tax_transfers_employment_pos <- (us$tax_transfers_employment == 1)
+us$tax_transfers_side_effects_pos <- (us$tax_transfers_side_effects == 1)
+us$tax_transfers_support <- (us$tax_transfers_support == 1)
 
 desc_table(dep_vars = c("dummy_tax_transfers_trust", "dummy_tax_transfers_effective", "tax_transfers_employment_pos", "tax_transfers_side_effects_pos", "tax_transfers_support"), filename = "tax_transfers_opinion",
            dep.var.labels = c("Trust federal gov.", "Effective", "Positive impact on jobs", "Positive side effects", "Support"),
            dep.var.caption = c("C02 emission limit for cars policy in the U.S."), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 #would win
-us$tax_transfers_incidence_poor_win <-- (us$tax_transfers_incidence_poor == 1)
-us$tax_transfers_incidence_middle_win <-- (us$tax_transfers_incidence_middle == 1)
-us$tax_transfers_incidence_rich_win <-- (us$tax_transfers_incidence_rich == 1)
-us$tax_transfers_incidence_urban_win <-- (us$tax_transfers_incidence_urban == 1)
-us$tax_transfers_incidence_rural_win <-- (us$tax_transfers_incidence_rural == 1)
-us$tax_transfers_incidence_self_win <-- (us$tax_transfers_incidence_self == 1)
+us$tax_transfers_incidence_poor_win <- (us$tax_transfers_incidence_poor == 1)
+us$tax_transfers_incidence_middle_win <- (us$tax_transfers_incidence_middle == 1)
+us$tax_transfers_incidence_rich_win <- (us$tax_transfers_incidence_rich == 1)
+us$tax_transfers_incidence_urban_win <- (us$tax_transfers_incidence_urban == 1)
+us$tax_transfers_incidence_rural_win <- (us$tax_transfers_incidence_rural == 1)
+us$tax_transfers_incidence_self_win <- (us$tax_transfers_incidence_self == 1)
 
 desc_table(dep_vars = c("tax_transfers_incidence_poor_win", "tax_transfers_incidence_middle_win", "tax_transfers_incidence_rich_win", "tax_transfers_incidence_urban_win", "tax_transfers_incidence_rural_win", "tax_transfers_incidence_self_win"), filename = "tax_transfers_winner",
            dep.var.labels = c("Poorest", "Middle class", "Richest", "Urban", "Rural", "Own household"),
            dep.var.caption = c("Winners of emission limits for cars policy"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 #would lose
-us$tax_transfers_incidence_poor_lose <-- (us$tax_transfers_incidence_poor == -1)
-us$tax_transfers_incidence_middle_lose <-- (us$tax_transfers_incidence_middle == -1)
-us$tax_transfers_incidence_rich_lose <-- (us$tax_transfers_incidence_rich == -1)
-us$tax_transfers_incidence_urban_lose <-- (us$tax_transfers_incidence_urban == -1)
-us$tax_transfers_incidence_rural_lose <-- (us$tax_transfers_incidence_rural == -1)
-us$tax_transfers_incidence_self_lose <-- (us$tax_transfers_incidence_self == -1)
+us$tax_transfers_incidence_poor_lose <- (us$tax_transfers_incidence_poor == -1)
+us$tax_transfers_incidence_middle_lose <- (us$tax_transfers_incidence_middle == -1)
+us$tax_transfers_incidence_rich_lose <- (us$tax_transfers_incidence_rich == -1)
+us$tax_transfers_incidence_urban_lose <- (us$tax_transfers_incidence_urban == -1)
+us$tax_transfers_incidence_rural_lose <- (us$tax_transfers_incidence_rural == -1)
+us$tax_transfers_incidence_self_lose <- (us$tax_transfers_incidence_self == -1)
 
 desc_table(dep_vars = c("tax_transfers_incidence_poor_lose", "tax_transfers_incidence_middle_lose", "tax_transfers_incidence_rich_lose", "tax_transfers_incidence_urban_lose", "tax_transfers_incidence_rural_lose", "tax_transfers_incidence_self_lose"), filename = "tax_transfers_loser",
            dep.var.labels = c("Poorest", "Middle class", "Richest", "Urban", "Rural", "Own household"),
            dep.var.caption = c("Losers of emission limits for cars policy"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+
+## Block Pref on climate policies
+us$dummy_CC_worries <- (us$CC_worries >= 0)
+
+desc_table(dep_vars = c("dummy_CC_worries"), filename = "CC_worries",
+           dep.var.labels = c("Worried about impacts of CC"),
+           dep.var.caption = c(""), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+
+# Support policies climate
+us$policy_tax_flying_supp <- (us$policy_tax_flying > 0)
+us$policy_tax_fuels_supp <- (us$policy_tax_fuels > 0)
+us$policy_insulation_supp <- (us$policy_insulation > 0)
+us$policy_ban_city_centers_supp <- (us$policy_ban_city_centers > 0)
+us$policy_subsidies_supp <- (us$policy_subsidies > 0)
+us$policy_climate_fund_supp <- (us$policy_climate_fund > 0)
+
+desc_table(dep_vars = c("policy_tax_flying_supp", "policy_tax_fuels_supp", "policy_insulation_supp", "policy_ban_city_centers_supp", "policy_subsidies_supp", "policy_climate_fund_supp"), filename = "policy_climate",
+           dep.var.labels = c("Tax on flying", "Tax on fossil fuels", "Thermal renovation", "Ban polluting vehicles in city centers", "Subsidies", "Global climate fund"),
+           dep.var.caption = c("Support climate policies"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+
+# Revenues of carbon tax
+us$tax_transfer_constrained_hh_supp <- (us$tax_transfer_constrained_hh > 0)
+us$tax_transfer_poor_supp <- (us$tax_transfer_poor > 0)
+us$tax_transfer_all_supp <- (us$tax_transfer_all > 0)
+us$tax_rebates_affected_firms_supp <- (us$tax_rebates_affected_firms > 0)
+us$tax_investments_supp <- (us$tax_investments > 0)
+us$tax_subsidies_supp <- (us$tax_subsidies > 0)
+us$tax_reduction_deficit_supp <- (us$tax_reduction_deficit > 0)
+us$tax_reduction_corporate_tax_supp <- (us$tax_reduction_corporate_tax > 0)
+us$tax_reduction_personal_tax_supp <- (us$tax_reduction_personal_tax > 0)
+us$tax_other_choice_supp <- (us$tax_other_choice > 0)
+
+desc_table(dep_vars = c("tax_transfer_constrained_hh_supp", "tax_transfer_poor_supp", "tax_transfer_all_supp", "tax_rebates_affected_firms_supp", "tax_investments_supp", "tax_subsidies_supp", "tax_reduction_deficit_supp" , "tax_reduction_corporate_tax_supp", "tax_reduction_personal_tax_supp", "tax_other_choice_supp"), filename = "revenue_carbon_tax",
+           dep.var.labels = c("Transfer to constrained HH", "Transfers to poorest", "Equal transfers", "Tax rebates for affected firms", "Infrastructure projects", "Technology subsidies", "Reduce deficit", "Reduce CIT", "Reduce PIT", "Other"),
+           dep.var.caption = c("Support carbon tax if revenues allocated to…"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+
+## Block Preference for bans vs. incentives
