@@ -660,7 +660,7 @@ convert <- function(e, country) {
   variables_tax <<- names(e)[grepl('^tax_', names(e)) & !grepl("order_|transfers_", names(e))]
   variables_political_identity <<- c("liberal", "conservative", "humanist", "patriot", "apolitical", "environmentalist", "feminist", "political_identity_other")
   variables_socio_demo <<- c("gender", "age", "region", "race_white", "education", "hit_by_covid", "employment_status", "income", "wealth", "core_metropolitan", "nb_children", "hh_children", "hh_adults", "heating", "km_driven", "flights", "frequency_beef")
-  variables_main_controls <<- c("gender", "age", "income", "education", "hit_by_covid", "employment_status", "Left_right")
+  variables_main_controls <<- c("gender", "age", "income", "education", "hit_by_covid", "employment_status", "Left_right", "(vote == 'Biden')")
   
   text_strongly_agree <- c( "US" = "Strongly agree",  "US" = "I fully agree")
   text_somewhat_agree <- c( "US" = "Somewhat agree",  "US" = "I somewhat agree")
@@ -983,7 +983,7 @@ convert <- function(e, country) {
   
   e$wtp <- as.numeric(as.vector(gsub('[[:alpha:] $]', '', e$wtp))) # /!\ Careful with different currencies and use of cents vs. currency (for US $, not pb as cents are not used)
   
-  # TODO: heating, CC_affected, label should_act_condition & vote, nb_policies_supported, score_knowlege_CC, score_trust, zipcode, race, standard of living
+  # TODO: Yes/No => T/F?, heating, CC_affected, label should_act_condition & vote, nb_policies_supported, score_knowlege_CC, score_trust, zipcode, race, standard of living
   
   e$left_right <- pmax(-2,pmin(2,-2 * e$far_left - 1*e$left + 1*e$right + 2 * e$far_right))
   is.na(e$left_right) <- (e$left_right == 0) & !e$center
@@ -1010,6 +1010,27 @@ convert <- function(e, country) {
   for (v in names_policies) e$policies_self <- e$policies_self + e[[paste(v, "incidence_self", sep="_")]]
   
   e$core_metropolitan <- e$urban_category==1
+  
+  e$CC_affected_min <- 2100
+  e$CC_affected_min[e$CC_affected_2050==T] <- 2050
+  e$CC_affected_min[e$CC_affected_2020==T] <- 2020
+  e$CC_affected_min[e$CC_affected_1990==T] <- 1990
+  e$CC_affected_min[e$CC_affected_1960==T] <- 1960
+  e$CC_affected_min[e$CC_affected_pnr==T] <- -0.1
+  e$CC_affected_min <- as.item(e$CC_affected_min, labels = structure(c(1960,1990,2020,2050,2100,-0.1),
+                                                        names = c("1960","1990","2020","2050","None","PNR")),
+                               missing.values=-0.1, annotation=Label(e$CC_affected_min))
+  
+  e$treatment <- "None"
+  e$treatment[e$treatment_climate==1 & e$treatment_policy==0] <- "Climate"
+  e$treatment[e$treatment_climate==0 & e$treatment_policy==1] <- "Policy"
+  e$treatment[e$treatment_climate==1 & e$treatment_policy==1] <- "Both"
+  e$treatment <- relevel(relevel(relevel(as.factor(e$treatment), "Policy"), "Climate"), "None")
+  
+  e$rush_treatment <- e$duration_treatment_climate < 2.4 | e$duration_treatment_policy < 4.45
+  e$rush_treatment[is.na(e$rush_treatment)] <- F
+  
+  e$rush <- e$rush_treatment | (e$duration < 12)
   
   # e <- e[, -c(9:17)] 
   return(e)

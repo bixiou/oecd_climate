@@ -98,7 +98,7 @@ Label <- function(var) {
   if (length(annotation(var))==1) { annotation(var)[1] }
   else { label(var)  }
 }
-decrit <- function(variable, miss = FALSE, weights = NULL, numbers = FALSE, data = e, which = NULL, weight = T) { # TODO!: allow for boolean weights
+decrit <- function(variable, miss = TRUE, weights = NULL, numbers = FALSE, data = e, which = NULL, weight = T) { # TODO!: allow for boolean weights
   # if (!missing(data)) variable <- data[[variable]]
   if (is.character(variable) & length(variable)==1) variable <- data[[variable]]
   if (!missing(which)) variable <- variable[which] 
