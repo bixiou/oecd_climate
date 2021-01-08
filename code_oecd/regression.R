@@ -379,3 +379,66 @@ desc_table(dep_vars = c("tax_transfer_constrained_hh_supp", "tax_transfer_poor_s
            dep.var.caption = c("Support carbon tax if revenues allocated to…"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 ## Block Preference for bans vs. incentives
+us$insulation_compulsory_compul <- (us$insulation_compulsory =="Mandatory")
+us$insulation_compulsory_volunt <- (us$insulation_compulsory =="Voluntary")
+
+desc_table(dep_vars = c("insulation_compulsory_compul", "insulation_compulsory_volunt"), filename = "pref_thermal",
+           dep.var.labels = c("made mandatory", "on a voluntary basis"),
+           dep.var.caption = c("Thermal renovation should be (if subsidized)"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+
+us$flight_quota_1000km_trad <- (us$flight_quota_1000km == "Tradable")
+us$flight_quota_1000km_rat <- (us$flight_quota_1000km == "Rationing")
+us$flight_quota_3000km_trad <- (us$flight_quota_3000km == "Tradable")
+us$flight_quota_3000km_rat <- (us$flight_quota_3000km == "Rationing")
+us$flight_quota_one_trip_trad <- (us$flight_quota_one_trip == "Tradable")
+us$flight_quota_one_trip_rat <- (us$flight_quota_one_trip == "Rationing")
+
+desc_table(dep_vars = c("flight_quota_1000km_trad", "flight_quota_1000km_rat", "flight_quota_3000km_trad", "flight_quota_3000km_rat", "flight_quota_one_trip_trad", "flight_quota_one_trip_rat"), filename = "pref_flight",
+           dep.var.labels = c("Rationing (1000km)", "Tradable (1000km)", "Rationing (3000km)", "Tradable (3000km)", "Rationing (0.5 round-trip/year)", "Tradable (0.5 round-trip/year)"),
+           dep.var.caption = c("Government limit flight trips"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+
+desc_table(dep_vars = c("beef_tax", "beef_order_subsidies_vegetables", "beef_order_subsidies_removal", "beef_ban_intensive"), filename = "pref_beef",
+           dep.var.labels = c("Tax on cattle products (beefx2)", "Sub Vegetables", "No sub cattle", "Ban intensive cattle"),
+           dep.var.caption = c("Government limit cattle products, would approve…"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+
+us$ban_incentives_for <- (us$ban_incentives == "Force")
+us$ban_incentives_enc <- (us$ban_incentives == "Encourage")
+
+desc_table(dep_vars = c("ban_incentives_for", "ban_incentives_enc"), filename = "pref_incentives",
+           dep.var.labels = c("Force people", "Encourage people"),
+           dep.var.caption = c("Government protect environment"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+
+## Block Political views and media consumption
+us$dummy_interest_politics <- (us$interest_politics >= 0)
+us$dummy_member_environmental_orga <- (us$member_environmental_orga == "Yes")
+us$dummy_relative_environmentalist <- (us$relative_environmentalist == "Yes")
+
+desc_table(dep_vars = c("dummy_interest_politics", "dummy_member_environmental_orga", "dummy_relative_environmentalist"), filename = "pol_views",
+           dep.var.labels = c("Interest politics", "Member environ_org.", "Relative environ"),
+           dep.var.caption = c("Political views"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+
+
+desc_table(dep_vars = c("far_left", "left", "center", "right", "far_right", "liberal", "conservative", "humanist", "patriot", "apolitical", "environmentalist", "feminist"), filename = "pol_positions",
+           dep.var.labels = c("Far Left", "Left", "Center", "Right", "Far Right", "Liberal", "Conservative", "Humanist", "Patriot", "Apolitical", "Environmentalist", "Feminist"),
+           dep.var.caption = c("Political positions"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+
+us$media_tv_pr <- (us$media == "TV (private)")
+us$media_tv_pu <- (us$media == "TV (public)")
+us$media_radio <- (us$media == "Radio")
+us$media_social <- (us$media == "Social media")
+us$media_print <- (us$media == "Print")
+us$media_web <- (us$media == "News websites")
+us$media_other <- (us$media == "Other")
+
+desc_table(dep_vars = c("media_tv_pr", "media_tv_pu", "media_radio", "media_social", "media_print", "media_web", "media_other"), filename = "media",
+           dep.var.labels = c("TV (private)", "TV (public)", "Radio", "Social media", "Print", "News websites", "Other"),
+           dep.var.caption = c("Media mainly used"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+
+## Feedback
+us$survey_biased_no <- (us$survey_biased == "No")
+us$survey_biased_anti <- (us$survey_biased == "Yes, anti environment")
+us$survey_biased_pro <- (us$survey_biased == "Yes, pro environment")
+
+desc_table(dep_vars = c("survey_biased_no", "survey_biased_anti", "survey_biased_pro"), filename = "survey_biased",
+           dep.var.labels = c("No", "Yes, anti-environment", "Yes, pro-environment"),
+           dep.var.caption = c("Survey was biased"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
