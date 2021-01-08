@@ -36,6 +36,8 @@ decrit("zipcode", data = e)
 decrit("urbanity", data = e) # 35% rural
 decrit("urban_category", data = e)
 for (v in variables_race) print(decrit(v, data = e)) # 4% black, 6% hispanic, 3% PNR or other
+decrit("race_white", data = e, which = e$race_hispanic)
+decrit("race_black", data = e, which = e$race_hispanic)
 decrit("speaks_well", data = e)
 decrit("education", data = e) # few low education
 decrit("employment_status", data = e) # TODO
