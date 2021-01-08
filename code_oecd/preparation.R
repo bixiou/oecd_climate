@@ -816,6 +816,8 @@ convert <- function(e, country) {
   text_survey_biased_no <- c("US" = "No, I do not feel it was biased")
   text_survey_biased_pro_envi <- c("US" = "Yes, biased towards environmental causes")
   text_survey_biased_anti_envi <- c("US" = "Yes, biased against the environment")
+  text_survey_biased_left <- c("US" = "Yes, left-wing biased")
+  text_survey_biased_right <- c("US" = "Yes, right-wing biased")
   
   for (v in c(variables_burden_sharing, "trust_public_spending")) { 
     temp <-  2 * (e[[v]] %in% text_strongly_agree) + (e[[v]] %in% text_somewhat_agree) - (e[[v]] %in% text_somewhat_disagree) - 2 * (e[[v]] %in% text_strongly_disagree) - 0.1 * (e[[v]] %in% text_pnr)
@@ -979,6 +981,8 @@ convert <- function(e, country) {
   
   e$survey_biased[e$survey_biased %in% text_survey_biased_pro_envi] <- "Yes, pro environment"
   e$survey_biased[e$survey_biased %in% text_survey_biased_anti_envi] <- "Yes, anti environment"
+  e$survey_biased[e$survey_biased %in% text_survey_biased_left] <- "Yes, left"
+  e$survey_biased[e$survey_biased %in% text_survey_biased_right] <- "Yes, right"
   e$survey_biased[e$survey_biased %in% text_survey_biased_no] <- "No"
   
   e$wtp <- as.numeric(as.vector(gsub('[[:alpha:] $]', '', e$wtp))) # /!\ Careful with different currencies and use of cents vs. currency (for US $, not pb as cents are not used)
