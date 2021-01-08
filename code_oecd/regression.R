@@ -45,6 +45,7 @@ us[us$age %in% 30:49, "age_agg"] <- "30-49"
 us[us$age %in% 50:87, "age_agg"] <- "50-87"
 
 # political position
+# AF TODO I'd rather use the dummy vote=='Biden' than a variable vote_dum with 4 modalities
 us$vote_dum <- as.character(us$vote)
 us[us$vote_participation == 2, "vote_dum"] <- "Non-voting"
 
@@ -77,7 +78,7 @@ desc_table <- function(dep_vars, filename = NULL, data = us, indep_vars = contro
   means <- c()
   for (i in seq_along(dep_vars)) {
     models[[i]] <- lm(as.formula(paste(dep_vars[i], "~", paste(indep_vars, collapse = '+'))), data = data, weights = weights)
-    means[i] <- round(mean(us[dep_vars[i]], na.rm = T), d = digits)
+    means[i] <- round(mean(data[dep_vars[i]], na.rm = T), d = digits)
   }
   if (missing(filename)) file_path <- NULL
   else file_path <- paste(save_folder, filename, ".tex", sep="")
