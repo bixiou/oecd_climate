@@ -199,6 +199,42 @@ desc_table(dep_vars = c("dummy_burden_sharing_income", "dummy_burden_sharing_emi
            dep.var.labels = c("Pay in proportion to income","Pay in proportion to current emissions", "Pay in proportion to past emissions (from 1990)", "Richest pay alone", "Richest pay, and even more to help vulnerable countries"),
            dep.var.caption = c("Which countries bear should bear the costs of fighting CC?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
-us$CC_talks_never <-- (us$CC_talks == -1)
-us$CC_talks_yearly <-- (us$CC_talks == 0)
-us$CC_talks_monthly <-- (us$CC_talks == 1)
+# Equal quota
+us$equal_quota_no_vul <-- (us$equal_quota == 2)
+us$equal_quota_yes <-- (us$equal_quota == 1)
+us$equal_quota_no_indiv <-- (us$equal_quota == 0)
+us$equal_quota_no_gf <-- (us$equal_quota == -1)
+us$equal_quota_no_restrict <-- (us$equal_quota == -2)
+
+desc_table(dep_vars = c("equal_quota_no_vul", "equal_quota_yes", "equal_quota_no_gf", "equal_quota_no_indiv", "equal_quota_no_restrict"), filename = "equal_quota",
+           dep.var.labels = c("No, should compensate the poorest","Yes", "No, if pollute more, more rights", "No, not at individual level", "No, no restrictions of emissions"),
+           dep.var.caption = c("Are you in favor of a system of equal quota to emit GHG at individual levels, with monetary compensation and tax?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+
+# US should act
+us$country_should_act_yes <-- (us$country_should_act == 1)
+us$country_should_act_inter <-- (us$country_should_act == 0)
+us$country_should_act_no <-- (us$country_should_act == -1)
+
+desc_table(dep_vars = c("country_should_act_yes", "country_should_act_inter", "country_should_act_no"), filename = "country_should_act",
+           dep.var.labels = c("Yes", "Only if fair international agreement", "No"),
+           dep.var.caption = c("Should the U.S. take measures to fight CC?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+
+# Conditions to act
+us$country_should_act_condition_comp <-- (us$country_should_act_condition == "Compensation")
+us$country_should_act_condition_freerid <-- (us$country_should_act_condition == "Free-riding")
+us$country_should_act_condition_recip <-- (us$country_should_act_condition == "Reciprocity")
+
+desc_table(dep_vars = c("country_should_act_condition_comp", "country_should_act_condition_recip", "country_should_act_condition_freerid"), filename = "country_should_act_condition",
+           dep.var.labels = c("U.S. more ambitious, if others less", "U.S. more ambitious, if others as well", "U.S. less ambitious, if others are"),
+           dep.var.caption = c("How what the U.S. should do depends on what other countries do?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+
+# Approve propositions
+us$dummy_pro_global_assembly <-- (us$pro_global_assembly == "Yes")
+us$dummy_pro_global_tax <-- (us$pro_global_tax == "Yes")
+us$dummy_pro_tax_1p <-- (us$pro_tax_1p == "Yes")
+
+desc_table(dep_vars = c("Global democratic assembly to fight CC", "Global tax on GHG emissions funding a global basic income ($30/month/adult)", "Global tax on top 1% to finance poorest countries"), filename = "pro_inter",
+           dep.var.labels = c("U.S. more ambitious, if others less", "U.S. more ambitious, if others as well", "U.S. less ambitious, if others are"),
+           dep.var.caption = c("Approve those measures"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+
+## Block Pref 1: emission standards
