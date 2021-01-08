@@ -2,13 +2,11 @@ library(haven)
 library(xtable)
 library(stargazer)
 
-setwd("/Users/Bluebii/Library/Mobile Documents/com~apple~CloudDocs/TRAVAIL/Jobs/Stantcheva_2020:21/OECD/Climate Survey/Pilote_Analysis/R/code")
+setwd("/Users/Bluebii/Code/GitHub/oecd_climate/code_oecd")
 
 df <- readRDS("../data/US_pilot_clean.rds") # Can we call it "us" instead? Or "e", as in the other files? It's cumbersome if we have two clones of the same dataframe.
 
-#--------------------------------------------#
-# 1. Creating control variables              #
-#--------------------------------------------# TODO: I'd rather spell the title as below, so we can access it through RStudio's "ToC"
+
 ##### 1. Creation control variables #####
 
 # TODO: all these variables should better be created inside "convert" in preparation.
@@ -43,8 +41,8 @@ df[df$age %in% 30:49, "age_agg"] <- "30-49"
 df[df$age %in% 50:87, "age_agg"] <- "50-87"
 
 # political position
-df$pol_agg <- "None" # TODO Many people define themselves as Center, why saying "None"? It's not the same thing as Indeterminate. I'd rather use Biden vs. Trump for this control.
-df[df$far_left == TRUE | df$left == TRUE | df$liberal == TRUE, "pol_agg"] <- "Liberal"
+df$vote_dum <- df$vote # TODO Many people define themselves as Center, why saying "None"? It's not the same thing as Indeterminate. I'd rather use Biden vs. Trump for this control.
+df[df$far_left == TRUE | df$left == TRUE | df$liberal == TRUE, "pol_agg"] <- "Biden"
 df[df$far_right == TRUE | df$right == TRUE | df$conservative == TRUE, "pol_agg"] <- "Conservative"
 
 # treatment
@@ -60,18 +58,15 @@ df$gender <- as.factor(df$gender)
 df$children <- as.factor(df$children)
 df$college <- as.factor(df$college)
 df$employment_agg <- as.factor(df$employment_agg)
-df$income <- as.factor(df$income) # TODO do not override income as a factor, because it's useful to have income defined as a numerical item
+df$income_factor <- as.factor(df$income)
 df$age_agg <- as.factor(df$age_agg)
 df$pol_agg <- as.factor(df$pol_agg)
 df$treatment_agg <- as.factor(df$treatment_agg)
 
-#--------------------------------------------#
-# 2. Regressions                             #
-#--------------------------------------------#
+##### 2. Regressions #####
 
 control_variables <- c("race", "gender", "children", "college", "employment_agg", "income", "age_agg", "pol_agg", "treatment_agg")
-cov_lab = c("Hispanic", "Other", "White", "Male","Children","No college","Retired" ,"Student", "Working", "Income group 2", "Income group 3", "Income group 4","30-49", "50-87", "Liberal", "None", "Climate treatment only", "No treatment", "Policy treatment only")
-# TODO rename "income group" in "income quartile"
+cov_lab = c("Hispanic", "Other", "White", "Male","Children","No college","Retired" ,"Student", "Working", "Income Q2", "Income Q3", "Income Q4","30-49", "50-87", "Liberal", "None", "Climate treatment only", "No treatment", "Policy treatment only")
 
 ## Cause of CC
 df$CC_exists_no <- (df$CC_exists == -1)
@@ -105,9 +100,9 @@ temp <- desc_table(dep_vars = c("CC_exists_no", "CC_exists_nat", "CC_exists_anth
            dep.var.labels = c("not a reality","mainly due to natural climate variability", "mainly due to human activity"),
            dep.var.caption = c("Climate change is…"), data = df, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
-model1 = lm(CC_exists_no ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model2 = lm(CC_exists_nat ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model3 = lm(CC_exists_anthro ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
+model1 = lm(CC_exists_no ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model2 = lm(CC_exists_nat ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model3 = lm(CC_exists_anthro ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
 
 mean1 = round(mean(df$CC_exists_no, na.rm = T), d=3)
 mean2 = round(mean(df$CC_exists_nat, na.rm = T), d=3)
@@ -126,10 +121,10 @@ df$CC_dynamics_dec <- (df$CC_dynamics == -1)
 df$CC_dynamics_stab <- (df$CC_dynamics == 0)
 df$CC_dynamics_rise <- (df$CC_dynamics == 1)
 
-model1 = lm(CC_dynamics_no ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model2 = lm(CC_dynamics_dec ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model3 = lm(CC_dynamics_stab ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model4 = lm(CC_dynamics_rise ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
+model1 = lm(CC_dynamics_no ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model2 = lm(CC_dynamics_dec ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model3 = lm(CC_dynamics_stab ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model4 = lm(CC_dynamics_rise ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
 
 mean1 = round(mean(df$CC_dynamics_no, na.rm = T), d=3)
 mean2 = round(mean(df$CC_dynamics_dec, na.rm = T), d=3)
@@ -148,9 +143,9 @@ df$dummy_CC_factor_beef <- (df$CC_factor_beef == TRUE)
 df$dummy_CC_factor_nuclear <- (df$CC_factor_nuclear == TRUE)
 df$dummy_CC_factor_car <- (df$CC_factor_car == TRUE)
 
-model1 = lm(dummy_CC_factor_beef ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model2 = lm(dummy_CC_factor_nuclear ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model3 = lm(dummy_CC_factor_car ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
+model1 = lm(dummy_CC_factor_beef ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model2 = lm(dummy_CC_factor_nuclear ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model3 = lm(dummy_CC_factor_car ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
 
 
 mean1 = round(mean(df$dummy_CC_factor_beef, na.rm = T), d=3)
@@ -174,14 +169,14 @@ df$dummy_CC_responsible_foreign <- (df$CC_responsible_foreign == TRUE)
 df$dummy_CC_responsible_nature <- (df$CC_responsible_nature == TRUE)
 df$dummy_CC_responsible_denial <- (df$CC_responsible_denial == TRUE)
 
-model1 = lm(dummy_CC_responsible_each ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model2 = lm(dummy_CC_responsible_rich ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model3 = lm(dummy_CC_responsible_govts ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model4 = lm(dummy_CC_responsible_companies ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model5 = lm(dummy_CC_responsible_past ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model6 = lm(dummy_CC_responsible_foreign ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model7 = lm(dummy_CC_responsible_nature ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model8 = lm(dummy_CC_responsible_denial ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
+model1 = lm(dummy_CC_responsible_each ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model2 = lm(dummy_CC_responsible_rich ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model3 = lm(dummy_CC_responsible_govts ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model4 = lm(dummy_CC_responsible_companies ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model5 = lm(dummy_CC_responsible_past ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model6 = lm(dummy_CC_responsible_foreign ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model7 = lm(dummy_CC_responsible_nature ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model8 = lm(dummy_CC_responsible_denial ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
 
 mean1 = round(mean(df$dummy_CC_responsible_each, na.rm = T), d=3)
 mean2 = round(mean(df$dummy_CC_responsible_rich, na.rm = T), d=3)
@@ -206,11 +201,11 @@ df$CC_stoppable_should <-- (df$CC_stoppable == "Should but not happening")
 df$CC_stoppable_policies <-- (df$CC_stoppable == "Policies & awareness will")
 df$CC_stoppable_progress <-- (df$CC_stoppable == "Progress will suffice")
 
-model1 = lm(CC_stoppable_no_infl ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model2 = lm(CC_stoppable_adapt ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model3 = lm(CC_stoppable_should ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model4 = lm(CC_stoppable_policies ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model5 = lm(CC_stoppable_progress ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
+model1 = lm(CC_stoppable_no_infl ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model2 = lm(CC_stoppable_adapt ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model3 = lm(CC_stoppable_should ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model4 = lm(CC_stoppable_policies ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model5 = lm(CC_stoppable_progress ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
 
 
 mean1 = round(mean(df$CC_stoppable_no_infl, na.rm = T), d=3)
@@ -232,9 +227,9 @@ df$CC_talks_yearly <-- (df$CC_talks == 0)
 df$CC_talks_monthly <-- (df$CC_talks == 1)
 
 
-model1 = lm(CC_talks_never ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model2 = lm(CC_talks_yearly ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model3 = lm(CC_talks_monthly ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
+model1 = lm(CC_talks_never ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model2 = lm(CC_talks_yearly ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model3 = lm(CC_talks_monthly ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
 
 
 mean1 = round(mean(df$CC_talks_never, na.rm = T), d=3)
@@ -255,11 +250,11 @@ df$dummy_CC_affected_2020 <-- (df$CC_affected_2020 == TRUE)
 df$dummy_CC_affected_2050 <-- (df$CC_affected_2050 == TRUE)
 df$dummy_CC_affected_none <-- (df$CC_affected_none == TRUE)
 
-model1 = lm(dummy_CC_affected_1960 ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model2 = lm(dummy_CC_affected_1990 ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model3 = lm(dummy_CC_affected_2020 ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model4 = lm(dummy_CC_affected_2050 ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model5 = lm(dummy_CC_affected_none ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
+model1 = lm(dummy_CC_affected_1960 ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model2 = lm(dummy_CC_affected_1990 ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model3 = lm(dummy_CC_affected_2020 ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model4 = lm(dummy_CC_affected_2050 ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model5 = lm(dummy_CC_affected_none ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
 
 
 mean1 = round(mean(df$dummy_CC_affected_1960, na.rm = T), d=3)
@@ -278,7 +273,7 @@ stargazer(model1, model2, model3, model4, model5, out="../output/tables/CC_affec
 ## Sustainable lifestyle
 df$dummy_change_lifestyle <-- (df$change_lifestyle == "Yes")
 
-model1 = lm(dummy_CC_affected_1960 ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
+model1 = lm(dummy_CC_affected_1960 ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
 mean1 = round(mean(df$dummy_CC_affected_1960, na.rm = T), d=3)
 
 stargazer(model1, out="../output/tables/change_lifestyle.tex", header=F,
@@ -290,7 +285,7 @@ stargazer(model1, out="../output/tables/change_lifestyle.tex", header=F,
 
 ## Willing to change lifestyle
 df$dummy_change_condition_policies <-- (df$change_condition_policies == TRUE)
-df$dummy_change_condition_income <-- (df$change_condition_income == TRUE)
+df$dummy_change_condition_income_factor <-- (df$change_condition_income_factor == TRUE)
 df$dummy_change_condition_all <-- (df$change_condition_all == TRUE)
 df$dummy_change_condition_no_rich <-- (df$change_condition_no_rich == TRUE)
 df$dummy_change_condition_no_selfish <-- (df$change_condition_no_selfish == TRUE)
@@ -298,17 +293,17 @@ df$dummy_change_condition_no_denial <-- (df$change_condition_no_denial == TRUE)
 df$dummy_change_condition_already <-- (df$change_condition_already == TRUE)
 df$dummy_change_condition_try <-- (df$change_condition_try == TRUE)
 
-model1 = lm(dummy_change_condition_policies ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model2 = lm(dummy_change_condition_income ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model3 = lm(dummy_change_condition_all ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model4 = lm(dummy_change_condition_no_rich ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model5 = lm(dummy_change_condition_no_selfish ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model6 = lm(dummy_change_condition_no_denial ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model7 = lm(dummy_change_condition_already ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model8 = lm(dummy_change_condition_try ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
+model1 = lm(dummy_change_condition_policies ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model2 = lm(dummy_change_condition_income_factor ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model3 = lm(dummy_change_condition_all ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model4 = lm(dummy_change_condition_no_rich ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model5 = lm(dummy_change_condition_no_selfish ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model6 = lm(dummy_change_condition_no_denial ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model7 = lm(dummy_change_condition_already ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model8 = lm(dummy_change_condition_try ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
 
 mean1 = round(mean(df$dummy_change_condition_policies, na.rm = T), d=3)
-mean2 = round(mean(df$dummy_change_condition_income, na.rm = T), d=3)
+mean2 = round(mean(df$dummy_change_condition_income_factor, na.rm = T), d=3)
 mean3 = round(mean(df$dummy_change_condition_all, na.rm = T), d=3)
 mean4 = round(mean(df$dummy_change_condition_no_rich, na.rm = T), d=3)
 mean5 = round(mean(df$dummy_change_condition_no_selfish, na.rm = T), d=3)
@@ -328,9 +323,9 @@ df$dummy_effect_policies_opportunity <- (df$effect_policies_opportunity == TRUE)
 df$dummy_effect_policies_cost <- (df$effect_policies_cost == TRUE)
 df$dummy_effect_policies_lifestyle <- (df$effect_policies_lifestyle == TRUE)
 
-model1 = lm(dummy_effect_policies_opportunity ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model2 = lm(dummy_effect_policies_cost ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model3 = lm(dummy_effect_policies_lifestyle ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
+model1 = lm(dummy_effect_policies_opportunity ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model2 = lm(dummy_effect_policies_cost ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model3 = lm(dummy_effect_policies_lifestyle ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
 
 mean1 = round(mean(df$dummy_effect_policies_opportunity, na.rm = T), d=3)
 mean2 = round(mean(df$dummy_effect_policies_cost, na.rm = T), d=3)
@@ -352,13 +347,13 @@ df$dummy_kaya_overpopulation <-- (df$kaya_overpopulation == TRUE)
 df$dummy_kaya_none <-- (df$kaya_none == TRUE)
 #df$dummy_kaya_other_choice <-- (df$kaya_other_choice == TRUE)
 
-model1 = lm(dummy_kaya_techno ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model2 = lm(dummy_kaya_waste ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model3 = lm(dummy_kaya_wealth ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model4 = lm(dummy_kaya_overconsumption ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model5 = lm(dummy_kaya_overpopulation ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-model6 = lm(dummy_kaya_none ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
-#model7 = lm(dummy_kaya_other_choice ~ race + gender + children + college + employment_agg + income + age_agg + pol_agg + treatment_agg, data=df)
+model1 = lm(dummy_kaya_techno ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model2 = lm(dummy_kaya_waste ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model3 = lm(dummy_kaya_wealth ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model4 = lm(dummy_kaya_overconsumption ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model5 = lm(dummy_kaya_overpopulation ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+model6 = lm(dummy_kaya_none ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
+#model7 = lm(dummy_kaya_other_choice ~ race + gender + children + college + employment_agg + income_factor + age_agg + pol_agg + treatment_agg, data=df)
 
 mean1 = round(mean(df$dummy_kaya_techno, na.rm = T), d=3)
 mean2 = round(mean(df$dummy_kaya_waste, na.rm = T), d=3)
