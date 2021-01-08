@@ -2,7 +2,9 @@ library(haven)
 library(xtable)
 library(stargazer)
 
-setwd("/Users/Bluebii/Code/GitHub/oecd_climate/code_oecd")
+Paths = c("/Users/Bluebii/Library/Mobile Documents/com~apple~CloudDocs/TRAVAIL/Jobs/Stantcheva_2020:21/OECD/oecd_climate/code_oecd", "C:/Users/afabre/Google Drive/Economie/Travail/oecd_climate/code_oecd")
+names(Paths) = c("Bluebii", "afabre")
+setwd(Paths[Sys.info()[7]])
 
 df <- readRDS("../data/US_pilot_clean.rds") # Can we call it "us" instead? Or "e", as in the other files? It's cumbersome if we have two clones of the same dataframe.
 
