@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.18)  9 JAN 2021 12:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.18)  9 JAN 2021 12:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1165,27 +1165,20 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@lot=\write8
 \openout8 = `"Tables Climate OECD.lot"'.
 
- (../heating.tex)
+ [2] (../heating.tex) (../behavior_GHG.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../behavior_GHG.tex)
+[3
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+] [4] (../transports.tex)
 
-(../transports.tex)
-Overfull \hbox (197.79045pt too wide) in paragraph at lines 38--39
- [] 
- []
+LaTeX Warning: Float too large for page by 56.14009pt on input line 42.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../trust.tex)
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-(../ineq_intervention_future.tex)
+[5] (../trust.tex) (../ineq_intervention_future.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -1193,12 +1186,12 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../CC_exists.tex)
+[6
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../CC_dynamics.tex)
-Overfull \hbox (48.3602pt too wide) in paragraph at lines 78--79
+
+] [7] [8] (../CC_exists.tex) (../CC_dynamics.tex)
+Overfull \hbox (48.3602pt too wide) in paragraph at lines 83--84
  [] 
  []
 
@@ -1206,34 +1199,36 @@ Overfull \hbox (48.3602pt too wide) in paragraph at lines 78--79
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 (../comparisons_GHG.tex)
-Overfull \hbox (25.80478pt too wide) in paragraph at lines 85--86
+Overfull \hbox (25.80478pt too wide) in paragraph at lines 90--91
  [] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[2] [3] [4] [5] [6] [7] [8] [9] [10] [11] (../responsible_GHG.tex)
+[9
 
-LaTeX Warning: Float too large for page by 34.53987pt on input line 95.
+] [10] [11] (../responsible_GHG.tex)
+
+LaTeX Warning: Float too large for page by 34.53987pt on input line 100.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [12] (../CC_stoppable.tex)
-Overfull \hbox (18.62457pt too wide) in paragraph at lines 102--103
+Overfull \hbox (18.62457pt too wide) in paragraph at lines 107--108
  [] 
  []
 
 
-LaTeX Warning: Float too large for page by 35.53987pt on input line 104.
+LaTeX Warning: Float too large for page by 35.53987pt on input line 109.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [13] (../CC_talks.tex)
 
-LaTeX Warning: Float too large for page by 23.85593pt on input line 112.
+LaTeX Warning: Float too large for page by 23.85593pt on input line 117.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1247,7 +1242,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [14] [15] [16] (../change_condition.tex)
-Overfull \hbox (10.98174pt too wide) in paragraph at lines 132--133
+Overfull \hbox (10.98174pt too wide) in paragraph at lines 137--138
  [] 
  []
 
@@ -1259,61 +1254,56 @@ Overfull \hbox (10.98174pt too wide) in paragraph at lines 132--133
 
 ] (../effect_policies.tex)
 
-LaTeX Warning: Float too large for page by 34.53987pt on input line 143.
+LaTeX Warning: Float too large for page by 34.53987pt on input line 148.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [18] (../kaya.tex)
 
-LaTeX Warning: Float too large for page by 34.53987pt on input line 152.
+LaTeX Warning: Float too large for page by 34.53987pt on input line 157.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[19] (../scale.tex) (../burden_sharing.tex)
-Overfull \hbox (246.65422pt too wide) in paragraph at lines 167--168
- [] 
- []
+[19] (../scale.tex) [20
+
+
+
+
+
+
+] (../burden_sharing.tex)
+
+LaTeX Warning: Float too large for page by 34.53987pt on input line 176.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../equal_quota.tex)
-Overfull \hbox (76.9047pt too wide) in paragraph at lines 174--175
- [] 
- []
+[21] (../equal_quota.tex)
+
+LaTeX Warning: Float too large for page by 34.53987pt on input line 186.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../country_should_act.tex)
+[22] (../country_should_act.tex) (../country_should_act_condition.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../country_should_act_condition.tex)
+[23
+
+
+
+
+] [24] (../pro_inter.tex)
+
+LaTeX Warning: Float too large for page by 27.3398pt on input line 209.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../pro_inter.tex)
-Overfull \hbox (115.00603pt too wide) in paragraph at lines 195--196
- [] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-(../standard_opinion.tex) [20
-
-
-
-
-
-]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-(../standard_winner.tex)
+[25] (../standard_opinion.tex) (../standard_winner.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -1321,11 +1311,11 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../investments_opinion.tex) [21]
+[26
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../investments_winner.tex)
+
+] [27] [28] (../investments_opinion.tex) (../investments_winner.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -1333,11 +1323,9 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../tax_transfers_opinion.tex)
+[29
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-(../tax_transfers_winner.tex)
+] [30] [31] (../tax_transfers_opinion.tex) (../tax_transfers_winner.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -1345,43 +1333,41 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../CC_worries.tex)
+[32
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-(../policy_climate.tex)
-Overfull \hbox (40.46588pt too wide) in paragraph at lines 280--281
+] [33] [34] (../CC_worries.tex) (../policy_climate.tex)
+Overfull \hbox (40.46588pt too wide) in paragraph at lines 298--299
  [] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../revenue_carbon_tax.tex)
-Overfull \hbox (281.67331pt too wide) in paragraph at lines 287--288
+[35
+
+] [36] (../revenue_carbon_tax.tex)
+Overfull \hbox (5.22423pt too wide) in paragraph at lines 306--307
  [] 
  []
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-(../pref_thermal.tex)
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-(../pref_flight.tex)
-Overfull \hbox (110.52422pt too wide) in paragraph at lines 303--304
- [] 
- []
+LaTeX Warning: Float too large for page by 35.53987pt on input line 308.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../pref_beef.tex)
+[37] (../pref_thermal.tex) [38
+
+
+
+] (../pref_flight.tex)
+
+LaTeX Warning: Float too large for page by 34.53987pt on input line 327.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../pref_incentives.tex)
+[39] (../pref_beef.tex) (../pref_incentives.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -1389,45 +1375,39 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../pol_views.tex)
+[40
+
+
+] [41] [42] (../pol_views.tex) [43
+
+] (../pol_positions.tex)
+
+LaTeX Warning: Float too large for page by 34.53987pt on input line 367.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../pol_positions.tex)
-Overfull \hbox (121.9574pt too wide) in paragraph at lines 340--341
- [] 
- []
-
+[44] (../media.tex) (../survey_biased.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../media.tex)
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-(../survey_biased.tex)
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+[45
 
 
-Overfull \vbox (130.05263pt too high) has occurred while \output is active []
-
-
-[22] [23] [24] [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36]
-[37] [38] [39] [40] [41] [42] [43] [44] [45] [46]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 359.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 359.
+] [46]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 386.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 386.
  (./Tables Climate OECD.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 359.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 359.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 386.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 386.
 Package rerunfilecheck Info: File `"Tables Climate OECD".out' has not changed.
 (rerunfilecheck)             Checksum: A0B99893161F1189B043D1ADBD83B7FB;708.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 359.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 386.
  ) 
 Here is how much of TeX's memory you used:
  32135 strings out of 492616
  606203 string characters out of 6129481
- 1294663 words of memory out of 5000000
+ 771728 words of memory out of 5000000
  35342 multiletter control sequences out of 15000+600000
  536300 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1441,7 +1421,7 @@ sr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr
 /local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
 local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/lo
 cal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on "Tables Climate OECD.pdf" (46 pages, 213037 bytes).
+Output written on "Tables Climate OECD.pdf" (46 pages, 213599 bytes).
 PDF statistics:
  407 PDF objects out of 1000 (max. 8388607)
  346 compressed objects within 4 object streams
