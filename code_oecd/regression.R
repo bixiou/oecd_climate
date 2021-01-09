@@ -81,7 +81,7 @@ desc_table <- function(dep_vars, filename = NULL, data = us, indep_vars = contro
   means <- c()
   for (i in seq_along(dep_vars)) {
     models[[i]] <- lm(as.formula(paste(dep_vars[i], "~", paste(indep_vars, collapse = '+'))), data = data, weights = weights)
-    means[i] <- round(mean(data[dep_vars[i]], na.rm = T), d = digits)
+    means[i] <- round(mean(data[[dep_vars[i]]], na.rm = T), d = digits)
   }
   if (missing(filename)) file_path <- NULL
   else file_path <- paste(save_folder, filename, ".tex", sep="")
