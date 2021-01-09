@@ -460,7 +460,12 @@ desc_table(dep_vars = c("flight_quota_1000km_trad", "flight_quota_1000km_rat", "
            dep.var.labels = c("Rationing (1000km)", "Tradable (1000km)", "Rationing (3000km)", "Tradable (3000km)", "Rationing (0.5 round-trip/year)", "Tradable (0.5 round-trip/year)"),
            dep.var.caption = c("Government limit flight trips"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
-desc_table(dep_vars = c("beef_tax", "beef_order_subsidies_vegetables", "beef_order_subsidies_removal", "beef_ban_intensive"), filename = "pref_beef",
+us$beef_tax <- as.logical(us$beef_tax)
+us$beef_subsidies_vegetables <- as.logical(us$beef_subsidies_vegetables)
+us$beef_subsidies_removal <- as.logical(us$beef_subsidies_removal)
+us$beef_ban_intensive <- as.logical(us$beef_ban_intensive)
+
+desc_table(dep_vars = c("beef_tax", "beef_subsidies_vegetables", "beef_subsidies_removal", "beef_ban_intensive"), filename = "pref_beef",
            dep.var.labels = c("Tax on cattle products (beefx2)", "Sub Vegetables", "No sub cattle", "Ban intensive cattle"),
            dep.var.caption = c("Government limit cattle products, would approve…"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
