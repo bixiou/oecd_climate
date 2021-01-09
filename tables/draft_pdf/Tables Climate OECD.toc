@@ -1,0 +1,11 @@
+\babel@toc {american}{}
+\contentsline {section}{\numberline {1}Energie Characteristics}{2}{section.3}% 
+\contentsline {section}{\numberline {2}Trust, perceptions of institution, inequality, and the future}{2}{section.7}% 
+\contentsline {section}{\numberline {3}Climate change (attitudes and risks)}{2}{section.11}% 
+\contentsline {section}{\numberline {4}International burden-sharing}{20}{section.23}% 
+\contentsline {section}{\numberline {5}Preferences 1: Emission standards}{22}{section.30}% 
+\contentsline {section}{\numberline {6}Preferences 2: Green investments}{22}{section.34}% 
+\contentsline {section}{\numberline {7}Preferences 3: Tax and dividend}{22}{section.38}% 
+\contentsline {section}{\numberline {8}Preferences on climate policies}{22}{section.42}% 
+\contentsline {section}{\numberline {9}Preferences for bans vs. incentives}{22}{section.46}% 
+\contentsline {section}{\numberline {10}Political views and media consumption}{22}{section.52}% 

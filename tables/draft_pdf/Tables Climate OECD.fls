@@ -301,13 +301,17 @@ INPUT Tables Climate OECD.out
 INPUT Tables Climate OECD.out
 INPUT Tables Climate OECD.out
 INPUT Tables Climate OECD.out
+OUTPUT Tables Climate OECD.pdf
 INPUT ./Tables Climate OECD.out
 INPUT ./Tables Climate OECD.out
 OUTPUT Tables Climate OECD.out
-OUTPUT Tables Climate OECD.pdf
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT Tables Climate OECD.toc
+INPUT Tables Climate OECD.toc
+INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+OUTPUT Tables Climate OECD.toc
 INPUT Tables Climate OECD.lot
 INPUT Tables Climate OECD.lot
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
@@ -322,17 +326,29 @@ INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT /usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 OUTPUT Tables Climate OECD.lot
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
-INPUT ../CC_exists.tex
-INPUT ../CC_exists.tex
+INPUT ../heating.tex
+INPUT ../heating.tex
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
+INPUT ../behavior_GHG.tex
+INPUT ../behavior_GHG.tex
+INPUT ../transports.tex
+INPUT ../transports.tex
+INPUT ../trust.tex
+INPUT ../trust.tex
+INPUT ../ineq_intervention_future.tex
+INPUT ../ineq_intervention_future.tex
+INPUT ../envi_views.tex
+INPUT ../envi_views.tex
+INPUT ../CC_exists.tex
+INPUT ../CC_exists.tex
 INPUT ../CC_dynamics.tex
 INPUT ../CC_dynamics.tex
 INPUT ../comparisons_GHG.tex
 INPUT ../comparisons_GHG.tex
-INPUT /usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT ../responsible_GHG.tex
 INPUT ../responsible_GHG.tex
 INPUT ../CC_stoppable.tex
@@ -349,9 +365,64 @@ INPUT ../effect_policies.tex
 INPUT ../effect_policies.tex
 INPUT ../kaya.tex
 INPUT ../kaya.tex
+INPUT ../scale.tex
+INPUT ../scale.tex
+INPUT ../burden_sharing.tex
+INPUT ../burden_sharing.tex
+INPUT ../equal_quota.tex
+INPUT ../equal_quota.tex
+INPUT ../country_should_act.tex
+INPUT ../country_should_act.tex
+INPUT ../country_should_act_condition.tex
+INPUT ../country_should_act_condition.tex
+INPUT ../pro_inter.tex
+INPUT ../pro_inter.tex
+INPUT ../standard_opinion.tex
+INPUT ../standard_opinion.tex
+INPUT ../standard_winner.tex
+INPUT ../standard_winner.tex
+INPUT ../standard_loser.tex
+INPUT ../standard_loser.tex
+INPUT ../investments_opinion.tex
+INPUT ../investments_opinion.tex
+INPUT ../investments_winner.tex
+INPUT ../investments_winner.tex
+INPUT ../investments_loser.tex
+INPUT ../investments_loser.tex
+INPUT ../tax_transfers_opinion.tex
+INPUT ../tax_transfers_opinion.tex
+INPUT ../tax_transfers_winner.tex
+INPUT ../tax_transfers_winner.tex
+INPUT ../tax_transfers_loser.tex
+INPUT ../tax_transfers_loser.tex
+INPUT ../CC_worries.tex
+INPUT ../CC_worries.tex
+INPUT ../policy_climate.tex
+INPUT ../policy_climate.tex
+INPUT ../revenue_carbon_tax.tex
+INPUT ../revenue_carbon_tax.tex
+INPUT ../pref_thermal.tex
+INPUT ../pref_thermal.tex
+INPUT ../pref_flight.tex
+INPUT ../pref_flight.tex
+INPUT ../pref_beef.tex
+INPUT ../pref_beef.tex
+INPUT ../pref_incentives.tex
+INPUT ../pref_incentives.tex
+INPUT ../wtp.tex
+INPUT ../wtp.tex
+INPUT ../pol_views.tex
+INPUT ../pol_views.tex
+INPUT ../pol_positions.tex
+INPUT ../pol_positions.tex
+INPUT ../media.tex
+INPUT ../media.tex
+INPUT ../survey_biased.tex
+INPUT ../survey_biased.tex
 INPUT Tables Climate OECD.aux
 INPUT ./Tables Climate OECD.out
 INPUT ./Tables Climate OECD.out
+INPUT /usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb

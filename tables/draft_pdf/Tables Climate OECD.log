@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.18)  8 JAN 2021 14:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.18)  9 JAN 2021 12:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1144,7 +1144,12 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-ABD: EveryShipout initializing macros (./Tables Climate OECD.lot
+ABD: EveryShipout initializing macros (./Tables Climate OECD.toc)
+\tf@toc=\write7
+\openout7 = `"Tables Climate OECD.toc"'.
+
+
+(./Tables Climate OECD.lot
 LaTeX Font Info:    Try loading font information for U+msa on input line 2.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -1154,17 +1159,46 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 2.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
-\tf@lot=\write7
-\openout7 = `"Tables Climate OECD.lot"'.
+) [1
 
+{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
+\tf@lot=\write8
+\openout8 = `"Tables Climate OECD.lot"'.
+
+ (../heating.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../behavior_GHG.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../transports.tex)
+Overfull \hbox (197.79045pt too wide) in paragraph at lines 38--39
+ [] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../trust.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../ineq_intervention_future.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../envi_views.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 (../CC_exists.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 (../CC_dynamics.tex)
-Overfull \hbox (48.3602pt too wide) in paragraph at lines 30--31
+Overfull \hbox (48.3602pt too wide) in paragraph at lines 78--79
  [] 
  []
 
@@ -1172,37 +1206,34 @@ Overfull \hbox (48.3602pt too wide) in paragraph at lines 30--31
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 (../comparisons_GHG.tex)
-Overfull \hbox (25.80478pt too wide) in paragraph at lines 37--38
+Overfull \hbox (25.80478pt too wide) in paragraph at lines 85--86
  [] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[1
+[2] [3] [4] [5] [6] [7] [8] [9] [10] [11] (../responsible_GHG.tex)
 
-{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2] [3] [4] (../responsible_GHG.tex)
-
-LaTeX Warning: Float too large for page by 34.53987pt on input line 47.
+LaTeX Warning: Float too large for page by 34.53987pt on input line 95.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[5] (../CC_stoppable.tex)
-Overfull \hbox (18.62457pt too wide) in paragraph at lines 54--55
+[12] (../CC_stoppable.tex)
+Overfull \hbox (18.62457pt too wide) in paragraph at lines 102--103
  [] 
  []
 
 
-LaTeX Warning: Float too large for page by 35.53987pt on input line 56.
+LaTeX Warning: Float too large for page by 35.53987pt on input line 104.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[6] (../CC_talks.tex)
+[13] (../CC_talks.tex)
 
-LaTeX Warning: Float too large for page by 23.85593pt on input line 64.
+LaTeX Warning: Float too large for page by 23.85593pt on input line 112.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1215,12 +1246,12 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[7] [8] [9] (../change_condition.tex)
-Overfull \hbox (10.98174pt too wide) in paragraph at lines 84--85
+[14] [15] [16] (../change_condition.tex)
+Overfull \hbox (10.98174pt too wide) in paragraph at lines 132--133
  [] 
  []
 
-[10
+[17
 
 
 
@@ -1228,48 +1259,192 @@ Overfull \hbox (10.98174pt too wide) in paragraph at lines 84--85
 
 ] (../effect_policies.tex)
 
-LaTeX Warning: Float too large for page by 34.53987pt on input line 95.
+LaTeX Warning: Float too large for page by 34.53987pt on input line 143.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[11] (../kaya.tex)
+[18] (../kaya.tex)
 
-LaTeX Warning: Float too large for page by 34.53987pt on input line 104.
+LaTeX Warning: Float too large for page by 34.53987pt on input line 152.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 107.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 107.
+[19] (../scale.tex) (../burden_sharing.tex)
+Overfull \hbox (246.65422pt too wide) in paragraph at lines 167--168
+ [] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../equal_quota.tex)
+Overfull \hbox (76.9047pt too wide) in paragraph at lines 174--175
+ [] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../country_should_act.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../country_should_act_condition.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../pro_inter.tex)
+Overfull \hbox (115.00603pt too wide) in paragraph at lines 195--196
+ [] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../standard_opinion.tex) [20
+
+
+
+
+
+]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../standard_winner.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../standard_loser.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../investments_opinion.tex) [21]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../investments_winner.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../investments_loser.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../tax_transfers_opinion.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../tax_transfers_winner.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../tax_transfers_loser.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../CC_worries.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../policy_climate.tex)
+Overfull \hbox (40.46588pt too wide) in paragraph at lines 280--281
+ [] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../revenue_carbon_tax.tex)
+Overfull \hbox (281.67331pt too wide) in paragraph at lines 287--288
+ [] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../pref_thermal.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../pref_flight.tex)
+Overfull \hbox (110.52422pt too wide) in paragraph at lines 303--304
+ [] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../pref_beef.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../pref_incentives.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../wtp.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../pol_views.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../pol_positions.tex)
+Overfull \hbox (121.9574pt too wide) in paragraph at lines 340--341
+ [] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../media.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../survey_biased.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Overfull \vbox (130.05263pt too high) has occurred while \output is active []
+
+
+[22] [23] [24] [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36]
+[37] [38] [39] [40] [41] [42] [43] [44] [45] [46]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 359.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 359.
  (./Tables Climate OECD.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 107.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 107.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 359.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 359.
 Package rerunfilecheck Info: File `"Tables Climate OECD".out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 107.
+(rerunfilecheck)             Checksum: A0B99893161F1189B043D1ADBD83B7FB;708.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 359.
  ) 
 Here is how much of TeX's memory you used:
- 31940 strings out of 492616
- 603315 string characters out of 6129481
- 735722 words of memory out of 5000000
- 35328 multiletter control sequences out of 15000+600000
- 535992 words of font info for 39 fonts, out of 8000000 for 9000
+ 32135 strings out of 492616
+ 606203 string characters out of 6129481
+ 1294663 words of memory out of 5000000
+ 35342 multiletter control sequences out of 15000+600000
+ 536300 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,12n,69p,975b,385s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
-></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
-usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></us
-r/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
-/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/l
-ocal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on "Tables Climate OECD.pdf" (12 pages, 113696 bytes).
+ 57i,12n,69p,975b,430s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
+sr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr
+/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
+local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/lo
+cal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on "Tables Climate OECD.pdf" (46 pages, 213037 bytes).
 PDF statistics:
- 122 PDF objects out of 1000 (max. 8388607)
- 99 compressed objects within 1 object stream
- 25 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 407 PDF objects out of 1000 (max. 8388607)
+ 346 compressed objects within 4 object streams
+ 103 named destinations out of 1000 (max. 500000)
+ 93 words of extra memory for PDF output out of 10000 (max. 10000000)
 
