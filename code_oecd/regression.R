@@ -306,9 +306,9 @@ us$dummy_standard_trust <- (us$standard_trust == "Yes")
 us$dummy_standard_effective <- (us$standard_effective == "Yes")
 us$standard_employment_pos <- (us$standard_employment == 1)
 us$standard_side_effects_pos <- (us$standard_side_effects == 1)
-us$standard_support <- (us$standard_support == 1)
+us$dummy_standard_support <- (us$standard_support == "Yes")
 
-desc_table(dep_vars = c("dummy_standard_exists", "dummy_standard_trust", "dummy_standard_effective", "standard_employment_pos", "standard_side_effects_pos", "standard_support"), filename = "standard_opinion",
+desc_table(dep_vars = c("dummy_standard_exists", "dummy_standard_trust", "dummy_standard_effective", "standard_employment_pos", "standard_side_effects_pos", "dummy_standard_support"), filename = "standard_opinion",
            dep.var.labels = c("Does exist", "Trust federal gov.", "Effective", "Positive impact on jobs", "Positive side effects", "Support"),
            dep.var.caption = c("C02 emission limit for cars policy in the U.S."), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
@@ -341,9 +341,9 @@ us$dummy_investments_trust <- (us$investments_trust == "Yes")
 us$dummy_investments_effective <- (us$investments_effective == "Yes")
 us$investments_employment_pos <- (us$investments_employment == 1)
 us$investments_side_effects_pos <- (us$investments_side_effects == 1)
-us$investments_support <- (us$investments_support == 1)
+us$dummy_investments_support <- (us$investments_support == "Yes")
 
-desc_table(dep_vars = c("dummy_investments_trust", "dummy_investments_effective", "investments_employment_pos", "investments_side_effects_pos", "investments_support"), filename = "investments_opinion",
+desc_table(dep_vars = c("dummy_investments_trust", "dummy_investments_effective", "investments_employment_pos", "investments_side_effects_pos", "dummy_investments_support"), filename = "investments_opinion",
            dep.var.labels = c("Trust federal gov.", "Effective", "Positive impact on jobs", "Positive side effects", "Support"),
            dep.var.caption = c("C02 emission limit for cars policy in the U.S."), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
@@ -376,9 +376,9 @@ us$dummy_tax_transfers_trust <- (us$tax_transfers_trust == "Yes")
 us$dummy_tax_transfers_effective <- (us$tax_transfers_effective == "Yes")
 us$tax_transfers_employment_pos <- (us$tax_transfers_employment == 1)
 us$tax_transfers_side_effects_pos <- (us$tax_transfers_side_effects == 1)
-us$tax_transfers_support <- (us$tax_transfers_support == 1)
+us$dummy_tax_transfers_support <- (us$tax_transfers_support == "Yes")
 
-desc_table(dep_vars = c("dummy_tax_transfers_trust", "dummy_tax_transfers_effective", "tax_transfers_employment_pos", "tax_transfers_side_effects_pos", "tax_transfers_support"), filename = "tax_transfers_opinion",
+desc_table(dep_vars = c("dummy_tax_transfers_trust", "dummy_tax_transfers_effective", "tax_transfers_employment_pos", "tax_transfers_side_effects_pos", "dummy_tax_transfers_support"), filename = "tax_transfers_opinion",
            dep.var.labels = c("Trust federal gov.", "Effective", "Positive impact on jobs", "Positive side effects", "Support"),
            dep.var.caption = c("C02 emission limit for cars policy in the U.S."), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
