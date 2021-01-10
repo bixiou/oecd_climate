@@ -70,10 +70,12 @@ us$age_agg <- as.factor(us$age_agg)
 us$vote_dum <- as.factor(us$vote_dum)
 us$treatment_agg <- as.factor(us$treatment_agg)
 
+us$treatment_agg <- relevel(us$treatment_agg, ref ="None")
+
 ##### 2. Regressions #####
 
 control_variables <- c("race_white_only", "gender_dum", "children", "college", "employment_agg", "income_factor", "age_agg", "vote_dum", "treatment_agg")
-cov_lab = c("White only", "Male", "Children", "No college", "Retired" ,"Student", "Working", "Income Q2", "Income Q3", "Income Q4","30-49", "50-87", "Non voting", "Other", "Trump", "Climate treatment only", "No treatment", "Policy treatment only")
+cov_lab = c("White only", "Male", "Children", "No college", "Retired" ,"Student", "Working", "Income Q2", "Income Q3", "Income Q4","30-49", "50-87", "Non voting", "Other", "Trump", "Both", "Climate treatment only", "Policy treatment only")
 
 desc_table <- function(dep_vars, filename = NULL, data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL,
                        save_folder = "../tables/", dep.var.labels = dep_vars, dep.var.caption = NULL, digits= 3) {
