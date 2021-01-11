@@ -204,6 +204,11 @@ decrit("standard_employment", data = e)
 decrit("standard_side_effects", data = e)
 for (v in variables_standard_incidence) print(decrit(v, data = e))
 decrit("standard_support", data = e)
+data_cor_standard <- e[,variables_standard] 
+names(data_cor_standard) <- variables_standard
+corr_standard <- cor(data_cor_standard, use="complete.obs")
+p.mat <- cor.mtest(data_cor_standard) # corrplot does not work when some packages are loaded before 'corrplot' => if it doesn't work, restart R and load only corrplot.
+corrplot(corr_standard, method='color', p.mat = p.mat, sig.level = 0.01, diag=FALSE, tl.srt=35, tl.col='black', insig = 'blank', addCoef.col = 'black', addCoefasPercent = T , type='upper') #, order='hclust'
 
 
 ##### Preference 2: green infrastructure program ######
@@ -213,6 +218,11 @@ decrit("investments_employment", data = e)
 decrit("investments_side_effects", data = e)
 for (v in variables_investments_incidence) print(decrit(v, data = e))
 decrit("investments_support", data = e)
+data_cor_investments <- e[,variables_investments] 
+names(data_cor_investments) <- variables_investments
+corr_investments <- cor(data_cor_investments, use="complete.obs")
+p.mat <- cor.mtest(data_cor_investments) # corrplot does not work when some packages are loaded before 'corrplot' => if it doesn't work, restart R and load only corrplot.
+corrplot(corr_investments, method='color', p.mat = p.mat, sig.level = 0.01, diag=FALSE, tl.srt=35, tl.col='black', insig = 'blank', addCoef.col = 'black', addCoefasPercent = T , type='upper') #, order='hclust'
 
 
 ##### Preference 3: carbon tax with cash transfers ######
@@ -222,6 +232,11 @@ decrit("tax_transfers_employment", data = e)
 decrit("tax_transfers_side_effects", data = e)
 for (v in variables_tax_transfers_incidence) print(decrit(v, data = e))
 decrit("tax_transfers_support", data = e)
+data_cor_tax_transfers <- e[,variables_tax_transfers] 
+names(data_cor_tax_transfers) <- variables_tax_transfers
+corr_tax_transfers <- cor(data_cor_tax_transfers, use="complete.obs")
+p.mat <- cor.mtest(data_cor_tax_transfers) # corrplot does not work when some packages are loaded before 'corrplot' => if it doesn't work, restart R and load only corrplot.
+corrplot(corr_tax_transfers, method='color', p.mat = p.mat, sig.level = 0.01, diag=FALSE, tl.srt=35, tl.col='black', insig = 'blank', addCoef.col = 'black', addCoefasPercent = T , type='upper') #, order='hclust'
 
 
 ##### Preferences on climate policies ######

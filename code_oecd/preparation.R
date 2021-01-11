@@ -611,9 +611,11 @@ convert <- function(e, country) {
                         "standard_trust", "tax_transfers_effective", "investments_effective", "standard_effective", "tax_transfers_support", "investments_support",
                         "standard_support", "hit_by_covid", "member_environmental_orga", "relative_environmentalist"
               ), names(e))) {
-    e[j][[1]] <- as.item(as.character(e[j][[1]]),
-                labels = structure(yes_no_names, names = c("NA","No","PNR","Yes")),
-                missing.values = c("","PNR"), annotation=attr(e[j][[1]], "label"))
+    temp <- 1*(e[j][[1]] %in% text_yes) - (e[j][[1]] %in% text_no) - 0.1*(e[j][[1]] %in% text_pnr)
+    e[j][[1]] <- as.item(temp, labels = structure(c(0,-1,-0.1,1), names = c("No","PNR","Yes")),
+                         missing.values = c("","PNR"), annotation=attr(e[j][[1]], "label"))
+    # e[j][[1]] <- as.item(as.character(e[j][[1]]), labels = structure(yes_no_names, names = c("NA","No","PNR","Yes")),
+    #             missing.values = c("","PNR"), annotation=attr(e[j][[1]], "label"))
   }
 
   for (j in c(#"gender", "region", "speaks_well", "education", "employment_status", "income", "wealth", "frequency_beef", "survey_biased", "vote", "media", "country_should_act_condition
@@ -654,6 +656,9 @@ convert <- function(e, country) {
   variables_standard_incidence <<- names(e)[grepl('standard_incidence_', names(e))]
   variables_investments_incidence <<- names(e)[grepl('investments_incidence_', names(e))]
   variables_tax_transfers_incidence <<- names(e)[grepl('tax_transfers_incidence_', names(e))]
+  variables_standard <<- c("standard_support", "standard_trust", "standard_effective", "standard_employment", "standard_side_effects", variables_standard_incidence)
+  variables_investments <<- c("investments_support", "investments_trust", "investments_effective", "investments_employment", "investments_side_effects", variables_investments_incidence)
+  variables_tax_transfers <<- c("tax_transfers_support", "tax_transfers_trust", "tax_transfers_effective", "tax_transfers_employment", "tax_transfers_side_effects", variables_tax_transfers_incidence)
   variables_side_effects <<- names(e)[grepl('_side_effects', names(e))]
   variables_employment <<- names(e)[grepl('_employment', names(e))]
   variables_policy <<- names(e)[grepl('policy_', names(e)) & !grepl("order_", names(e))]
@@ -950,7 +955,7 @@ convert <- function(e, country) {
   e$flight_quota <- e$flight_quota_1000km
   e$flight_quota[!is.na(e$flight_quota_3000km)] <- e$flight_quota_3000km[!is.na(e$flight_quota_3000km)]
   e$flight_quota[!is.na(e$flight_quota_one_trip)] <- e$flight_quota_one_trip[!is.na(e$flight_quota_one_trip)]
-  label(e$flight_quota) <- "flight_quota: ~ Given that the govt decides to limit average flights per person, what do you prefer? Rationing / Tradable quota / PNR. Variants (distance per year): 1000km/3000km/one round-trip. [distance adjusted to country]"
+  label(e$flight_quota) <- "flight_quota: ~ Given that the govt decides to limit average flights per person, what do you prefer? Rationing / Tradable quota / PNR. Variants (distance per year): 1000km/3000km/one round-trip every two years. [distance adjusted to country]"
   variables_flight_quota <<- names(e)[grepl('flight_quota', names(e))]
   
   for (v in variables_flight_quota) {
