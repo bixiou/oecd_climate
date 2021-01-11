@@ -85,6 +85,7 @@ for (v in variables_CC_responsible) print(decrit(v, data = e))
 decrit("CC_stoppable", data = e) 
 decrit("CC_talks", data = e) 
 for (v in variables_CC_affected) print(decrit(v, data = e)) # less in 2050 than 2020!
+decrit("CC_affected_min", data = e)
 decrit("change_lifestyle", data = e) # 60%
 for (v in variables_change_condition) print(decrit(v, data = e))
 for (v in variables_effect_policies) print(decrit(v, data = e))
