@@ -103,7 +103,7 @@ desc_table <- function(dep_vars, filename = NULL, data = us, indep_vars = contro
                             covariate.labels = cov_lab, add.lines = list(c(mean_text, means)),
                             dep.var.labels = dep.var.labels,
                             dep.var.caption = dep.var.caption,
-                            multicolumn = F, float = F, keep.stat = c("n") #, omit.stat = c("n")
+                            multicolumn = F, float = F, keep.stat = c("n"), omit.table.layout = "n" #, omit.stat = c("n")
                        )))
     mean_line <- regmatches(table, regexpr('(Mean|Control group mean) &[^\\]*', table))
     if (only_mean) {
@@ -117,7 +117,7 @@ desc_table <- function(dep_vars, filename = NULL, data = us, indep_vars = contro
                                      covariate.labels = cov_lab, add.lines =list(c(mean_text, means)),
                                      dep.var.labels = dep.var.labels,
                                      dep.var.caption = dep.var.caption,
-                                     multicolumn = F, float = F, keep.stat = c("n")
+                                     multicolumn = F, float = F, keep.stat = c("n"), omit.table.layout = "n"
                                 )))
   return(table)
 }
