@@ -380,7 +380,7 @@ us$dummy_investments_support <- (us$investments_support == "Yes")
 
 desc_table(dep_vars = c("dummy_investments_trust", "dummy_investments_effective", "investments_employment_pos", "investments_side_effects_pos", "dummy_investments_support"), filename = "investments_opinion",
            dep.var.labels = c("Trust federal gov.", "Effective", "Positive impact on jobs", "Positive side effects", "Support"),
-           dep.var.caption = c("C02 emission limit for cars policy in the U.S."), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
+           dep.var.caption = c("Public investment program in green infrastructures for the U.S."), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
 )
 
 #would win
@@ -393,7 +393,7 @@ us$investments_incidence_self_win <- (us$investments_incidence_self == 1)
 
 desc_table(dep_vars = c("investments_incidence_poor_win", "investments_incidence_middle_win", "investments_incidence_rich_win", "investments_incidence_urban_win", "investments_incidence_rural_win", "investments_incidence_self_win"), filename = "investments_winner",
            dep.var.labels = c("Poorest", "Middle class", "Richest", "Urban", "Rural", "Own household"),
-           dep.var.caption = c("Winners of emission limits for cars policy"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
+           dep.var.caption = c("Winners of emission limits for green investments"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
 )
 
 #would lose
@@ -406,7 +406,7 @@ us$investments_incidence_self_lose <- (us$investments_incidence_self == -1)
 
 desc_table(dep_vars = c("investments_incidence_poor_lose", "investments_incidence_middle_lose", "investments_incidence_rich_lose", "investments_incidence_urban_lose", "investments_incidence_rural_lose", "investments_incidence_self_lose"), filename = "investments_loser",
            dep.var.labels = c("Poorest", "Middle class", "Richest", "Urban", "Rural", "Own household"),
-           dep.var.caption = c("Losers of emission limits for cars policy"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
+           dep.var.caption = c("Losers of emission limits for green investments"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
 )
 
 ## Block Pref 3: tax and dividend
@@ -418,7 +418,7 @@ us$dummy_tax_transfers_support <- (us$tax_transfers_support == "Yes")
 
 desc_table(dep_vars = c("dummy_tax_transfers_trust", "dummy_tax_transfers_effective", "tax_transfers_employment_pos", "tax_transfers_side_effects_pos", "dummy_tax_transfers_support"), filename = "tax_transfers_opinion",
            dep.var.labels = c("Trust federal gov.", "Effective", "Positive impact on jobs", "Positive side effects", "Support"),
-           dep.var.caption = c("C02 emission limit for cars policy in the U.S."), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
+           dep.var.caption = c("Carbon tax with cash transfers"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
 )
 
 #would win
@@ -431,7 +431,7 @@ us$tax_transfers_incidence_self_win <- (us$tax_transfers_incidence_self == 1)
 
 desc_table(dep_vars = c("tax_transfers_incidence_poor_win", "tax_transfers_incidence_middle_win", "tax_transfers_incidence_rich_win", "tax_transfers_incidence_urban_win", "tax_transfers_incidence_rural_win", "tax_transfers_incidence_self_win"), filename = "tax_transfers_winner",
            dep.var.labels = c("Poorest", "Middle class", "Richest", "Urban", "Rural", "Own household"),
-           dep.var.caption = c("Winners of emission limits for cars policy"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
+           dep.var.caption = c("Winners of emission limits for carbon tax with cash transfers of 600 dollars a year per adult"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
 )
 
 #would lose
@@ -444,7 +444,7 @@ us$tax_transfers_incidence_self_lose <- (us$tax_transfers_incidence_self == -1)
 
 desc_table(dep_vars = c("tax_transfers_incidence_poor_lose", "tax_transfers_incidence_middle_lose", "tax_transfers_incidence_rich_lose", "tax_transfers_incidence_urban_lose", "tax_transfers_incidence_rural_lose", "tax_transfers_incidence_self_lose"), filename = "tax_transfers_loser",
            dep.var.labels = c("Poorest", "Middle class", "Richest", "Urban", "Rural", "Own household"),
-           dep.var.caption = c("Losers of emission limits for cars policy"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
+           dep.var.caption = c("Losers of emission limits for carbon tax with cash transfers"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
 )
 
 ## Block Pref on climate policies
