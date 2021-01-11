@@ -133,13 +133,13 @@ us$heating_oil <- (us$heating == 3)
 us$heating_renew <- (us$heating == 5)
 desc_table(dep_vars = c("heating_elec", "heating_gas", "heating_oil", "heating_renew"), filename = "heating",
            dep.var.labels = c("Electricity", "Gas", "Heating oil", "Renewable"),
-           dep.var.caption = c("Main way of heat at home"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+           dep.var.caption = c("At home"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 # Behavior
 us$dummy_frequency_beef <- (us$frequency_beef < 2)
 temp <- desc_table(dep_vars = c("km_driven", "flights", "dummy_frequency_beef"), filename = "behavior_GHG",
            dep.var.labels = c("Km driven (2019)", "Flights (2015-19)", "Rarely eat beef"), mean_above = F,
-           dep.var.caption = c("Household behavior"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, only_mean = T)
+           dep.var.caption = c("Own household"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, only_mean = T)
 
 # Transports
 us$transport_work_car <- (us$transport_work == "car or motorbike")
@@ -157,7 +157,7 @@ cov_lab_transport <- append(cov_lab, "PT not available")
 
 desc_table(dep_vars = c("transport_work_car", "transport_work_PT", "transport_work_walk", "transport_shopping_car", "transport_shopping_PT", "transport_shopping_walk", "transport_leisure_car", "transport_leisure_PT", "transport_leisure_walk"), filename = "transports",
            dep.var.labels = c("Car/Bike (work)", "Public (work)", "Bicycle/Walk (work)", "Car/Bike (shop)", "Public (shop)", "Bicycle/Walk (shop)","Car/Bike (leisure)", "Public (leisure)", "Bicycle/Walk (leisure)"),
-           dep.var.caption = c("Transports used"), data = us, indep_vars = control_transport, indep_labels = cov_lab_transport, weights = NULL)
+           dep.var.caption = c("Transports"), data = us, indep_vars = control_transport, indep_labels = cov_lab_transport, weights = NULL)
 
 ## Block: Trust, perceptions of institution, inequality, and the future
 # Trust
@@ -167,7 +167,7 @@ us$dummy_trust_public_spending <- (us$trust_public_spending >= 2)
 
 desc_table(dep_vars = c("dummy_trust_people", "dummy_trust_govt", "dummy_trust_public_spending"), filename = "trust",
            dep.var.labels = c("most people","government to do what is right", "government to spend revenue wisely"),
-           dep.var.caption = c("Do you trust…"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+           dep.var.caption = c("Trust…"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 # Positive views
 us$dummy_statist <- (us$statist > 3)
@@ -186,7 +186,7 @@ us$envi_other <- (us$envi =="Other goals")
 
 desc_table(dep_vars = c("envi_collapse", "envi_progress", "envi_pro", "envi_other"), filename = "envi_views",
            dep.var.labels = c("Collapse","Not a problem, progress", "Need sustainable society", "Other goals"),
-           dep.var.caption = c("Environmental views"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, only_mean = T)
+           dep.var.caption = c("Views"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, only_mean = T)
 
 ## Block: CC (attitudes and risks)
 
@@ -197,7 +197,7 @@ us$CC_exists_anthro <- (us$CC_exists == 1)
 
 desc_table(dep_vars = c("CC_exists_no", "CC_exists_nat", "CC_exists_anthro"), filename = "CC_exists",
            dep.var.labels = c("not a reality","mainly due to natural climate variability", "mainly due to human activity"),
-           dep.var.caption = c("Climate change is…"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+           dep.var.caption = c(""), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 
 ## Halving GHG
@@ -208,18 +208,18 @@ us$CC_dynamics_rise <- (us$CC_dynamics == 1)
 
 desc_table(dep_vars = c("CC_dynamics_no", "CC_dynamics_dec", "CC_dynamics_stab", "CC_dynamics_rise"), filename = "CC_dynamics",
            dep.var.labels = c("has no impact on temperatures","will decrease temperatures", "will stabilize temperatures", "will increase temperatures, just more slowly"),
-           dep.var.caption = c("Halving global GHG emissions"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+           dep.var.caption = c(""), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 
 ## Comparisons GHG questions
 desc_table(dep_vars = c("CC_factor_beef", "CC_factor_nuclear", "CC_factor_car"), filename = "comparisons_GHG",
            dep.var.labels = c("eating beef vs. two servings of pasta","eletricity produced by nuclear power vs. wind turbines",  "commuting by car vs. food waste"),
-           dep.var.caption = c("Does this activity emits fare more GHG than this other one?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, only_mean = T)
+           dep.var.caption = c("… emits fare more GHG than …"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, only_mean = T)
 
 ## Responsible party for CC
 desc_table(dep_vars = c("CC_responsible_each", "CC_responsible_rich", "CC_responsible_govts", "CC_responsible_companies", "CC_responsible_past", "CC_responsible_foreign", "CC_responsible_nature", "CC_responsible_denial"), filename = "responsible_GHG",
            dep.var.labels = c("Each of us","The rich",  "Governments", "Companies", "Previous generations", "Some foreign countries", "Natural causes", "Climate change is not a reality"),
-           dep.var.caption = c("Which of the following is predominantly responsible for CC?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+           dep.var.caption = c("Predominantly responsible for CC…"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 ## Possible to halt CC
 us$CC_stoppable_no_infl <- (us$CC_stoppable == "No influence")
@@ -230,7 +230,7 @@ us$CC_stoppable_progress <- (us$CC_stoppable == "Progress will suffice")
 
 desc_table(dep_vars = c("CC_stoppable_no_infl", "CC_stoppable_adapt", "CC_stoppable_should", "CC_stoppable_policies", "CC_stoppable_progress"), filename = "CC_stoppable",
            dep.var.labels = c("Human have no noticeable influence","Better live with CC than try to halt it",  "Should stop emissions, but not going to happen", "Ambitious policies and awareness will succeed", "Technologies and habits will suffice"),
-           dep.var.caption = c("Can humanity halt CC?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+           dep.var.caption = c(""), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 ## Talks about CC
 us$CC_talks_never <- (us$CC_talks == -1)
@@ -239,42 +239,42 @@ us$CC_talks_monthly <- (us$CC_talks == 1)
 
 desc_table(dep_vars = c("CC_talks_never", "CC_talks_yearly", "CC_talks_monthly"), filename = "CC_talks",
            dep.var.labels = c("Never","Yearly",  "Monthly"),
-           dep.var.caption = c("How often do you talk about CC?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, only_mean = T)
+           dep.var.caption = c(""), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, only_mean = T)
 
 ## Generations most affected
 desc_table(dep_vars = c("CC_affected_1960", "CC_affected_1990", "CC_affected_2020", "CC_affected_2050", "CC_affected_none"), filename = "CC_affected",
            dep.var.labels = c("Born in 1960s", "Born in 1990s", "Born in 2020s", "Born in 2050s", "None of them"),
-           dep.var.caption = c("Which generations will be seriously affected by CC?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, only_mean = T)
+           dep.var.caption = c("Generations"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, only_mean = T)
 
 ## Sustainable lifestyle
 us$dummy_change_lifestyle <- (us$change_lifestyle == "Yes")
 
 desc_table(dep_vars = c("dummy_change_lifestyle"), filename = "change_lifestyle",
            dep.var.labels = c("Willing to change lifestyle"),
-           dep.var.caption = c("Scenario: world consensus to fight CC and wider green transports and energy available"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, only_mean = T)
+           dep.var.caption = c(""), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, only_mean = T)
 
 ## Willing to change lifestyle
 desc_table(dep_vars = c("change_condition_policies", "change_condition_income", "change_condition_all", "change_condition_no_rich", "change_condition_no_selfish", "change_condition_no_denial", "change_condition_already", "change_condition_try"), filename = "change_condition",
            dep.var.labels = c("Yes, if policies in the good direction","Yes, if financial means",  "Yes, if everyone does the same", "No, only rich should", "No, would affect me more than living with CC", "No, CC not a real problem", "Lifestyle already sustainable", "Trying, but trouble to change"),
-           dep.var.caption = c("Would you be willing to change your lifestyle?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+           dep.var.caption = c("Willing to change lifestyle?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 ## Effect of policies
 desc_table(dep_vars = c("effect_policies_opportunity", "effect_policies_cost", "effect_policies_lifestyle"), filename = "effect_policies",
-           dep.var.labels = c("be an opportunity for our economy and improve our lifestyle","be costly, but we would maintain our lifestyle", "would require deep change in our lifestyle"),
-           dep.var.caption = c("The policies aimed at halting CC would "), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+           dep.var.labels = c("be an opportunity for our economy and improve our lifestyle","be costly, but we would maintain our lifestyle", "require deep change in our lifestyle"),
+           dep.var.caption = c("Those policies would…"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 ## Issues to address to halt CC
 #BP : might need to add this var. but empty for the moment us$kaya_other_choice
 desc_table(dep_vars = c("kaya_techno", "kaya_waste", "kaya_wealth", "kaya_overconsumption", "kaya_overpopulation", "kaya_none"), filename = "kaya",
            dep.var.labels = c("Use of technologies that emit GHG", "Level of waste", "High tax transfers of living", "Overconsumption", "Overpopulation", "None of them"),
-           dep.var.caption = c("Which issues need to be addressed to halt CC?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, only_mean = T)
+           dep.var.caption = c("Issues"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, only_mean = T)
 
 ## Block International burden-sharing
 
 # Level for PP to tackle CC
 desc_table(dep_vars = c("scale_local", "scale_state", "scale_federal", "scale_global"), filename = "scale",
            dep.var.labels = c("Local","State", "Federal", "Global"),
-           dep.var.caption = c("The right level to implement policies to tackle CC is:"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, only_mean = T)
+           dep.var.caption = c("Policy level"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, only_mean = T)
 
 # Burden
 us$dummy_burden_sharing_income <- 0
@@ -290,7 +290,7 @@ us[us$burden_sharing_poor_receive >= 1, "dummy_burden_sharing_poor_receive"] <- 
 
 desc_table(dep_vars = c("dummy_burden_sharing_income", "dummy_burden_sharing_emissions", "dummy_burden_sharing_cumulative", "dummy_burden_sharing_rich_pay", "dummy_burden_sharing_poor_receive"), filename = "burden_sharing",
            dep.var.labels = c("Pay in proportion to income","Pay in proportion to current emissions", "Pay in proportion to past emissions (from 1990)", "Richest pay alone", "Richest pay, and even more to help vulnerable countries"),
-           dep.var.caption = c("Which countries bear should bear the costs of fighting CC?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+           dep.var.caption = c("Countries should"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 # Equal quota
 us$equal_quota_no_vul <- (us$equal_quota == 2)
@@ -300,8 +300,8 @@ us$equal_quota_no_gf <- (us$equal_quota == -1)
 us$equal_quota_no_restrict <- (us$equal_quota == -2)
 
 desc_table(dep_vars = c("equal_quota_no_vul", "equal_quota_yes", "equal_quota_no_gf", "equal_quota_no_indiv", "equal_quota_no_restrict"), filename = "equal_quota",
-           dep.var.labels = c("No, should compensate the poorest","Yes", "No, if pollute more, more rights", "No, not at individual level", "No, no restrictions of emissions"),
-           dep.var.caption = c("Are you in favor of a system of equal quota to emit GHG at individual levels, with monetary compensation and tax?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, only_mean = T)
+           dep.var.labels = c("No, should compensate the poorest","Yes", "No, if pollute more more rights", "No, not at individual level", "No, no restrictions of emissions"),
+           dep.var.caption = c("In favor of a system of equal GHG quota at individual levels (with monetary compensation and tax)"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, only_mean = T)
 
 # US should act
 us$country_should_act_yes <- (us$country_should_act == 1)
@@ -310,7 +310,7 @@ us$country_should_act_no <- (us$country_should_act == -1)
 
 desc_table(dep_vars = c("country_should_act_yes", "country_should_act_inter", "country_should_act_no"), filename = "country_should_act",
            dep.var.labels = c("Yes", "Only if fair international agreement", "No"),
-           dep.var.caption = c("Should the U.S. take measures to fight CC?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+           dep.var.caption = c("U.S. should take measures to fight CC"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 # Conditions to act
 us$country_should_act_condition_comp <- (us$country_should_act_condition == "Compensation")
@@ -319,7 +319,7 @@ us$country_should_act_condition_recip <- (us$country_should_act_condition == "Re
 
 desc_table(dep_vars = c("country_should_act_condition_comp", "country_should_act_condition_recip", "country_should_act_condition_freerid"), filename = "country_should_act_condition",
            dep.var.labels = c("U.S. more ambitious, if others less", "U.S. more ambitious, if others as well", "U.S. less ambitious, if others are"),
-           dep.var.caption = c("How what the U.S. should do depends on what other countries do?"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+           dep.var.caption = c("U.S. should… (if other countries do…)"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 # Approve propositions
 us$dummy_pro_global_assembly <- (us$pro_global_assembly == "Yes")
@@ -328,7 +328,7 @@ us$dummy_pro_tax_1p <- (us$pro_tax_1p == "Yes")
 
 desc_table(dep_vars = c("dummy_pro_global_assembly", "dummy_pro_global_tax", "dummy_pro_tax_1p"), filename = "pro_inter",
            dep.var.labels = c("Global democratic assembly to fight CC", "Global tax on GHG emissions funding a global basic income (\\textdollar 30/month/adult)", "Global tax on top 1\\% to finance poorest countries"),
-           dep.var.caption = c("Approve those measures"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
+           dep.var.caption = c("Approve"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL)
 
 ## Post-Treatment
 control_variables <- c("race_white_only", "gender_dum", "children", "college", "employment_agg", "income_factor", "age_agg", "vote_dum", "treatment_agg")
@@ -446,14 +446,14 @@ us$tax_transfers_incidence_self_lose <- (us$tax_transfers_incidence_self == -1)
 
 desc_table(dep_vars = c("tax_transfers_incidence_poor_lose", "tax_transfers_incidence_middle_lose", "tax_transfers_incidence_rich_lose", "tax_transfers_incidence_urban_lose", "tax_transfers_incidence_rural_lose", "tax_transfers_incidence_self_lose"), filename = "tax_transfers_loser",
            dep.var.labels = c("Poorest", "Middle class", "Richest", "Urban", "Rural", "Own household"),
-           dep.var.caption = c("Losers of carbon tax with cash transfers"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
+           dep.var.caption = c("Losers of carbon tax with cash transfers of \\textdollar 600/year/adult"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
 )
 
 ## Block Pref on climate policies
 us$dummy_CC_worries <- (us$CC_worries >= 0)
 
 desc_table(dep_vars = c("dummy_CC_worries"), filename = "CC_worries",
-           dep.var.labels = c("Worried about impacts of CC"),
+           dep.var.labels = c("Worried"),
            dep.var.caption = c(""), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
 )
 
@@ -467,7 +467,7 @@ us$policy_climate_fund_supp <- (us$policy_climate_fund > 0)
 
 desc_table(dep_vars = c("policy_tax_flying_supp", "policy_tax_fuels_supp", "policy_insulation_supp", "policy_ban_city_centers_supp", "policy_subsidies_supp", "policy_climate_fund_supp"), filename = "policy_climate",
            dep.var.labels = c("Tax on flying", "Tax on fossil fuels", "Thermal renovation", "Ban polluting vehicles in city centers", "Subsidies", "Global climate fund"),
-           dep.var.caption = c("Support climate policies"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
+           dep.var.caption = c("Climate policies"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
 )
 
 # Revenues of carbon tax
@@ -484,7 +484,7 @@ us$tax_other_choice_supp <- (us$tax_other_choice > 0)
 
 desc_table(dep_vars = c("tax_transfer_constrained_hh_supp", "tax_transfer_poor_supp", "tax_transfer_all_supp", "tax_rebates_affected_firms_supp", "tax_investments_supp", "tax_subsidies_supp", "tax_reduction_deficit_supp" , "tax_reduction_corporate_tax_supp", "tax_reduction_personal_tax_supp", "tax_other_choice_supp"), filename = "revenue_carbon_tax",
            dep.var.labels = c("Transfer to constrained HH", "Transfers to poorest", "Equal transfers", "Tax rebates for affected firms", "Infrastructure projects", "Technology subsidies", "Reduce deficit", "Reduce CIT", "Reduce PIT", "Other"),
-           dep.var.caption = c("Support carbon tax if revenues allocated to…"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
+           dep.var.caption = c("Support carbon tax if revenues allocated as/to…"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
 )
 
 ## Block Preference for bans vs. incentives
@@ -493,7 +493,7 @@ us$insulation_compulsory_volunt <- (us$insulation_compulsory =="Voluntary")
 
 desc_table(dep_vars = c("insulation_compulsory_compul", "insulation_compulsory_volunt"), filename = "pref_thermal",
            dep.var.labels = c("made mandatory", "on a voluntary basis"),
-           dep.var.caption = c("Thermal renovation should be (if subsidized)"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
+           dep.var.caption = c("Thermal renovation should be (if subsidized)…"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
 )
 
 us$flight_quota_1000km_trad <- (us$flight_quota_1000km == "Tradable")
@@ -505,7 +505,7 @@ us$flight_quota_one_trip_rat <- (us$flight_quota_one_trip == "Rationing")
 
 desc_table(dep_vars = c("flight_quota_1000km_trad", "flight_quota_1000km_rat", "flight_quota_3000km_trad", "flight_quota_3000km_rat", "flight_quota_one_trip_trad", "flight_quota_one_trip_rat"), filename = "pref_flight",
            dep.var.labels = c("Rationing (1000km)", "Tradable (1000km)", "Rationing (3000km)", "Tradable (3000km)", "Rationing (0.5 round-trip/year)", "Tradable (0.5 round-trip/year)"),
-           dep.var.caption = c("Government limit flight trips"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
+           dep.var.caption = c("Limit to flight trips"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
 )
 
 us$beef_tax <- as.logical(us$beef_tax)
@@ -514,8 +514,8 @@ us$beef_subsidies_removal <- as.logical(us$beef_subsidies_removal)
 us$beef_ban_intensive <- as.logical(us$beef_ban_intensive)
 
 desc_table(dep_vars = c("beef_tax", "beef_subsidies_vegetables", "beef_subsidies_removal", "beef_ban_intensive"), filename = "pref_beef",
-           dep.var.labels = c("Tax on cattle products (beefx2)", "Sub Vegetables", "No sub cattle", "Ban intensive cattle"),
-           dep.var.caption = c("Government limit cattle products, would approve…"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
+           dep.var.labels = c("Tax on cattle products (beefx2)", "Sub. Vegetables", "No sub. cattle", "Ban intensive cattle"),
+           dep.var.caption = c("If gov. limits cattle products, I would approve…"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
 )
 
 us$ban_incentives_for <- (us$ban_incentives == "Force")
@@ -523,12 +523,12 @@ us$ban_incentives_enc <- (us$ban_incentives == "Encourage")
 
 desc_table(dep_vars = c("ban_incentives_for", "ban_incentives_enc"), filename = "pref_incentives",
            dep.var.labels = c("Force people", "Encourage people"),
-           dep.var.caption = c("Government protect environment"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
+           dep.var.caption = c("Government should…"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
 )
 
 ## WTP
 desc_table(dep_vars = c("wtp"), filename = "wtp",
-           dep.var.labels = c("WTP (\\textdollar a year)"),
+           dep.var.labels = c("WTP (\\textdollar  a year)"),
            dep.var.caption = c("WTP to limit global warming to safe levels"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
 )
 
@@ -538,7 +538,7 @@ us$dummy_member_envi_orga <- (us$member_environmental_orga == "Yes")
 us$dummy_relative_envi <- (us$relative_environmentalist == "Yes")
 
 desc_table(dep_vars = c("dummy_interest_politics", "dummy_member_envi_orga", "dummy_relative_envi"), filename = "pol_views",
-           dep.var.labels = c("Interest politics", "Member environ org", "Relative environ"),
+           dep.var.labels = c("Interest in politics", "Environmental org. member", "Relative is environmentalist"),
            dep.var.caption = c("Political views"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
 )
 
@@ -568,5 +568,5 @@ us$survey_biased_pro <- (us$survey_biased == "Yes, pro environment")
 
 desc_table(dep_vars = c("survey_biased_no", "survey_biased_anti", "survey_biased_pro"), filename = "survey_biased",
            dep.var.labels = c("No", "Yes, anti environment", "Yes, pro environment"),
-           dep.var.caption = c("Survey was biased"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
+           dep.var.caption = c("Biased"), data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL, mean_control = T
 )
