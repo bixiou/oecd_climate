@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.18)  11 JAN 2021 10:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.18)  11 JAN 2021 11:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1185,7 +1185,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 ] [7] [8] (../CC_exists.tex) (../CC_dynamics.tex)
-Overfull \hbox (15.96584pt too wide) in paragraph at lines 83--84
+Overfull \hbox (28.13802pt too wide) in paragraph at lines 85--86
  [] 
  []
 
@@ -1193,6 +1193,10 @@ Overfull \hbox (15.96584pt too wide) in paragraph at lines 83--84
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 (../comparisons_GHG.tex)
+Overfull \hbox (5.5826pt too wide) in paragraph at lines 92--93
+ [] 
+ []
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -1200,11 +1204,15 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 ] [10] [11] (../responsible_GHG.tex) [12
 
-] (../CC_stoppable.tex) [13
+] (../CC_stoppable.tex)
+Overfull \hbox (1.29102pt too wide) in paragraph at lines 109--110
+ [] 
+ []
+
+[13
 
 
-]
-(../CC_talks.tex) (../CC_affected.tex)
+] (../CC_talks.tex) (../CC_affected.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -1274,7 +1282,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [32
 
 ] [33] [34] (../CC_worries.tex) (../policy_climate.tex)
-Overfull \hbox (40.46588pt too wide) in paragraph at lines 298--299
+Overfull \hbox (40.9228pt too wide) in paragraph at lines 301--302
  [] 
  []
 
@@ -1284,12 +1292,12 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [35
 
 ] [36] (../revenue_carbon_tax.tex)
-Overfull \hbox (5.22423pt too wide) in paragraph at lines 306--307
+Overfull \hbox (7.55759pt too wide) in paragraph at lines 309--310
  [] 
  []
 
 
-LaTeX Warning: Float too large for page by 35.53987pt on input line 308.
+LaTeX Warning: Float too large for page by 6.73958pt on input line 311.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1300,7 +1308,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 ] (../pref_flight.tex)
 
-LaTeX Warning: Float too large for page by 34.53987pt on input line 327.
+LaTeX Warning: Float too large for page by 5.73958pt on input line 330.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1320,7 +1328,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 ] (../pol_positions.tex)
 
-LaTeX Warning: Float too large for page by 34.53987pt on input line 367.
+LaTeX Warning: Float too large for page by 5.73958pt on input line 370.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1333,36 +1341,37 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 ] [46]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 386.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 386.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 389.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 389.
  (./Tables Climate OECD.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 386.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 386.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 389.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 389.
 Package rerunfilecheck Info: File `"Tables Climate OECD".out' has not changed.
 (rerunfilecheck)             Checksum: A0B99893161F1189B043D1ADBD83B7FB;708.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 386.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 389.
  ) 
 Here is how much of TeX's memory you used:
- 32135 strings out of 492616
- 606203 string characters out of 6129481
- 769728 words of memory out of 5000000
- 35342 multiletter control sequences out of 15000+600000
- 536300 words of font info for 40 fonts, out of 8000000 for 9000
+ 32154 strings out of 492616
+ 606388 string characters out of 6129481
+ 764728 words of memory out of 5000000
+ 35354 multiletter control sequences out of 15000+600000
+ 539406 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,12n,69p,975b,430s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 57i,12n,69p,1169b,430s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
-</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
-/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
-sr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr
-/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
-local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/lo
-cal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on "Tables Climate OECD.pdf" (46 pages, 212111 bytes).
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
+usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
+r/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/
+local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
+al/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
+l/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/
+texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
+Output written on "Tables Climate OECD.pdf" (46 pages, 226928 bytes).
 PDF statistics:
- 407 PDF objects out of 1000 (max. 8388607)
- 346 compressed objects within 4 object streams
+ 411 PDF objects out of 1000 (max. 8388607)
+ 349 compressed objects within 4 object streams
  103 named destinations out of 1000 (max. 500000)
  93 words of extra memory for PDF output out of 10000 (max. 10000000)
 

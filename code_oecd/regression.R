@@ -50,7 +50,7 @@ us[us$age %in% 50:87, "age_agg"] <- "50-87"
 # political position
 # AF TODO I'd rather use the dummy vote=='Biden' than a variable vote_dum with 4 modalities
 us$vote_dum <- as.character(us$vote)
-us[us$vote_participation == 2, "vote_dum"] <- "Non-voting"
+us[us$vote_participation == 2, "vote_dum"] <- "Other" # add non-voters as others
 
 # treatment
 us$treatment_agg <- NULL
@@ -71,11 +71,13 @@ us$vote_dum <- as.factor(us$vote_dum)
 us$treatment_agg <- as.factor(us$treatment_agg)
 
 us$treatment_agg <- relevel(us$treatment_agg, ref ="None")
+us$vote_dum <- relevel(us$vote_dum, ref ="Other")
+
 
 ##### 2. Regressions #####
 
 control_variables <- c("race_white_only", "gender_dum", "children", "college", "employment_agg", "income_factor", "age_agg", "vote_dum")
-cov_lab = c("White only", "Male", "Children", "No college", "Retired" ,"Student", "Working", "Income Q2", "Income Q3", "Income Q4","30-49", "50-87", "Non voting", "Other", "Trump")
+cov_lab = c("race: White only", "Male", "Children", "No college", "status: Retired" ,"status: Student", "status: Working", "Income Q2", "Income Q3", "Income Q4","30-49", "50-87", "vote: Biden", "vote: Trump")
 
 desc_table <- function(dep_vars, filename = NULL, data = us, indep_vars = control_variables, indep_labels = cov_lab, weights = NULL,
                        save_folder = "../tables/", dep.var.labels = dep_vars, dep.var.caption = NULL, digits= 3, mean_control = FALSE) {
@@ -311,7 +313,7 @@ desc_table(dep_vars = c("dummy_pro_global_assembly", "dummy_pro_global_tax", "du
 
 ## Post-Treatment
 control_variables <- c("race_white_only", "gender_dum", "children", "college", "employment_agg", "income_factor", "age_agg", "vote_dum", "treatment_agg")
-cov_lab = c("White only", "Male", "Children", "No college", "Retired" ,"Student", "Working", "Income Q2", "Income Q3", "Income Q4","30-49", "50-87", "Non voting", "Other", "Trump", "Both treatments", "Climate treatment only", "Policy treatment only")
+cov_lab = c("race: White only", "Male", "Children", "No college", "status: Retired" ,"status: Student", "staths: Working", "Income Q2", "Income Q3", "Income Q4","30-49", "50-87", "vote: Biden", "vote: Trump", "Both treatments", "Climate treatment only", "Policy treatment only")
 
 ## Block Pref 1: emission standards
 us$dummy_standard_exists <- (us$standard_exists == "Yes")
