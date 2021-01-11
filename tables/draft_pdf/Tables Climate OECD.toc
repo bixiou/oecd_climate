@@ -2,12 +2,12 @@
 \contentsline {section}{\numberline {1}Pre-treatment}{3}{section.3}% 
 \contentsline {subsection}{\numberline {1.1}Energie Characteristics}{3}{subsection.4}% 
 \contentsline {subsection}{\numberline {1.2}Trust, perceptions of institution, inequality, and the future}{6}{subsection.8}% 
-\contentsline {subsection}{\numberline {1.3}Climate change (attitudes and risks)}{9}{subsection.12}% 
-\contentsline {subsection}{\numberline {1.4}International burden-sharing}{20}{subsection.24}% 
-\contentsline {section}{\numberline {2}Post-treatment}{26}{section.31}% 
-\contentsline {subsection}{\numberline {2.1}Preferences 1: Emission standards}{26}{subsection.32}% 
-\contentsline {subsection}{\numberline {2.2}Preferences 2: Green investments}{29}{subsection.36}% 
-\contentsline {subsection}{\numberline {2.3}Preferences 3: Tax and dividend}{32}{subsection.40}% 
-\contentsline {subsection}{\numberline {2.4}Preferences on climate policies}{35}{subsection.44}% 
-\contentsline {subsection}{\numberline {2.5}Preferences for bans vs. incentives}{38}{subsection.48}% 
-\contentsline {subsection}{\numberline {2.6}Political views and media consumption}{43}{subsection.54}% 
+\contentsline {subsection}{\numberline {1.3}Climate change (attitudes and risks)}{8}{subsection.12}% 
+\contentsline {subsection}{\numberline {1.4}International burden-sharing}{16}{subsection.24}% 
+\contentsline {section}{\numberline {2}Post-treatment}{22}{section.31}% 
+\contentsline {subsection}{\numberline {2.1}Preferences 1: Emission standards}{22}{subsection.32}% 
+\contentsline {subsection}{\numberline {2.2}Preferences 2: Green investments}{25}{subsection.36}% 
+\contentsline {subsection}{\numberline {2.3}Preferences 3: Tax and dividend}{28}{subsection.40}% 
+\contentsline {subsection}{\numberline {2.4}Preferences on climate policies}{31}{subsection.44}% 
+\contentsline {subsection}{\numberline {2.5}Preferences for bans vs. incentives}{34}{subsection.48}% 
+\contentsline {subsection}{\numberline {2.6}Political views and media consumption}{39}{subsection.54}% 
