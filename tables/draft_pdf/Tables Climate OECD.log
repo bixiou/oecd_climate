@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.18)  12 JAN 2021 15:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.18)  12 JAN 2021 15:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1301,12 +1301,8 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [34
 
 ] [35] (../revenue_carbon_tax.tex)
-Overfull \hbox (5.22423pt too wide) in paragraph at lines 373--374
- [] 
- []
 
-
-LaTeX Warning: Float too large for page by 79.89063pt on input line 377.
+LaTeX Warning: Float too large for page by 42.26088pt on input line 377.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1378,7 +1374,7 @@ Here is how much of TeX's memory you used:
  35359 multiletter control sequences out of 15000+600000
  539713 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,12n,69p,1211b,430s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 57i,12n,69p,1225b,430s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
@@ -1389,7 +1385,7 @@ local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
 al/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
 l/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/
 texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on "Tables Climate OECD.pdf" (45 pages, 246309 bytes).
+Output written on "Tables Climate OECD.pdf" (45 pages, 246636 bytes).
 PDF statistics:
  473 PDF objects out of 1000 (max. 8388607)
  411 compressed objects within 5 object streams
