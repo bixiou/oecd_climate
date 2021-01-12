@@ -9,3 +9,5 @@ deprecated/videos/
 *desktop.ini
 videos/HD
 .Rproj.user
+*~$*
+*.tmp
