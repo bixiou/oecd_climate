@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.18)  12 JAN 2021 13:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.18)  12 JAN 2021 15:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1252,6 +1252,9 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 ] [22] (../pro_inter.tex) [23
 
 ] (../standard_opinion.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 (../standard_winner.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1263,7 +1266,11 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [24
 
 
-] [25] [26] (../investments_opinion.tex) (../investments_winner.tex)
+]
+
+LaTeX Warning: Text page 25 contains only floats.
+
+[25] [26] [27] (../investments_opinion.tex) (../investments_winner.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -1271,9 +1278,9 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[27
+[28
 
-] [28] [29] (../tax_transfers_opinion.tex) (../tax_transfers_winner.tex)
+] [29] [30] (../tax_transfers_opinion.tex) (../tax_transfers_winner.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -1281,9 +1288,9 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[30
+[31
 
-] [31] [32] (../CC_worries.tex) (../policy_climate.tex)
+] [32] [33] (../CC_worries.tex) (../policy_climate.tex)
 Overfull \hbox (38.20059pt too wide) in paragraph at lines 363--364
  [] 
  []
@@ -1291,31 +1298,31 @@ Overfull \hbox (38.20059pt too wide) in paragraph at lines 363--364
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[33
+[34
 
-] [34] (../revenue_carbon_tax.tex)
+] [35] (../revenue_carbon_tax.tex)
 Overfull \hbox (5.22423pt too wide) in paragraph at lines 373--374
  [] 
  []
 
 
-LaTeX Warning: Float too large for page by 19.89063pt on input line 377.
+LaTeX Warning: Float too large for page by 79.89063pt on input line 377.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[35] (../pref_thermal.tex) [36
+[36] (../pref_thermal.tex) [37
 
 
 
 ] (../pref_flight.tex)
 
-LaTeX Warning: Float too large for page by 18.89063pt on input line 400.
+LaTeX Warning: Float too large for page by 66.89063pt on input line 400.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[37] (../pref_beef.tex) (../pref_incentives.tex)
+[38] (../pref_beef.tex) (../pref_incentives.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -1323,26 +1330,38 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[38
+[39
 
 
-] [39] [40] (../pol_views.tex) [41
+]
+
+LaTeX Warning: Text page 40 contains only floats.
+
+
+Overfull \vbox (6.02737pt too high) has occurred while \output is active []
+
+
+[40] [41] (../pol_views.tex) [42
 
 ] (../pol_positions.tex)
 
-LaTeX Warning: Float too large for page by 18.89063pt on input line 450.
+LaTeX Warning: Float too large for page by 30.89063pt on input line 450.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[42] (../media.tex) (../survey_biased.tex)
+[43] (../media.tex) (../survey_biased.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[43
+[44
 
 
-] [44]
+]
+
+LaTeX Warning: Text page 45 contains only floats.
+
+[45]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 473.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 473.
  (./Tables Climate OECD.aux)
@@ -1353,13 +1372,13 @@ Package rerunfilecheck Info: File `"Tables Climate OECD".out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 473.
  ) 
 Here is how much of TeX's memory you used:
- 32159 strings out of 492616
- 606534 string characters out of 6129481
+ 32160 strings out of 492616
+ 606541 string characters out of 6129481
  763897 words of memory out of 5000000
  35359 multiletter control sequences out of 15000+600000
  539713 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,12n,69p,1149b,430s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 57i,12n,69p,1211b,430s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
@@ -1370,10 +1389,10 @@ local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
 al/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
 l/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/
 texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on "Tables Climate OECD.pdf" (44 pages, 236590 bytes).
+Output written on "Tables Climate OECD.pdf" (45 pages, 246309 bytes).
 PDF statistics:
- 469 PDF objects out of 1000 (max. 8388607)
- 408 compressed objects within 5 object streams
- 103 named destinations out of 1000 (max. 500000)
+ 473 PDF objects out of 1000 (max. 8388607)
+ 411 compressed objects within 5 object streams
+ 104 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 
