@@ -76,7 +76,7 @@ package("devtools")
 # install_github("rstudio/webshot2")
 # package("webshot2")
 package("htmlwidgets")
-# package("magick") # Bug sur Ubuntu, ne surtout pas décommenter sur Ubuntu
+package("magick") # Bug sur Ubuntu, ne surtout pas décommenter sur Ubuntu
 library(magick) # TODO
 # install_github(repo = "MatthieuStigler/RCompAngrist", subdir = "RCompAngrist")
 # package("RCompAngrist")
