@@ -16,3 +16,4 @@ save_plotly(burden_sharing_US)
 (CC_exists_US <- barres(vars = "CC_exists", df = e, miss = T, labels="In your opinion, climate change is..."))
 save_plotly(CC_exists_US)
 # Tip: if you encounter a bug with the width of the bars, try to passe the argument: thin = F 
+

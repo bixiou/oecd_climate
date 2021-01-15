@@ -1,0 +1,193 @@
+Report created: 
+	1/15/2021	5:54:54 AM
+
+Project name: Globle_02_C - 08.aep
+
+Source files collected to: 
+	H:\Sufyan\Umair\Globle_02\Project\Globle_02_C [Post]
+
+Source files collected: All
+
+Collected comps:  
+	Globle_02 - Main
+	Global-01
+	Global-02
+	Global-03
+	Global-04
+	Global-05
+	Global-06
+	Global-07
+	Global-08
+	Global-09
+	Global-10
+	Global-11
+	Global-12
+	Global-13
+	Global-14
+	Global-15
+	Global-16
+	Global-17
+	Global-18
+	Global-19
+	Global-20
+	Global-21
+	Circle_2
+	Circle_1
+	Yellow_Car
+	Light Leak Transition 1
+	Videos
+	Car_1
+	Global_Beach-15
+	Wave
+	Waves
+	Delete
+	Graph
+	001
+	000
+	Air Polution
+	Circle_3
+	Beach _2
+	Savaana
+	Air Polution_2
+	Global-16-b
+	Tomatos_1
+	Tomatos_2
+	
+Number of collected files:  97
+
+Size of collected files:  57.6 MB
+
+Collected source files: 
+	H:\Sufyan\Umair\Globle_02\Input\Vo\Globle_02 - Vo.mpeg
+	H:\Sufyan\Umair\Globle_02\Input\Vo\Pickups VO (1).mp3
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\05.png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global-01.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global-02.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global-03.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global-04.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global-05.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global-06.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global-07.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global-08.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global-09.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global-10.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global-11.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global-12.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global-13.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global-14.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global-15.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global-16-b.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global-17.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global-18.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global-19.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global-20.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global-21.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Ai\Global_Beach-15.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Air Polution.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Air Polution_2.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Beach _2.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Capture.JPG
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\f0d51901-83b0-48de-9161-f1ded4b20a94.jpg
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Pasted File at December 5, 2020 12_09 PM.png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Poles.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Savaana.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\001.ai
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (0).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (1).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (10).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (11).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (12).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (13).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (14).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (15).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (16).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (17).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (18).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (19).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (2).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (20).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (21).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (22).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (23).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (24).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (25).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (26).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (27).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (28).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (29).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (3).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (30).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (31).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (32).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (33).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (34).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (35).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (36).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (37).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (38).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (39).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (4).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (40).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (41).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (42).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (43).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (44).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (45).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (46).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (47).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (48).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (49).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (5).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (50).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (51).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (52).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (53).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (54).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (55).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (56).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (57).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (58).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (59).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (6).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (60).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (61).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (7).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (8).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\SS\co2-concentration-long-term (9).png
+	H:\Sufyan\Umair\Globle_02\Output\Postfootage\Tomatos.ai
+	
+Rendering plug-ins:
+	Classic 3D
+	
+Effects used:  11
+
+Effect:  \½ý 
+	
+Effect:  Brightness & Contrast
+	
+Effect:  Change to Color
+	
+Effect:  Fill
+	
+Effect:  Hue/Saturation
+	
+Effect:  Radial Wipe
+	
+Effect:  Shatter
+	
+Effect:  Stroke
+	
+Effect:  Tint
+	
+Effect:  Turbulent Noise
+	
+Effect:  Wave Warp
+	
+
+Layer:  Text Layer
+	External dependencies:  
+		Font family: “Arial”, Font style: “Regular”
+		Font family: “DBHelvethaicaX”, Font style: “55Regular”
+		Font family: “Montserrat”, Font style: “Black”
+		Font family: “Myriad Pro”, Font style: “Regular”
+

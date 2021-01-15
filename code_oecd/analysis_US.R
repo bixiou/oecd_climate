@@ -66,15 +66,27 @@ decrit("envi", data = e)
 
 
 ##### Essay: politics ######
-decrit("politics_field", data = e)
-
+decrit(e$politics_field!="")
+Label(e$politics_field)
+e$politics_field
+# proposed variables: liberal, conservative, democrat, republican, independent, moderate / middle of the road, leaning dummy, 
+#     abortion, reduce govt, reduce inequality, against discrimination, reduce deficit, climate, healthcare, other proposal, proposal dummy
+# + in every field: meaningless/irrelevant, wrong grammar/spelling, detailed, "good"
 
 ##### Essay: climate change ######
-decrit("CC_field", data = e)
+decrit(e$CC_field!="")
+Label(e$CC_field)
+e$CC_field
+# proposed variables: exists, hoax/doesn't exist, man-made, natural, existence dummy, specific factors mentioned, reaction needed / threat, 
+#     no reaction needed, not a problem, don't know, impacts, fatalism, solutions/hope
 
 
-##### Essay: climate policies ######
-decrit("policies_field", data = e) # TODO length
+##### Essay: climate policies ###### 
+decrit(e$policies_field!="")# TODO length
+Label(e$policies_field)
+e$policies_field
+# proposed variables: yes, no, neither yes or no, renewable, Paris, international effort, coal, cars, fossil fuels, preserve livelihood, mention political actors (except institutions),
+#     pro govt funding/subsidies, anti govt funding, guidelines/regulation, adaptation, waste, carbon tax, other proposal proposal dummy
 
 
 ##### Climate change (attitudes and risks) ######
