@@ -8,7 +8,7 @@ package <- function(p) {
   library(p, character.only = TRUE)
 } # loads packages with automatical install if needed
 
-Paths = c("/Users/Bluebii/Library/Mobile Documents/com~apple~CloudDocs/TRAVAIL/Jobs/Stantcheva_2020:21/OECD/oecd_climate/code_oecd", "C:/Users/afabre/Google Drive/Economie/Travail/oecd_climate/code_oecd")
+Paths = c("/Users/Bluebii/Library/Mobile Documents/com~apple~CloudDocs/TRAVAIL/Jobs/Stantcheva_2020:21/OECD/oecd_climate/code_oecd", "C:/Users/afabre/Documents/www/oecd_climate/code_oecd")
 names(Paths) = c("Bluebii", "afabre")
 setwd(Paths[Sys.info()[7]])
 
@@ -80,7 +80,7 @@ package("devtools")
 # install_github("rstudio/webshot2")
 # package("webshot2")
 package("htmlwidgets")
-package("magick") # Bug sur Ubuntu, ne surtout pas décommenter sur Ubuntu
+# package("magick") # Bug sur Ubuntu, ne surtout pas décommenter sur Ubuntu
 library(magick) # TODO
 # install_github(repo = "MatthieuStigler/RCompAngrist", subdir = "RCompAngrist")
 # package("RCompAngrist")

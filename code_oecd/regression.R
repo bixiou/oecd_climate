@@ -16,64 +16,7 @@ us <- readRDS("../data/US_pilot_clean_210115.rds")
 
 ##### 1. Creation control variables #####
 
-# TODO: all these variables should better be created inside "convert" in preparation.
-# race TODO: problem: someone can be at the same time Hispanic and black or white. Why don't you keep the dummies race_white, race_black, race_hispanic?
-us$race_white_only <- 0
-us[us$race_white == TRUE & us$race_black == FALSE & us$race_hispanic == FALSE & us$race_asian == FALSE & us$race_native == FALSE, "race_white_only"] <- 1
-#us[us$race_black == TRUE, "race"] <- "Black"
-#us[us$race_hispanic == TRUE, "race"] <- "Hispanic"
-#us[us$race_asian == TRUE | us$race_native == TRUE | us$race_hawaii == TRUE | us$race_other_choice == TRUE | us$race_pnr == TRUE , "race"] <- "Other"
-
-#gender: Other set as Male for the moment, see if lot of similar answers in final data
-us$gender_dum <- as.character(us$gender)
-us[us$gender == "Other", "gender_dum"] <- "Male"
-
-
-# children
-us$children <- 0
-us[us$nb_children >= 1, "children"] <- 1
-
-# college
-us$college <- "No college"
-us[us$education >= 5, "college"] <- "College Degree"
-
-# employment
-us$employment_agg <-  "Not working"
-us[us$employment_status == "Student", "employment_agg"] <- "Student"
-us[us$employment_status == "Retired", "employment_agg"] <- "Retired"
-us[us$employment_status == "Self-employed" | us$employment_status == "Full-time employed" | us$employment_status == "Part-time employed", "employment_agg"] <- "Working"
-
-# age
-us$age_agg <- NULL
-us[us$age %in% 18:29, "age_agg"] <- "18-29"
-us[us$age %in% 30:49, "age_agg"] <- "30-49"
-us[us$age %in% 50:87, "age_agg"] <- "50-87"
-
-# political position
-# AF TODO I'd rather use the dummy vote=='Biden' than a variable vote_dum with 4 modalities
-us$vote_dum <- as.character(us$vote)
-us[us$vote_participation == 2, "vote_dum"] <- "Other" # add non-voters as others
-
-# treatment
-us$treatment_agg <- NULL
-us[us$treatment_policy == 0 & us$treatment_climate == 0, "treatment_agg"] <- "None"
-us[us$treatment_policy == 0 & us$treatment_climate == 1, "treatment_agg"] <- "Climate treatment only"
-us[us$treatment_policy == 1 & us$treatment_climate == 0, "treatment_agg"] <- "Policy treatment only"
-us[us$treatment_policy == 1 & us$treatment_climate == 1, "treatment_agg"] <- "Both"
-
-# Controls var as factors
-us$race_white_only <- as.factor(us$race_white_only)
-us$gender_dum <- as.factor(us$gender_dum)
-us$children <- as.factor(us$children)
-us$college <- as.factor(us$college)
-us$employment_agg <- as.factor(us$employment_agg)
-us$income_factor <- as.factor(us$income)
-us$age_agg <- as.factor(us$age_agg)
-us$vote_dum <- as.factor(us$vote_dum)
-us$treatment_agg <- as.factor(us$treatment_agg)
-
-us$treatment_agg <- relevel(us$treatment_agg, ref ="None")
-us$vote_dum <- relevel(us$vote_dum, ref ="Other")
+# moved inside "convert" in preparation.
 
 
 ##### 2. Regressions #####

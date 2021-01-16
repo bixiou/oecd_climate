@@ -909,8 +909,8 @@ convert <- function(e, country) {
                         "standard_support", "hit_by_covid", "member_environmental_orga", "relative_environmentalist"
               ), names(e))) {
     temp <- 1*(e[j][[1]] %in% text_yes) - (e[j][[1]] %in% text_no) - 0.1*(e[j][[1]] %in% text_pnr)
-    e[j][[1]] <- as.item(temp, labels = structure(c(0,-1,-0.1,1), names = c("No","PNR","Yes")),
-                         missing.values = c("","PNR"), annotation=attr(e[j][[1]], "label"))
+    e[j][[1]] <- as.item(temp, labels = structure(c(-1,-0.1,1), names = c( "No","PNR","Yes")),
+                         missing.values = c("",NA,"PNR"), annotation=attr(e[j][[1]], "label"))
     # e[j][[1]] <- as.item(as.character(e[j][[1]]), labels = structure(yes_no_names, names = c("NA","No","PNR","Yes")),
     #             missing.values = c("","PNR"), annotation=attr(e[j][[1]], "label"))
   }
@@ -963,6 +963,7 @@ convert <- function(e, country) {
   variables_political_identity <<- c("liberal", "conservative", "humanist", "patriot", "apolitical", "environmentalist", "feminist", "political_identity_other")
   variables_socio_demo <<- c("gender", "age", "region", "race_white", "education", "hit_by_covid", "employment_status", "income", "wealth", "core_metropolitan", "nb_children", "hh_children", "hh_adults", "heating", "km_driven", "flights", "frequency_beef")
   variables_main_controls <<- c("gender", "age", "income", "education", "hit_by_covid", "employment_status", "Left_right", "(vote == 'Biden')")
+  variables_pro <<- names(e)[grepl('^pro_', names(e))]
   
   text_strongly_agree <- c( "US" = "Strongly agree",  "US" = "I fully agree")
   text_somewhat_agree <- c( "US" = "Somewhat agree",  "US" = "I somewhat agree")
@@ -1168,7 +1169,7 @@ convert <- function(e, country) {
   
   temp <-  (e$transport_available %in% text_transport_available_yes_limited) + 2 * (e$transport_available %in% text_transport_available_yes_easily) - (e$transport_available %in% text_transport_available_not_at_all) - 0.1*(e$transport_available %in% text_pnr)
   e$transport_available <- as.item(temp, labels = structure(c(-1:2,-0.1),
-                        names = c("Not at all", "Not so much", "Yes but limited", "Yes, easily")),
+                        names = c("Not at all", "Not so much", "Yes but limited", "Yes, easily", "PNR")),
                       missing.values=-0.1, annotation=Label(e$transport_available))
   
   temp <-  (e$trust_govt %in% text_trust_govt_sometimes) + 2 * (e$trust_govt %in% text_trust_govt_often) + 3 * (e$trust_govt %in% text_trust_govt_always) - 0.1*(e$trust_govt %in% text_pnr)
@@ -1190,6 +1191,8 @@ convert <- function(e, country) {
   e$envi[e$envi %in% text_envi_collapse] <- "Useless: collapse"
   e$envi[e$envi %in% text_envi_anti_envi] <- "Other goals"
   e$envi[e$envi %in% text_envi_progress] <- "Not a pb: progress"
+  e$envi <- as.item(as.factor(e$envi), missing.values = c("PNR", "", NA), annotation=paste(attr(e$envi, "label")))
+  
     
   temp <-  (e$CC_exists %in% text_CC_exists_human) - (e$CC_exists %in% text_CC_exists_not) - 0.1 * (e$CC_exists %in% text_pnr)
   e$CC_exists <- as.item(temp, labels = structure(c(-1:1,-0.1),
@@ -1207,11 +1210,12 @@ convert <- function(e, country) {
   e$CC_stoppable[e$CC_stoppable %in% text_CC_stoppable_optimistic] <- "Progress will suffice"
   e$CC_stoppable[e$CC_stoppable %in% text_CC_stoppable_policies] <- "Policies & awareness will"
   e$CC_stoppable[e$CC_stoppable %in% text_CC_stoppable_pessimistic] <- "Should but not happening"
+  e$CC_stoppable <- relevel(relevel(relevel(relevel(relevel(as.factor(e$CC_stoppable), "No influence"), "Better to adapt"), "Should but not happening"), "Policies & awareness will"), "Progress will suffice")
     
   temp <-  (e$CC_talks %in% text_CC_talks_monthly) - (e$CC_talks %in% text_CC_talks_never) - 0.1 * (e$CC_talks %in% text_pnr)
   e$CC_talks <- as.item(temp, labels = structure(c(-1:1,-0.1),
-                        names = c("Never","Yearly","Monthly","PNR")),
-                      annotation=Label(e$CC_talks))
+                        names = c("Never","Yearly","Monthly","PNR")), 
+                        missing.values=-0.1, annotation=Label(e$CC_talks))
   
   temp <-  2 * (e$equal_quota %in% text_equal_quota_no_redistribution) + (e$equal_quota %in% text_equal_quota_yes) - (e$equal_quota %in% text_equal_quota_no_grand_fathering) - 2 * (e$equal_quota %in% text_equal_quota_no_restriction) - 0.1 * (e$equal_quota %in% text_pnr)
   e$equal_quota <- as.item(temp, labels = structure(c(-2:2,-0.1),
@@ -1223,9 +1227,13 @@ convert <- function(e, country) {
                         names = c("No","Only if international agreement", "Yes","PNR")),
                       missing.values=-0.1, annotation=Label(e$country_should_act))
   
-  e$country_should_act_condition[e$country_should_act_condition %in% text_should_act_condition_compensation] <- "Compensation"
-  e$country_should_act_condition[e$country_should_act_condition %in% text_should_act_condition_reciprocity] <- "Reciprocity"
-  e$country_should_act_condition[e$country_should_act_condition %in% text_should_act_condition_free_riding] <- "Free-riding"
+  # e$country_should_act_condition[e$country_should_act_condition %in% text_should_act_condition_compensation] <- 1
+  # e$country_should_act_condition[e$country_should_act_condition %in% text_should_act_condition_reciprocity] <- 0
+  # e$country_should_act_condition[e$country_should_act_condition %in% text_should_act_condition_free_riding] <- -1
+  temp <- (e$country_should_act_condition %in% text_should_act_condition_compensation) - (e$country_should_act_condition %in% text_should_act_condition_free_riding) - 0.1 * (e$country_should_act_condition %in% text_pnr)
+  e$country_should_act_condition <- as.item(temp, labels = structure(c(-1:1), # No PNR option here, but question asked only if Yes to country_should_act
+                                                                     names = c("Free-riding","Reciprocity", "Compensation")),
+                                             annotation=Label(e$country_should_act))
   
   for (v in c(variables_side_effects, variables_employment)) { 
     temp <-  (e[[v]] %in% text_effects_positive) - (e[[v]] %in% text_effects_negative) - 0.1 * (e[[v]] %in% text_pnr)
@@ -1337,6 +1345,65 @@ convert <- function(e, country) {
   e$rush_treatment[is.na(e$rush_treatment)] <- F
   
   e$rush <- e$rush_treatment | (e$duration < 12)
+  
+  # race TODO: problem: someone can be at the same time Hispanic and black or white. Why don't you keep the dummies race_white, race_black, race_hispanic?
+  e$race_white_only <- 0
+  e[e$race_white == TRUE & e$race_black == FALSE & e$race_hispanic == FALSE & e$race_asian == FALSE & e$race_native == FALSE, "race_white_only"] <- 1
+  #e[e$race_black == TRUE, "race"] <- "Black"
+  #e[e$race_hispanic == TRUE, "race"] <- "Hispanic"
+  #e[e$race_asian == TRUE | e$race_native == TRUE | e$race_hawaii == TRUE | e$race_other_choice == TRUE | e$race_pnr == TRUE , "race"] <- "Other"
+  
+  #gender: Other set as Male for the moment, see if lot of similar answers in final data
+  e$gender_dum <- as.character(e$gender)
+  e[e$gender == "Other", "gender_dum"] <- "Male"
+  
+  
+  # children
+  e$children <- 0
+  e[e$nb_children >= 1, "children"] <- 1
+  
+  # college
+  e$college <- "No college"
+  e[e$education >= 5, "college"] <- "College Degree"
+  
+  # employment
+  e$employment_agg <-  "Not working"
+  e[e$employment_status == "Student", "employment_agg"] <- "Student"
+  e[e$employment_status == "Retired", "employment_agg"] <- "Retired"
+  e[e$employment_status == "Self-employed" | e$employment_status == "Full-time employed" | e$employment_status == "Part-time employed", "employment_agg"] <- "Working"
+  
+  # age
+  e$age_agg <- NULL
+  e[e$age %in% 18:29, "age_agg"] <- "18-29"
+  e[e$age %in% 30:49, "age_agg"] <- "30-49"
+  e[e$age %in% 50:87, "age_agg"] <- "50-87"
+  
+  # political position
+  # AF TODO I'd rather use the dummy vote=='Biden' than a variable vote_dum with 4 modalities
+  e$vote_dum <- as.character(e$vote)
+  e[e$vote_participation == 2, "vote_dum"] <- "Other" # add non-voters as others
+  
+  # treatment
+  e$treatment_agg <- NULL
+  e[e$treatment_policy == 0 & e$treatment_climate == 0, "treatment_agg"] <- "None"
+  e[e$treatment_policy == 0 & e$treatment_climate == 1, "treatment_agg"] <- "Climate treatment only"
+  e[e$treatment_policy == 1 & e$treatment_climate == 0, "treatment_agg"] <- "Policy treatment only"
+  e[e$treatment_policy == 1 & e$treatment_climate == 1, "treatment_agg"] <- "Both"
+  
+  # Controls var as factors
+  e$race_white_only <- as.factor(e$race_white_only)
+  e$gender_dum <- as.factor(e$gender_dum)
+  e$children <- as.factor(e$children)
+  e$college <- as.factor(e$college)
+  e$employment_agg <- as.factor(e$employment_agg)
+  e$income_factor <- as.factor(e$income)
+  e$age_agg <- as.factor(e$age_agg)
+  e$vote_dum <- as.factor(e$vote_dum)
+  e$treatment_agg <- as.factor(e$treatment_agg)
+  
+  e$treatment_agg <- relevel(e$treatment_agg, ref ="None")
+  e$vote_dum <- relevel(e$vote_dum, ref ="Other")
+  
   
   # e <- e[, -c(9:17)] 
   return(e)
