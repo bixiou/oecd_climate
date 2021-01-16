@@ -13,302 +13,599 @@ relabel_and_rename <- function(e) {
   #   print(paste(i, label(e[[i]])))
   # }
   
-  # names\(e\[\[([0-9]*)\]\]\) -> names(e)[$1]
-  names(e)[1] <- "date"
-  names(e)[2] <- "date_end"
-  names(e)[3] <- "statut_reponse"
-  names(e)[4] <- "ip"
-  names(e)[5] <- "progress"
-  names(e)[6] <- "time"
-  names(e)[7] <- "terminated"
-  names(e)[8] <- "date_recored"
-  names(e)[9] <- "ID_qualtrics"
-  names(e)[10] <- "name"
-  names(e)[11] <- "firstname"
-  names(e)[12] <- "mmail"
-  names(e)[13] <- "ref"
-  names(e)[14] <- "lat"
-  names(e)[15] <- "long"
-  names(e)[16] <- "distr"
-  names(e)[17] <- "lang"
-  names(e)[18] <- "gender"
-  names(e)[19] <- "age"
-  names(e)[20] <- "region"
-  names(e)[21] <- "zipcode"
-  names(e)[22] <- "urbanity"
-  names(e)[23] <- "race_white"
-  names(e)[24] <- "race_black"
-  names(e)[25] <- "race_hispanic"
-  names(e)[26] <- "race_asian"
-  names(e)[27] <- "race_native"
-  names(e)[28] <- "race_hawaii"
-  names(e)[29] <- "race_other_choice"
-  names(e)[30] <- "race_pnr"
-  names(e)[31] <- "race_other"
-  names(e)[32] <- "speaks_well"
-  names(e)[33] <- "education" 
-  names(e)[34] <- "employment_status"
-  names(e)[35] <- "hit_by_covid"
-  names(e)[36] <- "income"
-  names(e)[37] <- "home_tenant"
-  names(e)[38] <- "home_owner"
-  names(e)[39] <- "home_landlord"
-  names(e)[40] <- "home_hosted"
-  names(e)[41] <- "wealth"
-  names(e)[42] <- "nb_children"
-  names(e)[43] <- "hh_adults"
-  names(e)[44] <- "hh_children"
-  names(e)[45] <- "heating"
-  names(e)[46] <- "km_driven"
-  names(e)[47] <- "flights"
-  names(e)[48] <- "frequency_beef"
-  names(e)[49] <- "transport_work"
-  names(e)[50] <- "transport_shopping"
-  names(e)[51] <- "transport_leisure"
-  names(e)[52] <- "transport_available"
-  names(e)[53] <- "trust_people"
-  names(e)[54] <- "trust_govt"
-  names(e)[55] <- "trust_public_spending"
-  names(e)[56] <- "statist"
-  names(e)[57] <- "inequality_problem"
-  names(e)[58] <- "future_gdp"
-  names(e)[59] <- "envi" # longer name? TODO
-  names(e)[60] <- "envi_order_collapse"
-  names(e)[61] <- "envi_order_progress"
-  names(e)[62] <- "envi_order_pro_envi"
-  names(e)[63] <- "envi_order_anti_envi"
-  names(e)[64] <- "envi_order_pnr"
-  names(e)[65] <- "Q146_First"
-  names(e)[66] <- "Q146_Last"
-  names(e)[67] <- "duration_politics_field"
-  names(e)[68] <- "Q146_Click"
-  names(e)[69] <- "politics_field"
-  names(e)[70] <- "Q145_First"
-  names(e)[71] <- "Q145_Last"
-  names(e)[72] <- "duration_CC_field"
-  names(e)[73] <- "Q145_Click"
-  names(e)[74] <- "CC_field"
-  names(e)[75] <- "Q144_First"
-  names(e)[76] <- "Q144_Last"
-  names(e)[77] <- "duration_policies_field"
-  names(e)[78] <- "Q144_Click"
-  names(e)[79] <- "policies_field" # specify climate? TODO
-  names(e)[80] <- "CC_exists" 
-  names(e)[81] <- "CC_dynamics"
-  names(e)[82] <- "CC_factor_beef"
-  names(e)[83] <- "CC_factor_nuclear"
-  names(e)[84] <- "CC_factor_car"
-  names(e)[85] <- "CC_responsible_each"
-  names(e)[86] <- "CC_responsible_rich"
-  names(e)[87] <- "CC_responsible_govts"
-  names(e)[88] <- "CC_responsible_companies"
-  names(e)[89] <- "CC_responsible_past" 
-  names(e)[90] <- "CC_responsible_foreign" 
-  names(e)[91] <- "CC_responsible_nature"
-  names(e)[92] <- "CC_responsible_denial"
-  names(e)[93] <- "CC_responsible_order_each"
-  names(e)[94] <- "CC_responsible_order_rich"
-  names(e)[95] <- "CC_responsible_order_govts"
-  names(e)[96] <- "CC_responsible_order_companies"
-  names(e)[97] <- "CC_responsible_order_past"
-  names(e)[98] <- "CC_responsible_order_foreign"
-  names(e)[99] <- "CC_responsible_order_nature"
-  names(e)[100] <- "CC_responsible_order_denial"
-  names(e)[101] <- "CC_stoppable"
-  names(e)[102] <- "CC_stoppable_order_no_influence"
-  names(e)[103] <- "CC_stoppable_order_adapt"
-  names(e)[104] <- "CC_stoppable_order_pessimistic"
-  names(e)[105] <- "CC_stoppable_order_policies"
-  names(e)[106] <- "CC_stoppable_order_optimistic"
-  names(e)[107] <- "CC_stoppable_order_pnr"
-  names(e)[108] <- "CC_talks"
-  names(e)[109] <- "CC_affected_1960"
-  names(e)[110] <- "CC_affected_1990"
-  names(e)[111] <- "CC_affected_2020"
-  names(e)[112] <- "CC_affected_2050"
-  names(e)[113] <- "CC_affected_none"
-  names(e)[114] <- "CC_affected_pnr"
-  names(e)[115] <- "change_lifestyle"
-  names(e)[116] <- "change_condition_policies"
-  names(e)[117] <- "change_condition_income"
-  names(e)[118] <- "change_condition_all"
-  names(e)[119] <- "change_condition_no_rich"
-  names(e)[120] <- "change_condition_no_selfish"
-  names(e)[121] <- "change_condition_no_denial"
-  names(e)[122] <- "change_condition_already"
-  names(e)[123] <- "change_condition_try"
-  names(e)[124] <- "change_condition_pnr"
-  names(e)[125] <- "effect_policies_opportunity"
-  names(e)[126] <- "effect_policies_cost"
-  names(e)[127] <- "effect_policies_lifestyle"
-  names(e)[128] <- "effect_policies_pnr"
-  names(e)[129] <- "kaya_techno"
-  names(e)[130] <- "kaya_waste"
-  names(e)[131] <- "kaya_wealth"
-  names(e)[132] <- "kaya_overconsumption"
-  names(e)[133] <- "kaya_overpopulation"
-  names(e)[134] <- "kaya_none"
-  names(e)[135] <- "kaya_other_choice"
-  names(e)[136] <- "kaya_pnr"
-  names(e)[137] <- "kaya_other"
-  names(e)[138] <- "Q147_First"
-  names(e)[139] <- "Q147_Last"
-  names(e)[140] <- "duration_burden_sharing"
-  names(e)[141] <- "Q147_Click"
-  names(e)[142] <- "scale_local"
-  names(e)[143] <- "scale_state"
-  names(e)[144] <- "scale_federal"
-  names(e)[145] <- "scale_global"
-  names(e)[146] <- "scale_pnr"
-  names(e)[147] <- "burden_sharing_income"
-  names(e)[148] <- "burden_sharing_emissions"
-  names(e)[149] <- "burden_sharing_cumulative"
-  names(e)[150] <- "burden_sharing_rich_pay"
-  names(e)[151] <- "burden_sharing_poor_receive"
-  names(e)[152] <- "equal_quota"
-  names(e)[153] <- "country_should_act"
-  names(e)[154] <- "country_should_act_condition" # If yes to country_should_act
-  names(e)[155] <- "pro_global_assembly"
-  names(e)[156] <- "pro_global_tax" # TODO: check % & allowed
-  names(e)[157] <- "pro_tax_1p"
-  names(e)[158] <- "Q140_First"
-  names(e)[159] <- "Q140_Last"
-  names(e)[160] <- "duration_treatment_climate"
-  names(e)[161] <- "Q140_Click"
-  names(e)[162] <- "Q141_First"
-  names(e)[163] <- "Q141_Last"
-  names(e)[164] <- "duration_treatment_policy"
-  names(e)[165] <- "Q141_Click"
-  names(e)[166] <- "standard_exists" 
-  names(e)[167] <- "standard_trust"
-  names(e)[168] <- "standard_effective"
-  names(e)[169] <- "standard_employment"
-  names(e)[170] <- "standard_side_effects"
-  names(e)[171] <- "standard_incidence_poor"
-  names(e)[172] <- "standard_incidence_middle"
-  names(e)[173] <- "standard_incidence_rich"
-  names(e)[174] <- "standard_incidence_urban"
-  names(e)[175] <- "standard_incidence_rural"
-  names(e)[176] <- "standard_incidence_self"
-  names(e)[177] <- "standard_support"
-  names(e)[178] <- "investments_trust"
-  names(e)[179] <- "investments_effective"
-  names(e)[180] <- "investments_employment" 
-  names(e)[181] <- "investments_side_effects"
-  names(e)[182] <- "investments_incidence_poor"
-  names(e)[183] <- "investments_incidence_middle"
-  names(e)[184] <- "investments_incidence_rich"
-  names(e)[185] <- "investments_incidence_urban"
-  names(e)[186] <- "investments_incidence_rural"
-  names(e)[187] <- "investments_incidence_self"
-  names(e)[188] <- "investments_support"
-  names(e)[189] <- "Q142_First"
-  names(e)[190] <- "Q142_Last"
-  names(e)[191] <- "duration_tax_transfers"
-  names(e)[192] <- "Q142_Click"
-  names(e)[193] <- "tax_transfers_trust"
-  names(e)[194] <- "tax_transfers_effective"
-  names(e)[195] <- "tax_transfers_employment"
-  names(e)[196] <- "tax_transfers_side_effects" 
-  names(e)[197] <- "tax_transfers_incidence_poor"
-  names(e)[198] <- "tax_transfers_incidence_middle"
-  names(e)[199] <- "tax_transfers_incidence_rich" 
-  names(e)[200] <- "tax_transfers_incidence_urban" 
-  names(e)[201] <- "tax_transfers_incidence_rural" 
-  names(e)[202] <- "tax_transfers_incidence_self"
-  names(e)[203] <- "tax_transfers_support" 
-  names(e)[204] <- "Q143_First" 
-  names(e)[205] <- "Q143_Last" 
-  names(e)[206] <- "duration_policies"
-  names(e)[207] <- "Q143_Click"
-  names(e)[208] <- "CC_worries"
-  names(e)[209] <- "policy_tax_flying"
-  names(e)[210] <- "policy_tax_fuels"
-  names(e)[211] <- "policy_insulation"
-  names(e)[212] <- "policy_ban_city_centers"
-  names(e)[213] <- "policy_subsidies"
-  names(e)[214] <- "policy_climate_fund"
-  names(e)[215] <- "policy_order_tax_flying"
-  names(e)[216] <- "policy_order_tax_fuels"
-  names(e)[217] <- "policy_order_insulation"
-  names(e)[218] <- "policy_order_ban_city_centers" 
-  names(e)[219] <- "policy_order_subsidies"
-  names(e)[220] <- "policy_order_climate_fund"
-  names(e)[221] <- "tax_transfer_constrained_hh" # don't put "s" at transfers because it would create a bug
-  names(e)[222] <- "tax_transfer_poor"
-  names(e)[223] <- "tax_transfer_all"
-  names(e)[224] <- "tax_rebates_affected_firms"
-  names(e)[225] <- "tax_investments"
-  names(e)[226] <- "tax_subsidies"
-  names(e)[227] <- "tax_reduction_deficit"
-  names(e)[228] <- "tax_reduction_corporate_tax"
-  names(e)[229] <- "tax_reduction_personal_tax"
-  names(e)[230] <- "tax_other_choice"
-  names(e)[231] <- "tax_other"
-  names(e)[232] <- "tax_order_transfers_constrained_hh"
-  names(e)[233] <- "tax_order_transfers_poor"
-  names(e)[234] <- "tax_order_transfers_all"
-  names(e)[235] <- "tax_order_rebates_affected_firms"
-  names(e)[236] <- "tax_order_investments"
-  names(e)[237] <- "tax_order_subsidies"
-  names(e)[238] <- "tax_order_reduction_deficit"
-  names(e)[239] <- "tax_order_reduction_corporate_tax"
-  names(e)[240] <- "tax_order_reduction_personal_tax"
-  names(e)[241] <- "tax_order_other"
-  names(e)[242] <- "insulation_compulsory"
-  names(e)[243] <- "flight_quota_1000km" # TODO variant
-  names(e)[244] <- "flight_quota_3000km"
-  names(e)[245] <- "flight_quota_one_trip"
-  names(e)[246] <- "beef_tax"
-  names(e)[247] <- "beef_subsidies_vegetables"
-  names(e)[248] <- "beef_subsidies_removal"
-  names(e)[249] <- "beef_ban_intensive"
-  names(e)[250] <- "beef_pnr"
-  names(e)[251] <- "beef_order_tax"
-  names(e)[252] <- "beef_order_subsidies_vegetables"
-  names(e)[253] <- "beef_order_subsidies_removal"
-  names(e)[254] <- "beef_order_ban_intensive"
-  names(e)[255] <- "beef_order_pnr"
-  names(e)[256] <- "ban_incentives"
-  names(e)[257] <- "wtp"
-  names(e)[258] <- "interest_politics" 
-  names(e)[259] <- "member_environmental_orga"
-  names(e)[260] <- "relative_environmentalist"
-  names(e)[261] <- "far_left"
-  names(e)[262] <- "left"
-  names(e)[263] <- "center"
-  names(e)[264] <- "right"
-  names(e)[265] <- "far_right"
-  names(e)[266] <- "liberal"
-  names(e)[267] <- "conservative"
-  names(e)[268] <- "humanist"
-  names(e)[269] <- "patriot"
-  names(e)[270] <- "apolitical"
-  names(e)[271] <- "environmentalist"
-  names(e)[272] <- "feminist"
-  names(e)[273] <- "political_identity_other_choice"
-  names(e)[274] <- "political_identity_other"
-  names(e)[275] <- "media"
-  names(e)[276] <- "vote_participation"
-  names(e)[277] <- "vote"
-  names(e)[278] <- "vote_other"
-  names(e)[279] <- "survey_biased"
-  names(e)[280] <- "comment_field"
-  names(e)[281] <- "language"
-  names(e)[282] <- "finished"
-  names(e)[283] <- "excluded"
-  names(e)[284] <- "duration"
-  names(e)[285] <- "PSID"
-  names(e)[286] <- "PID"
-  names(e)[287] <- "urban_category"
-  names(e)[288] <- "treatment_policy"
-  names(e)[289] <- "treatment_climate"
-  names(e)[290] <- "Preferenceforbansvs.incentives_DO_Q16.5"
-  names(e)[291] <- "Preferenceforbansvs.incentives_DO_Q16.4"
-  names(e)[292] <- "Preferenceforbansvs.incentives_DO_Q16.2"
-  names(e)[293] <- "Preferenceforbansvs.incentives_DO_Q16.3"
-  names(e)[294] <- "Preferenceforbansvs.incentives_DO_Q16.1"
-  names(e)[295] <- "Preferenceforbansvs.incentives_DO_Q16.6"
+  # names\(e\)\[[0-9]*\] <- (".*")
+  names(e) <- c("date",
+  "date_end",
+  "statut_reponse",
+  "ip",
+  "progress",
+  "time",
+  "terminated",
+  "date_recored",
+  "ID_qualtrics",
+  "name",
+  "firstname",
+  "mmail",
+  "ref",
+  "lat",
+  "long",
+  "distr",
+  "lang",
+  "gender",
+  "age",
+  "region",
+  "zipcode",
+  "urbanity",
+  "race_white",
+  "race_black",
+  "race_hispanic",
+  "race_asian",
+  "race_native",
+  "race_hawaii",
+  "race_other_choice",
+  "race_pnr",
+  "race_other",
+  "speaks_well",
+  "education", 
+  "employment_status",
+  "hit_by_covid",
+  "income",
+  "home_tenant",
+  "home_owner",
+  "home_landlord",
+  "home_hosted",
+  "wealth",
+  "nb_children",
+  "hh_adults",
+  "hh_children",
+  "heating",
+  "km_driven",
+  "flights",
+  "frequency_beef",
+  "transport_work",
+  "transport_shopping",
+  "transport_leisure",
+  "transport_available",
+  "trust_people",
+  "trust_govt",
+  "trust_public_spending",
+  "statist",
+  "inequality_problem",
+  "future_gdp",
+  "envi", 
+  "envi_order_collapse",
+  "envi_order_progress",
+  "envi_order_pro_envi",
+  "envi_order_anti_envi",
+  "envi_order_pnr",
+  "Q146_First",
+  "Q146_Last",
+  "duration_politics_field",
+  "Q146_Click",
+  "politics_field",
+  "Q145_First",
+  "Q145_Last",
+  "duration_CC_field",
+  "Q145_Click",
+  "CC_field",
+  "Q144_First",
+  "Q144_Last",
+  "duration_policies_field",
+  "Q144_Click",
+  "policies_field", 
+  "CC_exists", 
+  "CC_dynamics",
+  "CC_factor_beef",
+  "CC_factor_nuclear",
+  "CC_factor_car",
+  "CC_responsible_each",
+  "CC_responsible_rich",
+  "CC_responsible_govts",
+  "CC_responsible_companies",
+  "CC_responsible_past", 
+  "CC_responsible_foreign", 
+  "CC_responsible_nature",
+  "CC_responsible_denial",
+  "CC_responsible_order_each",
+  "CC_responsible_order_rich",
+  "CC_responsible_order_govts",
+  "CC_responsible_order_companies",
+  "CC_responsible_order_past",
+  "CC_responsible_order_foreign",
+  "CC_responsible_order_nature",
+  "CC_responsible_order_denial",
+  "CC_stoppable",
+  "CC_stoppable_order_no_influence",
+  "CC_stoppable_order_adapt",
+  "CC_stoppable_order_pessimistic",
+  "CC_stoppable_order_policies",
+  "CC_stoppable_order_optimistic",
+  "CC_stoppable_order_pnr",
+  "CC_talks",
+  "CC_affected_1960",
+  "CC_affected_1990",
+  "CC_affected_2020",
+  "CC_affected_2050",
+  "CC_affected_none",
+  "CC_affected_pnr",
+  "change_lifestyle",
+  "change_condition_policies",
+  "change_condition_income",
+  "change_condition_all",
+  "change_condition_no_rich",
+  "change_condition_no_selfish",
+  "change_condition_no_denial",
+  "change_condition_already",
+  "change_condition_try",
+  "change_condition_pnr",
+  "effect_policies_opportunity",
+  "effect_policies_cost",
+  "effect_policies_lifestyle",
+  "effect_policies_pnr",
+  "kaya_techno",
+  "kaya_waste",
+  "kaya_wealth",
+  "kaya_overconsumption",
+  "kaya_overpopulation",
+  "kaya_none",
+  "kaya_other_choice",
+  "kaya_pnr",
+  "kaya_other",
+  "Q147_First",
+  "Q147_Last",
+  "duration_burden_sharing",
+  "Q147_Click",
+  "scale_local",
+  "scale_state",
+  "scale_federal",
+  "scale_global",
+  "scale_pnr",
+  "burden_sharing_income",
+  "burden_sharing_emissions",
+  "burden_sharing_cumulative",
+  "burden_sharing_rich_pay",
+  "burden_sharing_poor_receive",
+  "equal_quota",
+  "country_should_act",
+  "country_should_act_condition", 
+  "pro_global_assembly",
+  "pro_global_tax", 
+  "pro_tax_1p",
+  "Q140_First",
+  "Q140_Last",
+  "duration_treatment_climate",
+  "Q140_Click",
+  "Q141_First",
+  "Q141_Last",
+  "duration_treatment_policy",
+  "Q141_Click",
+  "standard_exists", 
+  "standard_trust",
+  "standard_effective",
+  "standard_employment",
+  "standard_side_effects",
+  "standard_incidence_poor",
+  "standard_incidence_middle",
+  "standard_incidence_rich",
+  "standard_incidence_urban",
+  "standard_incidence_rural",
+  "standard_incidence_self",
+  "standard_support",
+  "investments_trust",
+  "investments_effective",
+  "investments_employment", 
+  "investments_side_effects",
+  "investments_incidence_poor",
+  "investments_incidence_middle",
+  "investments_incidence_rich",
+  "investments_incidence_urban",
+  "investments_incidence_rural",
+  "investments_incidence_self",
+  "investments_support",
+  "Q142_First",
+  "Q142_Last",
+  "duration_tax_transfers",
+  "Q142_Click",
+  "tax_transfers_trust",
+  "tax_transfers_effective",
+  "tax_transfers_employment",
+  "tax_transfers_side_effects", 
+  "tax_transfers_incidence_poor",
+  "tax_transfers_incidence_middle",
+  "tax_transfers_incidence_rich", 
+  "tax_transfers_incidence_urban", 
+  "tax_transfers_incidence_rural", 
+  "tax_transfers_incidence_self",
+  "tax_transfers_support", 
+  "Q143_First", 
+  "Q143_Last", 
+  "duration_policies",
+  "Q143_Click",
+  "CC_worries",
+  "policy_tax_flying",
+  "policy_tax_fuels",
+  "policy_insulation",
+  "policy_ban_city_centers",
+  "policy_subsidies",
+  "policy_climate_fund",
+  "policy_order_tax_flying",
+  "policy_order_tax_fuels",
+  "policy_order_insulation",
+  "policy_order_ban_city_centers", 
+  "policy_order_subsidies",
+  "policy_order_climate_fund",
+  "tax_transfer_constrained_hh", 
+  "tax_transfer_poor",
+  "tax_transfer_all",
+  "tax_rebates_affected_firms",
+  "tax_investments",
+  "tax_subsidies",
+  "tax_reduction_deficit",
+  "tax_reduction_corporate_tax",
+  "tax_reduction_personal_tax",
+  "tax_other_choice",
+  "tax_other",
+  "tax_order_transfers_constrained_hh",
+  "tax_order_transfers_poor",
+  "tax_order_transfers_all",
+  "tax_order_rebates_affected_firms",
+  "tax_order_investments",
+  "tax_order_subsidies",
+  "tax_order_reduction_deficit",
+  "tax_order_reduction_corporate_tax",
+  "tax_order_reduction_personal_tax",
+  "tax_order_other",
+  "insulation_compulsory",
+  "flight_quota_1000km", 
+  "flight_quota_3000km",
+  "flight_quota_one_trip",
+  "beef_tax",
+  "beef_subsidies_vegetables",
+  "beef_subsidies_removal",
+  "beef_ban_intensive",
+  "beef_pnr",
+  "beef_order_tax",
+  "beef_order_subsidies_vegetables",
+  "beef_order_subsidies_removal",
+  "beef_order_ban_intensive",
+  "beef_order_pnr",
+  "ban_incentives",
+  "wtp",
+  "interest_politics", 
+  "member_environmental_orga",
+  "relative_environmentalist",
+  "far_left",
+  "left",
+  "center",
+  "right",
+  "far_right",
+  "liberal",
+  "conservative",
+  "humanist",
+  "patriot",
+  "apolitical",
+  "environmentalist",
+  "feminist",
+  "political_identity_other_choice",
+  "political_identity_other",
+  "media",
+  "vote_participation",
+  "vote",
+  "vote_other",
+  "survey_biased",
+  "comment_field",
+  "language",
+  "finished",
+  "excluded",
+  "duration",
+  "PSID",
+  "PID",
+  "urban_category",
+  "treatment_policy",
+  "treatment_climate",
+  "Preferenceforbansvs.incentives_DO_Q16.5",
+  "Preferenceforbansvs.incentives_DO_Q16.4",
+  "Preferenceforbansvs.incentives_DO_Q16.2",
+  "Preferenceforbansvs.incentives_DO_Q16.3",
+  "Preferenceforbansvs.incentives_DO_Q16.1",
+  "Preferenceforbansvs.incentives_DO_Q16.6")
+  
+  ## names\(e\[\[([0-9]*)\]\]\) -> names(e)[$1]
+  # names(e)[1] <- "date"
+  # names(e)[2] <- "date_end"
+  # names(e)[3] <- "statut_reponse"
+  # names(e)[4] <- "ip"
+  # names(e)[5] <- "progress"
+  # names(e)[6] <- "time"
+  # names(e)[7] <- "terminated"
+  # names(e)[8] <- "date_recored"
+  # names(e)[9] <- "ID_qualtrics"
+  # names(e)[10] <- "name"
+  # names(e)[11] <- "firstname"
+  # names(e)[12] <- "mmail"
+  # names(e)[13] <- "ref"
+  # names(e)[14] <- "lat"
+  # names(e)[15] <- "long"
+  # names(e)[16] <- "distr"
+  # names(e)[17] <- "lang"
+  # names(e)[18] <- "gender"
+  # names(e)[19] <- "age"
+  # names(e)[20] <- "region"
+  # names(e)[21] <- "zipcode"
+  # names(e)[22] <- "urbanity"
+  # names(e)[23] <- "race_white"
+  # names(e)[24] <- "race_black"
+  # names(e)[25] <- "race_hispanic"
+  # names(e)[26] <- "race_asian"
+  # names(e)[27] <- "race_native"
+  # names(e)[28] <- "race_hawaii"
+  # names(e)[29] <- "race_other_choice"
+  # names(e)[30] <- "race_pnr"
+  # names(e)[31] <- "race_other"
+  # names(e)[32] <- "speaks_well"
+  # names(e)[33] <- "education" 
+  # names(e)[34] <- "employment_status"
+  # names(e)[35] <- "hit_by_covid"
+  # names(e)[36] <- "income"
+  # names(e)[37] <- "home_tenant"
+  # names(e)[38] <- "home_owner"
+  # names(e)[39] <- "home_landlord"
+  # names(e)[40] <- "home_hosted"
+  # names(e)[41] <- "wealth"
+  # names(e)[42] <- "nb_children"
+  # names(e)[43] <- "hh_adults"
+  # names(e)[44] <- "hh_children"
+  # names(e)[45] <- "heating"
+  # names(e)[46] <- "km_driven"
+  # names(e)[47] <- "flights"
+  # names(e)[48] <- "frequency_beef"
+  # names(e)[49] <- "transport_work"
+  # names(e)[50] <- "transport_shopping"
+  # names(e)[51] <- "transport_leisure"
+  # names(e)[52] <- "transport_available"
+  # names(e)[53] <- "trust_people"
+  # names(e)[54] <- "trust_govt"
+  # names(e)[55] <- "trust_public_spending"
+  # names(e)[56] <- "statist"
+  # names(e)[57] <- "inequality_problem"
+  # names(e)[58] <- "future_gdp"
+  # names(e)[59] <- "envi" # longer name? TODO
+  # names(e)[60] <- "envi_order_collapse"
+  # names(e)[61] <- "envi_order_progress"
+  # names(e)[62] <- "envi_order_pro_envi"
+  # names(e)[63] <- "envi_order_anti_envi"
+  # names(e)[64] <- "envi_order_pnr"
+  # names(e)[65] <- "Q146_First"
+  # names(e)[66] <- "Q146_Last"
+  # names(e)[67] <- "duration_politics_field"
+  # names(e)[68] <- "Q146_Click"
+  # names(e)[69] <- "politics_field"
+  # names(e)[70] <- "Q145_First"
+  # names(e)[71] <- "Q145_Last"
+  # names(e)[72] <- "duration_CC_field"
+  # names(e)[73] <- "Q145_Click"
+  # names(e)[74] <- "CC_field"
+  # names(e)[75] <- "Q144_First"
+  # names(e)[76] <- "Q144_Last"
+  # names(e)[77] <- "duration_policies_field"
+  # names(e)[78] <- "Q144_Click"
+  # names(e)[79] <- "policies_field" # specify climate? TODO
+  # names(e)[80] <- "CC_exists" 
+  # names(e)[81] <- "CC_dynamics"
+  # names(e)[82] <- "CC_factor_beef"
+  # names(e)[83] <- "CC_factor_nuclear"
+  # names(e)[84] <- "CC_factor_car"
+  # names(e)[85] <- "CC_responsible_each"
+  # names(e)[86] <- "CC_responsible_rich"
+  # names(e)[87] <- "CC_responsible_govts"
+  # names(e)[88] <- "CC_responsible_companies"
+  # names(e)[89] <- "CC_responsible_past" 
+  # names(e)[90] <- "CC_responsible_foreign" 
+  # names(e)[91] <- "CC_responsible_nature"
+  # names(e)[92] <- "CC_responsible_denial"
+  # names(e)[93] <- "CC_responsible_order_each"
+  # names(e)[94] <- "CC_responsible_order_rich"
+  # names(e)[95] <- "CC_responsible_order_govts"
+  # names(e)[96] <- "CC_responsible_order_companies"
+  # names(e)[97] <- "CC_responsible_order_past"
+  # names(e)[98] <- "CC_responsible_order_foreign"
+  # names(e)[99] <- "CC_responsible_order_nature"
+  # names(e)[100] <- "CC_responsible_order_denial"
+  # names(e)[101] <- "CC_stoppable"
+  # names(e)[102] <- "CC_stoppable_order_no_influence"
+  # names(e)[103] <- "CC_stoppable_order_adapt"
+  # names(e)[104] <- "CC_stoppable_order_pessimistic"
+  # names(e)[105] <- "CC_stoppable_order_policies"
+  # names(e)[106] <- "CC_stoppable_order_optimistic"
+  # names(e)[107] <- "CC_stoppable_order_pnr"
+  # names(e)[108] <- "CC_talks"
+  # names(e)[109] <- "CC_affected_1960"
+  # names(e)[110] <- "CC_affected_1990"
+  # names(e)[111] <- "CC_affected_2020"
+  # names(e)[112] <- "CC_affected_2050"
+  # names(e)[113] <- "CC_affected_none"
+  # names(e)[114] <- "CC_affected_pnr"
+  # names(e)[115] <- "change_lifestyle"
+  # names(e)[116] <- "change_condition_policies"
+  # names(e)[117] <- "change_condition_income"
+  # names(e)[118] <- "change_condition_all"
+  # names(e)[119] <- "change_condition_no_rich"
+  # names(e)[120] <- "change_condition_no_selfish"
+  # names(e)[121] <- "change_condition_no_denial"
+  # names(e)[122] <- "change_condition_already"
+  # names(e)[123] <- "change_condition_try"
+  # names(e)[124] <- "change_condition_pnr"
+  # names(e)[125] <- "effect_policies_opportunity"
+  # names(e)[126] <- "effect_policies_cost"
+  # names(e)[127] <- "effect_policies_lifestyle"
+  # names(e)[128] <- "effect_policies_pnr"
+  # names(e)[129] <- "kaya_techno"
+  # names(e)[130] <- "kaya_waste"
+  # names(e)[131] <- "kaya_wealth"
+  # names(e)[132] <- "kaya_overconsumption"
+  # names(e)[133] <- "kaya_overpopulation"
+  # names(e)[134] <- "kaya_none"
+  # names(e)[135] <- "kaya_other_choice"
+  # names(e)[136] <- "kaya_pnr"
+  # names(e)[137] <- "kaya_other"
+  # names(e)[138] <- "Q147_First"
+  # names(e)[139] <- "Q147_Last"
+  # names(e)[140] <- "duration_burden_sharing"
+  # names(e)[141] <- "Q147_Click"
+  # names(e)[142] <- "scale_local"
+  # names(e)[143] <- "scale_state"
+  # names(e)[144] <- "scale_federal"
+  # names(e)[145] <- "scale_global"
+  # names(e)[146] <- "scale_pnr"
+  # names(e)[147] <- "burden_sharing_income"
+  # names(e)[148] <- "burden_sharing_emissions"
+  # names(e)[149] <- "burden_sharing_cumulative"
+  # names(e)[150] <- "burden_sharing_rich_pay"
+  # names(e)[151] <- "burden_sharing_poor_receive"
+  # names(e)[152] <- "equal_quota"
+  # names(e)[153] <- "country_should_act"
+  # names(e)[154] <- "country_should_act_condition" # If yes to country_should_act
+  # names(e)[155] <- "pro_global_assembly"
+  # names(e)[156] <- "pro_global_tax" # TODO: check % & allowed
+  # names(e)[157] <- "pro_tax_1p"
+  # names(e)[158] <- "Q140_First"
+  # names(e)[159] <- "Q140_Last"
+  # names(e)[160] <- "duration_treatment_climate"
+  # names(e)[161] <- "Q140_Click"
+  # names(e)[162] <- "Q141_First"
+  # names(e)[163] <- "Q141_Last"
+  # names(e)[164] <- "duration_treatment_policy"
+  # names(e)[165] <- "Q141_Click"
+  # names(e)[166] <- "standard_exists" 
+  # names(e)[167] <- "standard_trust"
+  # names(e)[168] <- "standard_effective"
+  # names(e)[169] <- "standard_employment"
+  # names(e)[170] <- "standard_side_effects"
+  # names(e)[171] <- "standard_incidence_poor"
+  # names(e)[172] <- "standard_incidence_middle"
+  # names(e)[173] <- "standard_incidence_rich"
+  # names(e)[174] <- "standard_incidence_urban"
+  # names(e)[175] <- "standard_incidence_rural"
+  # names(e)[176] <- "standard_incidence_self"
+  # names(e)[177] <- "standard_support"
+  # names(e)[178] <- "investments_trust"
+  # names(e)[179] <- "investments_effective"
+  # names(e)[180] <- "investments_employment" 
+  # names(e)[181] <- "investments_side_effects"
+  # names(e)[182] <- "investments_incidence_poor"
+  # names(e)[183] <- "investments_incidence_middle"
+  # names(e)[184] <- "investments_incidence_rich"
+  # names(e)[185] <- "investments_incidence_urban"
+  # names(e)[186] <- "investments_incidence_rural"
+  # names(e)[187] <- "investments_incidence_self"
+  # names(e)[188] <- "investments_support"
+  # names(e)[189] <- "Q142_First"
+  # names(e)[190] <- "Q142_Last"
+  # names(e)[191] <- "duration_tax_transfers"
+  # names(e)[192] <- "Q142_Click"
+  # names(e)[193] <- "tax_transfers_trust"
+  # names(e)[194] <- "tax_transfers_effective"
+  # names(e)[195] <- "tax_transfers_employment"
+  # names(e)[196] <- "tax_transfers_side_effects" 
+  # names(e)[197] <- "tax_transfers_incidence_poor"
+  # names(e)[198] <- "tax_transfers_incidence_middle"
+  # names(e)[199] <- "tax_transfers_incidence_rich" 
+  # names(e)[200] <- "tax_transfers_incidence_urban" 
+  # names(e)[201] <- "tax_transfers_incidence_rural" 
+  # names(e)[202] <- "tax_transfers_incidence_self"
+  # names(e)[203] <- "tax_transfers_support" 
+  # names(e)[204] <- "Q143_First" 
+  # names(e)[205] <- "Q143_Last" 
+  # names(e)[206] <- "duration_policies"
+  # names(e)[207] <- "Q143_Click"
+  # names(e)[208] <- "CC_worries"
+  # names(e)[209] <- "policy_tax_flying"
+  # names(e)[210] <- "policy_tax_fuels"
+  # names(e)[211] <- "policy_insulation"
+  # names(e)[212] <- "policy_ban_city_centers"
+  # names(e)[213] <- "policy_subsidies"
+  # names(e)[214] <- "policy_climate_fund"
+  # names(e)[215] <- "policy_order_tax_flying"
+  # names(e)[216] <- "policy_order_tax_fuels"
+  # names(e)[217] <- "policy_order_insulation"
+  # names(e)[218] <- "policy_order_ban_city_centers" 
+  # names(e)[219] <- "policy_order_subsidies"
+  # names(e)[220] <- "policy_order_climate_fund"
+  # names(e)[221] <- "tax_transfer_constrained_hh" # don't put "s" at transfers because it would create a bug
+  # names(e)[222] <- "tax_transfer_poor"
+  # names(e)[223] <- "tax_transfer_all"
+  # names(e)[224] <- "tax_rebates_affected_firms"
+  # names(e)[225] <- "tax_investments"
+  # names(e)[226] <- "tax_subsidies"
+  # names(e)[227] <- "tax_reduction_deficit"
+  # names(e)[228] <- "tax_reduction_corporate_tax"
+  # names(e)[229] <- "tax_reduction_personal_tax"
+  # names(e)[230] <- "tax_other_choice"
+  # names(e)[231] <- "tax_other"
+  # names(e)[232] <- "tax_order_transfers_constrained_hh"
+  # names(e)[233] <- "tax_order_transfers_poor"
+  # names(e)[234] <- "tax_order_transfers_all"
+  # names(e)[235] <- "tax_order_rebates_affected_firms"
+  # names(e)[236] <- "tax_order_investments"
+  # names(e)[237] <- "tax_order_subsidies"
+  # names(e)[238] <- "tax_order_reduction_deficit"
+  # names(e)[239] <- "tax_order_reduction_corporate_tax"
+  # names(e)[240] <- "tax_order_reduction_personal_tax"
+  # names(e)[241] <- "tax_order_other"
+  # names(e)[242] <- "insulation_compulsory"
+  # names(e)[243] <- "flight_quota_1000km" # TODO variant
+  # names(e)[244] <- "flight_quota_3000km"
+  # names(e)[245] <- "flight_quota_one_trip"
+  # names(e)[246] <- "beef_tax"
+  # names(e)[247] <- "beef_subsidies_vegetables"
+  # names(e)[248] <- "beef_subsidies_removal"
+  # names(e)[249] <- "beef_ban_intensive"
+  # names(e)[250] <- "beef_pnr"
+  # names(e)[251] <- "beef_order_tax"
+  # names(e)[252] <- "beef_order_subsidies_vegetables"
+  # names(e)[253] <- "beef_order_subsidies_removal"
+  # names(e)[254] <- "beef_order_ban_intensive"
+  # names(e)[255] <- "beef_order_pnr"
+  # names(e)[256] <- "ban_incentives"
+  # names(e)[257] <- "wtp"
+  # names(e)[258] <- "interest_politics" 
+  # names(e)[259] <- "member_environmental_orga"
+  # names(e)[260] <- "relative_environmentalist"
+  # names(e)[261] <- "far_left"
+  # names(e)[262] <- "left"
+  # names(e)[263] <- "center"
+  # names(e)[264] <- "right"
+  # names(e)[265] <- "far_right"
+  # names(e)[266] <- "liberal"
+  # names(e)[267] <- "conservative"
+  # names(e)[268] <- "humanist"
+  # names(e)[269] <- "patriot"
+  # names(e)[270] <- "apolitical"
+  # names(e)[271] <- "environmentalist"
+  # names(e)[272] <- "feminist"
+  # names(e)[273] <- "political_identity_other_choice"
+  # names(e)[274] <- "political_identity_other"
+  # names(e)[275] <- "media"
+  # names(e)[276] <- "vote_participation"
+  # names(e)[277] <- "vote"
+  # names(e)[278] <- "vote_other"
+  # names(e)[279] <- "survey_biased"
+  # names(e)[280] <- "comment_field"
+  # names(e)[281] <- "language"
+  # names(e)[282] <- "finished"
+  # names(e)[283] <- "excluded"
+  # names(e)[284] <- "duration"
+  # names(e)[285] <- "PSID"
+  # names(e)[286] <- "PID"
+  # names(e)[287] <- "urban_category"
+  # names(e)[288] <- "treatment_policy"
+  # names(e)[289] <- "treatment_climate"
+  # names(e)[290] <- "Preferenceforbansvs.incentives_DO_Q16.5"
+  # names(e)[291] <- "Preferenceforbansvs.incentives_DO_Q16.4"
+  # names(e)[292] <- "Preferenceforbansvs.incentives_DO_Q16.2"
+  # names(e)[293] <- "Preferenceforbansvs.incentives_DO_Q16.3"
+  # names(e)[294] <- "Preferenceforbansvs.incentives_DO_Q16.1"
+  # names(e)[295] <- "Preferenceforbansvs.incentives_DO_Q16.6"
   
   for (i in 1:length(e)) {
     label(e[[i]]) <- paste(names(e)[i], ": ", label(e[[i]]), e[[i]][1], sep="") # 

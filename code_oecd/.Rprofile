@@ -8,6 +8,10 @@ package <- function(p) {
   library(p, character.only = TRUE)
 } # loads packages with automatical install if needed
 
+Paths = c("/Users/Bluebii/Library/Mobile Documents/com~apple~CloudDocs/TRAVAIL/Jobs/Stantcheva_2020:21/OECD/oecd_climate/code_oecd", "C:/Users/afabre/Google Drive/Economie/Travail/oecd_climate/code_oecd")
+names(Paths) = c("Bluebii", "afabre")
+setwd(Paths[Sys.info()[7]])
+
 package("memisc")
 package('tidyverse')
 package("xtable")

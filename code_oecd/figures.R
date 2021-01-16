@@ -1,10 +1,6 @@
 # Examples
 # Be careful with the arguments (df, miss...)
 
-Paths = c("/Users/Bluebii/Library/Mobile Documents/com~apple~CloudDocs/TRAVAIL/Jobs/Stantcheva_2020:21/OECD/oecd_climate/code_oecd", "C:/Users/afabre/Google Drive/Economie/Travail/oecd_climate/code_oecd")
-names(Paths) = c("Bluebii", "afabre")
-setwd(Paths[Sys.info()[7]])
-
 e <- readRDS("../data/US_pilot_reg_210115.rds")
 
 #source(".Rprofile")
@@ -13,6 +9,9 @@ e <- readRDS("../data/US_pilot_reg_210115.rds")
 # labels_responsible <- c("Each of us", "The rich", "Governments", "Companies", "Previous generations", "Some foreign countries", "Natural causes", "CC doesn't exist")
 # Tip: if you encounter a bug with the width of the bars, try to passe the argument: thin = F 
 
+# (CC_exists_US <- barres(vars = "CC_exists", df = e, miss = T, labels="In your opinion, climate change is..."))
+# save_plotly(CC_exists_US)
+# # Tip: if you encounter a bug with the width of the bars, try to passe the argument: thin = F
 
 ## Pre-treatment ##
 
@@ -153,12 +152,6 @@ for (v in variables_burden_sharing) labels_burden_sharing <- c(labels_burden_sha
 (burden_sharing_US <- barres(vars = variables_burden_sharing, df = e, miss=T, labels=labels_burden_sharing))
 save_plotly(burden_sharing_US, width= 1194, height=311) 
 
-<<<<<<< Updated upstream
-(CC_exists_US <- barres(vars = "CC_exists", df = e, miss = T, labels="In your opinion, climate change is..."))
-save_plotly(CC_exists_US)
-# Tip: if you encounter a bug with the width of the bars, try to passe the argument: thin = F 
-
-=======
 (equal_quota_US <- barres(vars = "equal_quota", df = e, miss=T, labels="Should the U.S. take measures <br> to fight climate change?"))
 save_plotly(equal_quota_US, width= 1194, height=224)
 
@@ -169,4 +162,3 @@ variables_pro <<- names(e)[grepl('^pro_', names(e))]
 labels_pro <- c("Would approve global assembly", " Would approve global tax on carbon <br> to fund a global basic income", "Would approve global tax on top 1% <br> to finance low-income countries")
 (pro_US <- barres(vars = variables_pro, df = e, error_margin=T, rev = F, miss = T, showLegend=F, labels=labels_pro))
 save_plotly(pro_US, width= 1194, height=224) 
->>>>>>> Stashed changes

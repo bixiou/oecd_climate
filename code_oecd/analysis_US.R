@@ -259,7 +259,15 @@ for (v in variables_tax) print(decrit(v, data = e))
 
 ##### Preference for bans vs. incentives ######
 decrit("insulation_compulsory", data = e)
+decrit("flights", data = e)
+decrit("flights", data = e, which = e$flights == 0) # 54
+decrit("flights", data = e, which = e$flights %in% c(1:9)) # 91 
+decrit("flights", data = e, which = e$flights >= 10) # 50
+all(as.integer(e$flights)==e$flights) # TODO: table, plot flight_pref(revenu/nb_flight)
 for (v in variables_flight_quota) print(decrit(v, data = e))
+for (v in variables_flight_quota) print(decrit(v, data = e, which = e$flights == 0))
+for (v in variables_flight_quota) print(decrit(v, data = e, which = e$flights %in% c(1:9)))
+for (v in variables_flight_quota) print(decrit(v, data = e, which = e$flights >= 10))
 for (v in variables_beef) print(decrit(v, data = e))
 decrit("ban_incentives", data = e)
 
