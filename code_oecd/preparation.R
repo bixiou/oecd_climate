@@ -1372,11 +1372,16 @@ convert <- function(e, country) {
   e[e$employment_status == "Retired", "employment_agg"] <- "Retired"
   e[e$employment_status == "Self-employed" | e$employment_status == "Full-time employed" | e$employment_status == "Part-time employed", "employment_agg"] <- "Working"
   
-  # age
   e$age_agg <- NULL
   e[e$age %in% 18:29, "age_agg"] <- "18-29"
   e[e$age %in% 30:49, "age_agg"] <- "30-49"
   e[e$age %in% 50:87, "age_agg"] <- "50-87"
+  e$age_quota <- NULL
+  e$age_quota[e$age %in% 18:24] <- "18-24"
+  e$age_quota[e$age %in% 25:34] <- "25-34"
+  e$age_quota[e$age %in% 35:49] <- "35-49"
+  e$age_quota[e$age %in% 50:64] <- "50-64"
+  e$age_quota[e$age > 64] <- "65+"
   
   # political position
   # AF TODO I'd rather use the dummy vote=='Biden' than a variable vote_dum with 4 modalities

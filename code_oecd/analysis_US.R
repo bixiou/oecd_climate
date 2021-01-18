@@ -31,6 +31,7 @@ decrit("duration_policies", data = e) # 1 min
 ##### Socio-demographics ####
 decrit("gender", data = e)
 decrit("age", data = e)
+decrit("age_quota", data = e)
 decrit("region", data = e)
 decrit("zipcode", data = e)
 decrit("urbanity", data = e) # 35% rural

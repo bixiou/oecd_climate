@@ -12,6 +12,7 @@ Paths = c("/Users/Bluebii/Library/Mobile Documents/com~apple~CloudDocs/TRAVAIL/J
 names(Paths) = c("Bluebii", "afabre")
 setwd(Paths[Sys.info()[7]])
 
+package("plyr")
 package("memisc")
 package('tidyverse')
 package("xtable")
@@ -47,7 +48,6 @@ package("reshape2")
 # package("rddtools") # not available
 # package("rddapp") # not available
 package("mets")
-package("plyr")
 package("descr")
 package("stargazer")
 package("clipr")
