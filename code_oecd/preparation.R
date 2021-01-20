@@ -1201,7 +1201,8 @@ convert <- function(e, country, wave = NULL) {
   
   if (country=="US") {
     e$miles_driven <- e$km_driven
-    e$km_driven <- 1.60934 * e$miles_driven }
+    e$km_driven <- 1.60934 * e$miles_driven
+    label(e$km_driven) <- "km_driven: How many kilometers have you and your household members driven in 2019?" }
   e$hh_size <- e$hh_adults + e$hh_children
   # e$bad_quality <- 0 # TODO
   # e$bad_quality[e$hh_size > 12] <- 1.3 + e$bad_quality[e$hh_size > 12] # 
@@ -1209,6 +1210,7 @@ convert <- function(e, country, wave = NULL) {
   e$hh_size <- pmin(e$hh_size, 12)
   e$hh_children <- pmin(e$hh_children, 10)
   e$hh_adults <- pmin(e$hh_adults, 5)
+  label(e$hh_size) <- "hh_size: How many people are in you household?"
   # e$bad_quality[e$km_driven > 10^6] <- 1 + e$bad_quality[e$km_driven > 10^6] # 
   # e$bad_quality[e$flights >= 100] <- 1 + e$bad_quality[e$flights >= 100] # 
   # label(e$bad_quality) <- "bad_quality: Indicator of aberrant answers at hh_size, km_driven or flights."
@@ -1630,21 +1632,32 @@ convert <- function(e, country, wave = NULL) {
   e$left_right_pnr[e$Left_right=='Indeterminate'] <- 'PNR'
   e$left_right_pnr <- as.factor(e$left_right_pnr)
   e$left_right_pnr <- relevel(relevel(e$left_right_pnr, "Left or center-left"), "Far left")
+  label(e$left_right) <- "left_right: How would you define yourself? Far Left/Left or center-left/Center/Right or center-right/Far right"
+
   
   e$country <- country
+  label(e$country) <- "country: Country of the survey. US/FRA/IND/DEN"
   e$wave <- wave
-  
+  label(e$wave) <- "wave: Wave of the survey. pilot1/pilot2/full"
+
   e$policies_trust <- (e$standard_trust=="Yes") + (e$investments_trust=="Yes") + (e$tax_transfers_trust=="Yes") - (e$standard_trust=="No") - (e$investments_trust=="No") - (e$tax_transfers_trust=="No")
+  label(e$policies_trust) <- "policies_trust: Could the U.S. federal government be trusted to correctly implement an emission limit for cars, a green infrastrcuture program and a carbon tax with cash transfers? Yes/No/PNR"
   e$policies_effective <- (e$standard_effective=="Yes") + (e$investments_effective=="Yes") + (e$tax_transfers_effective=="Yes") - (e$standard_effective=="No") - (e$investments_effective=="No") - (e$tax_transfers_effective=="No")
+  label(e$policies_effective) <- "policies_effective: Woudl an emission limit for cars, a green infrastrcuture program and a carbon tax be effective to fight climate change? Yes/No/PNR"
   e$policies_employment <- (e$standard_employment=="Positive") + (e$investments_employment=="Positive") + (e$tax_transfers_employment=="Positive") - (e$standard_employment=="Negative") - (e$investments_employment=="Negative") - (e$tax_transfers_employment=="Negative")
+  label(e$policies_employment) <- "policies_employment: Would an emission limit for cars, a green infrastrcuture program and a carbon tax with cash transfers have positive or negative impact on employment? Postive impacts/No notable impact/Negative impacts/PNR"
   e$policies_side_effects <- (e$standard_side_effects=="Positive") + (e$investments_side_effects=="Positive") + (e$tax_transfers_side_effects=="Positive") - (e$standard_side_effects=="Negative") - (e$investments_side_effects=="Negative") - (e$tax_transfers_side_effects=="Negative")
+  label(e$policies_side_effects) <- "policies_side_effects: Would an emission limit for cars, a green infrastrcuture program and a carbon tax with cash transfers have positive or negative side effects overall? Postive impacts/No notable impact/Negative impacts/PNR"
   e$policies_support <- (e$standard_support=="Yes") + (e$investments_support=="Yes") + (e$tax_transfers_support=="Yes") - (e$standard_support=="No") - (e$investments_support=="No") - (e$tax_transfers_support=="No")
-  e$policies_self <- e$policies_incidence <- 0 # TODO labels
+  label(e$policies_support) <- "policies_support: Would you support an emission limit for cars, a green infrastrcuture program and a carbon tax with cash transfers? Yes/No/PNR"
+  e$policies_self <- e$policies_incidence <- 0
+  label(e$policies_self) <- "policies_self: Would your household win or lose financially from an emission limit for cars, a green infrastrcuture program and a carbon tax with cash transfers? Win/Lose/Be unaffected/PNR" # TODO labels
   for (v in variables_incidence) e$policies_incidence <- e$policies_incidence + e[[v]]
   for (v in names_policies) e$policies_self <- e$policies_self + e[[paste(v, "incidence_self", sep="_")]]
   
   e$core_metropolitan <- e$urban_category==1
-  
+  label(e$core_metropolitan) <- "core_metropolitan: Live in a core metropolitan zip code. TRUE/FALSE"
+
   if ("CC_affected_2050" %in% names(e)) {
     e$CC_affected_min <- 2100
     e$CC_affected_min[e$CC_affected_2050==T] <- 2050
@@ -1655,6 +1668,7 @@ convert <- function(e, country, wave = NULL) {
     e$CC_affected_min <- as.item(e$CC_affected_min, labels = structure(c(1960,1990,2020,2050,2100,-0.1),
                                                           names = c("1960","1990","2020","2050","None","PNR")),
                                  missing.values=-0.1, annotation=Label(e$CC_affected_min))
+    label(e$CC_affected_min) <- "CC_affected_min: Youngest generation seriously affected by climate change. 2100/2050/2020/1990/1960/PNR" 
   }
   
   e$treatment <- "None"
@@ -1662,12 +1676,15 @@ convert <- function(e, country, wave = NULL) {
   e$treatment[e$treatment_climate==0 & e$treatment_policy==1] <- "Policy"
   e$treatment[e$treatment_climate==1 & e$treatment_policy==1] <- "Both"
   e$treatment <- relevel(relevel(relevel(as.factor(e$treatment), "Policy"), "Climate"), "None")
-  
+  label(e$treatment) <- "treatment: Treatment received: Climate/Policy/Both/None" 
+
   e$rush_treatment <- e$duration_treatment_climate < 2.4 | e$duration_treatment_policy < 4.45
   e$rush_treatment[is.na(e$rush_treatment)] <- F
+  label(e$rush_treatment) <- "rush_treatment: Has rushed the treatment. TRUE/FALSE" 
+
   
   e$rush <- e$rush_treatment | (e$duration < 12)
-  
+  label(e$rush) <- "rush: Has rushed the treatment or the survey. TRUE/FALSE" 
   # race TODO: problem: someone can be at the same time Hispanic and black or white. Why don't you keep the dummies race_white, race_black, race_hispanic?
   e$race_white_only <- 0
   e[e$race_white == TRUE & e$race_black == FALSE & e$race_hispanic == FALSE & e$race_asian == FALSE & e$race_native == FALSE, "race_white_only"] <- 1
