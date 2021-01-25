@@ -1231,7 +1231,7 @@ convert <- function(e, country, wave = NULL) {
 
   for (j in c(#"gender", "region", "speaks_well", "education", "employment_status", "income", "wealth", "frequency_beef", "survey_biased", "vote", "media", "country_should_act_condition
               "heating", "transport_available", "trust_govt", "trust_public_spending", "inequality_problem", "CC_exists", "CC_dynamics", "CC_stoppable", 
-              "CC_talks", "CC_worries", "interest_politics", "vote_participation"
+              "CC_talks", "CC_worries", "interest_politics"#, "vote_participation"
               # "standard_employment", "investments_employment", "tax_transfers_employment", "standard_side_effects", "investments_side_effects", "tax_transfers_side_effects", 
               # "standard_incidence_poor", "investments_incidence_poor", "tax_transfers_incidence_poor", "standard_incidence_rich", "investments_incidence_rich", "tax_transfers_incidence_rich", 
               # "standard_incidence_middle", "investments_incidence_middle", "tax_transfers_incidence_middle", "standard_incidence_urban", "investments_incidence_urban", "tax_transfers_incidence_urban", 
@@ -1363,7 +1363,7 @@ convert <- function(e, country, wave = NULL) {
   text_CC_dynamics_none <- c("US" = "none of the above: greenhouse gas emissions have no impact on temperatures")
   
   text_CC_stoppable_no_influence <- c("US" = "Humans have no noticeable influence on the climate.")
-  text_CC_stoppable_adapt <- c("US" = "We'd better live with climate change rather than try to halt it. Stopping emissions would cause more harm than climate change itself.")
+  text_CC_stoppable_adapt <- c("US" = "We'd better live with climate change rather than try to halt it. Stopping emissions would cause more harm than climate change itself.", "US" = "We’d better live with climate change rather than try to halt it. Stopping emissions would cause more harm than climate change itself.")
   text_CC_stoppable_pessimistic <- c("US" = "We should stop emissions, but unfortunately this is not going to happen.")
   text_CC_stoppable_policies <- c("US" = "Ambitious policies and raising awareness will eventually succeed in stopping emissions within the next century.")
   text_CC_stoppable_optimistic <- c("US" = "Technologies and habits are changing and this will suffice to prevent disastrous climate change. We do not need ambitious policies.")
@@ -1428,7 +1428,8 @@ convert <- function(e, country, wave = NULL) {
   text_media_web <- c("US" = "News websites (e.g. online newspapers)")
   text_media_other <- c("US" = "Other")
   
-  text_vote_participation_no_right <- c("US" = "I don't have the right to vote in the US")
+  text_vote_participation_no_right <- c("US" = "I don't have the right to vote in the US",
+                                        "US" = "I didn't have the right to vote in the US")
   
   text_survey_biased_no <- c("US" = "No, I do not feel it was biased")
   text_survey_biased_pro_envi <- c("US" = "Yes, biased towards environmental causes")
@@ -1524,7 +1525,7 @@ convert <- function(e, country, wave = NULL) {
   e$CC_stoppable[e$CC_stoppable %in% text_CC_stoppable_optimistic] <- "Progress will suffice"
   e$CC_stoppable[e$CC_stoppable %in% text_CC_stoppable_policies] <- "Policies & awareness will"
   e$CC_stoppable[e$CC_stoppable %in% text_CC_stoppable_pessimistic] <- "Should but not happening"
-  # e$CC_stoppable <- relevel(relevel(relevel(relevel(relevel(as.factor(e$CC_stoppable), "No influence"), "Better to adapt"), "Should but not happening"), "Policies & awareness will"), "Progress will suffice") # TODO! uncomment
+  e$CC_stoppable <- relevel(relevel(relevel(relevel(relevel(as.factor(e$CC_stoppable), "No influence"), "Better to adapt"), "Should but not happening"), "Policies & awareness will"), "Progress will suffice") # TODO! uncomment
     
   temp <-  (e$CC_talks %in% text_CC_talks_monthly) - (e$CC_talks %in% text_CC_talks_never) - 0.1 * (e$CC_talks %in% text_pnr)
   e$CC_talks <- as.item(temp, labels = structure(c(-1:1,-0.1),
@@ -1604,11 +1605,11 @@ convert <- function(e, country, wave = NULL) {
   e$vote_participation[e$vote_participation %in% text_vote_participation_no_right] <- "No right to vote"
   if (country == "US" & wave == "pilot2") {
     e$vote_participation_2016[e$vote_participation_2016 %in% text_vote_participation_no_right] <- "No right to vote"
-    e$vote[e$vote_participation=="Yes"] <- e$vote_voters[e$vote_participation=="Yes"]
-    e$vote[e$vote_participation!="Yes"] <- e$vote_non_voters[e$vote_participation!="Yes"]
-    e$vote_2016[e$vote_participation_2016=="Yes"] <- e$vote_voters_2016[e$vote_participation_2016=="Yes"]
-    e$vote_2016[e$vote_participation_2016!="Yes"] <- e$vote_non_voters_2016[e$vote_participation_2016!="Yes"]
-  } 
+    e$vote[!is.na(e$vote_voters) & e$vote_participation=="Yes"] <- e$vote_voters[!is.na(e$vote_voters) & e$vote_participation=="Yes"]
+    e$vote[!is.na(e$vote_non_voters_2016) & e$vote_participation!="Yes"] <- e$vote_non_voters[!is.na(e$vote_non_voters_2016) & e$vote_participation!="Yes"]
+    e$vote_2016[!is.na(e$vote_voters_2016) & e$vote_participation_2016=="Yes"] <- e$vote_voters_2016[!is.na(e$vote_voters_2016) & e$vote_participation_2016=="Yes"]
+    e$vote_2016[!is.na(e$vote_non_voters_2016) & e$vote_participation_2016!="Yes"] <- e$vote_non_voters_2016[!is.na(e$vote_non_voters_2016) & e$vote_participation_2016!="Yes"]
+  }
   
   e$survey_biased[e$survey_biased %in% text_survey_biased_pro_envi] <- "Yes, pro environment"
   e$survey_biased[e$survey_biased %in% text_survey_biased_anti_envi] <- "Yes, anti environment"
@@ -1691,26 +1692,32 @@ convert <- function(e, country, wave = NULL) {
   #e[e$race_black == TRUE, "race"] <- "Black"
   #e[e$race_hispanic == TRUE, "race"] <- "Hispanic"
   #e[e$race_asian == TRUE | e$race_native == TRUE | e$race_hawaii == TRUE | e$race_other_choice == TRUE | e$race_pnr == TRUE , "race"] <- "Other"
+  e$race_white_only <- as.factor(e$race_white_only)
   
   #gender: Other set as Male for the moment, see if lot of similar answers in final data
   e$gender_dum <- as.character(e$gender)
   e[e$gender == "Other", "gender_dum"] <- "Male"
+  e$gender_dum <- as.factor(e$gender_dum)
  
   e$children <- 0
   e[e$nb_children >= 1, "children"] <- 1
+  e$children <- as.factor(e$children)
   
   e$college <- "No college"
   e[e$education >= 5, "college"] <- "College Degree"
+  e$college <- as.factor(e$college)
   
   e$employment_agg <-  "Not working"
   e[e$employment_status == "Student", "employment_agg"] <- "Student"
   e[e$employment_status == "Retired", "employment_agg"] <- "Retired"
   e[e$employment_status == "Self-employed" | e$employment_status == "Full-time employed" | e$employment_status == "Part-time employed", "employment_agg"] <- "Working"
+  e$employment_agg <- as.factor(e$employment_agg)
   
   e$age_agg <- NULL
   e[e$age %in% 18:29, "age_agg"] <- "18-29"
   e[e$age %in% 30:49, "age_agg"] <- "30-49"
   e[e$age %in% 50:87, "age_agg"] <- "50-87"
+  e$age_agg <- as.factor(e$age_agg)
   e$age_quota <- NULL
   e$age_quota[e$age %in% 18:24] <- "18-24"
   e$age_quota[e$age %in% 25:34] <- "25-34"
@@ -1721,27 +1728,22 @@ convert <- function(e, country, wave = NULL) {
   # political position
   # AF TODO I'd rather use the dummy vote=='Biden' than a variable vote_dum with 4 modalities
   e$vote_dum <- as.character(e$vote)
-  e[e$vote_participation == 2, "vote_dum"] <- "Other" # add non-voters as others
+  if (country == "US") {
+    e$vote_dum[!(e$vote %in% c("Biden", "Trump"))] <- "Other"
+    if ("Other" %in% levels(as.factor(e$vote_dum))) e$vote_dum <- relevel(as.factor(e$vote_dum), "Other") }
+  # # e[e$vote_participation == 2, "vote_dum"] <- "Other" # add non-voters as others
+  # # e$vote_dum <- as.factor(e$vote_dum)
+  # # e$vote_dum <- relevel(e$vote_dum, ref ="Other")
   
   e$treatment_agg <- NULL # TODO: duplicate of "treatment"
   e[e$treatment_policy == 0 & e$treatment_climate == 0, "treatment_agg"] <- "None"
   e[e$treatment_policy == 0 & e$treatment_climate == 1, "treatment_agg"] <- "Climate treatment only"
   e[e$treatment_policy == 1 & e$treatment_climate == 0, "treatment_agg"] <- "Policy treatment only"
   e[e$treatment_policy == 1 & e$treatment_climate == 1, "treatment_agg"] <- "Both"
-  
-  e$race_white_only <- as.factor(e$race_white_only)
-  e$gender_dum <- as.factor(e$gender_dum)
-  e$children <- as.factor(e$children)
-  e$college <- as.factor(e$college)
-  e$employment_agg <- as.factor(e$employment_agg)
-  e$income_factor <- as.factor(e$income)
-  e$age_agg <- as.factor(e$age_agg)
-  e$vote_dum <- as.factor(e$vote_dum)
   e$treatment_agg <- as.factor(e$treatment_agg)
+  e$treatment_agg <- relevel(e$treatment_agg, ref ="None") 
   
-  e$treatment_agg <- relevel(e$treatment_agg, ref ="None")
-  e$vote_dum <- relevel(e$vote_dum, ref ="Other")
-  
+  e$income_factor <- as.factor(e$income)
   
   # e <- e[, -c(9:17)] 
   return(e)
