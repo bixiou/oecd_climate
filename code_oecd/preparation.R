@@ -18,7 +18,7 @@ relabel_and_rename <- function(e, country, wave = NULL) {
     names(e) <- c(
     "date",
     "date_end",
-    "statut_reponse",
+    "status_response",
     "ip",
     "progress",
     "time",
@@ -560,7 +560,7 @@ relabel_and_rename <- function(e, country, wave = NULL) {
       "tax_order_other",
       "insulation_compulsory",
       "flight_quota_1000km", 
-      "flight_quota_3000km",
+      "flight_quota_1000km_global",
       "flight_quota_one_trip",
       "beef_tax",
       "beef_subsidies_vegetables",
@@ -1220,7 +1220,7 @@ convert <- function(e, country, wave = NULL) {
   if (country=="FR") yes_no_names <- c("","Non","PNR","Oui")
   for (j in intersect(c("change_lifestyle", "pro_global_assembly", "pro_global_tax", "pro_tax_1p", "tax_transfers_trust", "investments_trust",
                         "standard_trust", "tax_transfers_effective", "investments_effective", "standard_effective", "tax_transfers_support", "investments_support",
-                        "standard_support", "hit_by_covid", "member_environmental_orga", "relative_environmentalist"
+                        "standard_support", "hit_by_covid", "member_environmental_orga", "relative_environmentalist", "standard_exists"
               ), names(e))) {
     temp <- 1*(e[j][[1]] %in% text_yes) - (e[j][[1]] %in% text_no) - 0.1*(e[j][[1]] %in% text_pnr)
     e[j][[1]] <- as.item(temp, labels = structure(c(-1,-0.1,1), names = c( "No","PNR","Yes")),
@@ -1573,9 +1573,10 @@ convert <- function(e, country, wave = NULL) {
   e$insulation_compulsory[e$insulation_compulsory %in% text_insulation_voluntary] <- "Voluntary"
   
   e$flight_quota <- e$flight_quota_1000km
-  e$flight_quota[!is.na(e$flight_quota_3000km)] <- e$flight_quota_3000km[!is.na(e$flight_quota_3000km)]
+  if (wave == "pilot1") e$flight_quota[!is.na(e$flight_quota_3000km)] <- e$flight_quota_3000km[!is.na(e$flight_quota_3000km)]
+  if (wave == "pilot2") e$flight_quota[!is.na(e$flight_quota_1000km_global)] <- e$flight_quota_1000km_global[!is.na(e$flight_quota_1000km_global)]
   e$flight_quota[!is.na(e$flight_quota_one_trip)] <- e$flight_quota_one_trip[!is.na(e$flight_quota_one_trip)]
-  label(e$flight_quota) <- "flight_quota: ~ Given that the govt decides to limit average flights per person, what do you prefer? Rationing / Tradable quota / PNR. Variants (distance per year): 1000km/3000km/one round-trip every two years. [distance adjusted to country]"
+  label(e$flight_quota) <- "flight_quota: ~ Given that the govt decides to limit average flights per person, what do you prefer? Rationing / Tradable quota / PNR. Variants (distance per year): 1000km/1000km global/one round-trip every two years. [units adjusted to country]"
   variables_flight_quota <<- names(e)[grepl('flight_quota', names(e))]
   
   for (v in variables_flight_quota) {
@@ -1583,11 +1584,13 @@ convert <- function(e, country, wave = NULL) {
     e[[v]][e[[v]] %in% text_flight_quota_tradable] <- "Tradable" }
   e$variant_flight_quota <- ""
   e$variant_flight_quota[!is.na(e$flight_quota_3000km)] <- "3000km"
+  e$variant_flight_quota[!is.na(e$flight_quota_1000km_global)] <- "1000km global"
   e$variant_flight_quota[!is.na(e$flight_quota_1000km)] <- "1000km"
   e$variant_flight_quota[!is.na(e$flight_quota_one_trip)] <- "1 trip"
   
   e$ban_incentives[e$ban_incentives %in% text_ban_incentives_encourage] <- "Encourage"
   e$ban_incentives[e$ban_incentives %in% text_ban_incentives_force] <- "Force"
+  e$ban_incentives <- as.item(as.character(e$ban_incentives), missing.values = 'PNR', annotation=Label(e$ban_incentives))
   
   temp <-  (e$interest_politics %in% text_interest_politics_lot) - (e$interest_politics %in% text_interest_politics_no) - 0.1 * (e$interest_politics %in% text_pnr)
   e$interest_politics <- as.item(temp, labels = structure(c(-1:1,-0.1),
@@ -1610,6 +1613,10 @@ convert <- function(e, country, wave = NULL) {
     e$vote_2016[!is.na(e$vote_voters_2016) & e$vote_participation_2016=="Yes"] <- e$vote_voters_2016[!is.na(e$vote_voters_2016) & e$vote_participation_2016=="Yes"]
     e$vote_2016[!is.na(e$vote_non_voters_2016) & e$vote_participation_2016!="Yes"] <- e$vote_non_voters_2016[!is.na(e$vote_non_voters_2016) & e$vote_participation_2016!="Yes"]
   }
+  e$vote_participation <- as.item(as.character(e$vote_participation), missing.values = 'PNR', annotation=Label(e$vote_participation))
+  e$vote_participation_2016 <- as.item(as.character(e$vote_participation_2016), missing.values = 'PNR', annotation=Label(e$vote_participation_2016))
+  e$vote <- as.item(as.character(e$vote), missing.values = 'PNR', annotation=Label(e$vote))
+  e$vote_2016 <- as.item(as.character(e$vote_2016), missing.values = 'PNR', annotation=Label(e$vote_2016))
   
   e$survey_biased[e$survey_biased %in% text_survey_biased_pro_envi] <- "Yes, pro environment"
   e$survey_biased[e$survey_biased %in% text_survey_biased_anti_envi] <- "Yes, anti environment"
@@ -1618,6 +1625,8 @@ convert <- function(e, country, wave = NULL) {
   e$survey_biased[e$survey_biased %in% text_survey_biased_no] <- "No"
   
   e$wtp <- as.numeric(as.vector(gsub('[[:alpha:] $]', '', e$wtp))) # /!\ Careful with different currencies and use of cents vs. currency (for US $, not pb as cents are not used)
+  e$wtp_agg <- 5 * (e$wtp > 0 & e$wtp <= 10) + 50 * (e$wtp > 10 & e$wtp <= 70) + 100 * (e$wtp > 70 & e$wtp <= 100) + 200 * (e$wtp > 100 & e$wtp <= 300) + 500 * (e$wtp > 300 & e$wtp <= 500) + 1000 * (e$wtp > 500)
+  e$wtp_agg <- as.item(e$wtp_agg, labels = structure(c(0,5,50,100,200,500,1000), names = c("0", "From 0.5 to 10", "30 to 70", "100", "150 to 300", "500", "1000 or more")), annotation=Label(e$wtp_agg))
   
   # TODO: Yes/No => T/F?, heating, CC_affected, label should_act_condition & vote, nb_policies_supported, score_knowlege_CC, score_trust, zipcode, race, standard of living
   
@@ -1656,7 +1665,7 @@ convert <- function(e, country, wave = NULL) {
   for (v in variables_incidence) e$policies_incidence <- e$policies_incidence + e[[v]]
   for (v in names_policies) e$policies_self <- e$policies_self + e[[paste(v, "incidence_self", sep="_")]]
   
-  e$core_metropolitan <- e$urban_category==1
+  e$core_metropolitan <- as.numeric(as.vector(e$urban_category))==1
   label(e$core_metropolitan) <- "core_metropolitan: Live in a core metropolitan zip code. TRUE/FALSE"
 
   if ("CC_affected_2050" %in% names(e)) {
@@ -1749,6 +1758,43 @@ convert <- function(e, country, wave = NULL) {
   return(e)
 }
 
+weighting <- function(data, printWeights = T) { 
+  d <- data 
+  d$core_metropolitan[is.na(d$core_metropolitan)] <- "NA"
+  
+  unweigthed <- svydesign(ids=~1, data=d)
+  if ("NA" %in% levels(as.factor(d$core_metropolitan))) core_metropolitan <- data.frame(core_metropolitan = c(FALSE, TRUE, "NA"), 
+                                  Freq=nrow(d)*c(0.2676,0.7324, 0.0001))
+  else core_metropolitan <- data.frame(core_metropolitan = c(FALSE, TRUE), Freq=nrow(d)*c(0.2676,0.7324))
+  # taille_agglo <- data.frame(taille_agglo = c(1:5), Freq=nrow(d)*c(0.2166,0.1710,0.1408,0.3083,0.1633))
+  if ("Other" %in% levels(as.factor(d$gender))) gender <- data.frame(gender = c("Female", "Male", "Other"), 
+                                                                     Freq=nrow(d)*c(0.5074,0.4974, 0.0002)) # France: c(0.516,0.484)
+  else gender <- data.frame(gender = c("Female", "Male"), Freq=nrow(d)*c(0.5074,0.4974))
+  # csp <- data.frame(csp = c("Inactif", "Ouvrier", "Cadre", "Indépendant", "Intermédiaire", "Retraité", "Employé", "Agriculteur"),
+  #                   Freq=nrow(d)*c(0.129,0.114,0.101,0.035,0.136,0.325,0.15,0.008))
+  income <- data.frame(income = c("Q1", "Q2", "Q3", "Q4"),
+                    Freq=nrow(d)*c(0.2034,0.239,0.2439,0.3137))
+  # region <- data.frame(region = c("autre","ARA", "Est", "Nord", "IDF", "Ouest", "SO", "Occ", "Centre", "PACA"), 
+  #                      Freq=nrow(d)*c(0.0001,0.12446,0.12848,0.09237,0.1902,0.10294,0.09299,0.09178,0.09853,0.07831))
+  region <- data.frame(region = c("Midwest","Northeast", "South", "West"), 
+                       Freq=nrow(d)*c(0.171,0.208,0.383,0.239))
+  age_quota <- data.frame(age_quota = c("18-24", "25-34", "35-49", "50-64", "65+"), 
+                    Freq=nrow(d)*c(0.118,0.180,0.243,0.2467,0.2118)) # France: c(0.120,0.150,0.240,0.240,0.250)
+  # revenu <- data.frame(revenu = c(), Freq=nrow(d)*c())
+  # diplome4 <- data.frame(diplome4 = c("Aucun diplôme ou brevet", "CAP ou BEP", "Baccalauréat", "Supérieur"), 
+  #                        Freq=nrow(d)*c(0.290, 0.248, 0.169, 0.293))
+  
+  raked <- rake(design= unweigthed, sample.margins = list(~gender,~income,~region,~core_metropolitan,~age_quota),
+                                                            population.margins = list(gender,income,region,core_metropolitan,age_quota))     
+  
+  if (printWeights) {    print(summary(weights(raked))  )
+    print(paste("(mean w)^2 / (n * mean w^2): ", round(sum( weights(raked) )^2/(length(weights(raked))*sum(weights(raked)^2)), 3), " (pb if < 0.5)")) # <0.5 : problématique   
+    print(paste("proportion not in [0.25; 4]: ", round(length(which(weights(raked)<0.25 | weights(raked)>4))/ length(weights(raked)), 3)))
+  }
+  return(weights(trimWeights(raked, lower=0.25, upper=4, strict=TRUE)))
+}
+
+
 prepare <- function(exclude_speeder=TRUE, exclude_screened=TRUE, only_finished=TRUE, only_known_agglo=T, duration_min=0, country = "US", wave = NULL) { # , exclude_quotas_full=TRUE
   if (country == "US") {
     if (wave == "pilot1") e <- read_csv("../data/US_pilot.csv") 
@@ -1766,7 +1812,7 @@ prepare <- function(exclude_speeder=TRUE, exclude_screened=TRUE, only_finished=T
     e <- e[e$finished==1,] 
     e <- convert(e, country = country, wave = wave)
    
-    # e$weight <- weighting(e) TODO
+    e$weight <- weighting(e) 
   
     # e$left_right_na <- as.numeric(e$left_right)
     # e$left_right_na[e$indeterminate == T] <- wtd.mean(e$left_right, weights = e$weight)
@@ -1782,5 +1828,24 @@ prepare <- function(exclude_speeder=TRUE, exclude_screened=TRUE, only_finished=T
 }
 
 usp1 <- prepare(country = "US", wave = "pilot1", duration_min = 0)
-usp2 <- prepare(country = "US", wave = "pilot2", duration_min = 686)
+e <- usp2 <- prepare(country = "US", wave = "pilot2", duration_min = 686)
 us <- merge(usp1, usp2, all = T)
+
+temp <- prepare(country = "US", wave = "pilot2", duration_min = 0, exclude_screened = F, only_finished = F)
+# comp <- read_csv2("../data/complete_PSID.csv" )
+# psid <- as.matrix(comp$IdParameter, ncol=1)
+# comp <- read_csv2("../data/complete_PSID2.csv" )
+# tem <- as.matrix(comp$IdParameter, ncol=1)
+# psid <- as.character(rbind(psid, tem))
+# 
+# sum(e$PSID %in% psid)
+# sum(temp2$PSID %in% psid)
+
+# PSID <- read_csv("../data/PSID.csv" )
+# names(PSID)[9] <- "PSID"
+# temp$excluded[is.na(temp$excluded)] <- "Complete"
+# write.csv(temp[,c("PSID", "excluded")], "../data/ID.csv")
+# temp2 <- merge(PSID[,c("PSID")],temp[,c("PSID", "excluded")], all = T)
+# temp3 <- merge(PSID[,c("PSID")],temp[,c("PSID", "excluded")], all.x = T)
+# write.csv(temp2, "../data/all_PSIDs.csv")
+# write.csv(temp3, "../data/Dynata_PSIDs.csv")

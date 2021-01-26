@@ -21,13 +21,16 @@ e$gender_factor <- relevel(relevel(as.factor(e$gender), "Other"), "Female")
 save_plotly(gender_US, width= 470, height=140)
 
 (age_US <- barres(vars = "age_agg", df = e, miss=F, rev = F, labels="Age"))
-save_plotly(age_US, width= 470, height=140) # TODO: true age, 35 cutoff
+save_plotly(age_US, width= 470, height=140) # TODO comparaison real
+
+(age_quota_US <- barres(vars = "age_quota", df = e, miss=F, rev = F, labels="Age"))
+save_plotly(age_quota_US, width= 500, height=140) 
 
 (region_US <- barres(vars = "region", df = e, miss=F, labels="Region"))
 save_plotly(region_US, width= 560, height=140)
 
 (race_US <- barres(vars = variables_race[c(1:4)], df = e, miss=F, showLegend=F, rev = F, labels=c("White", "Black", "Hispanic", "Asian")))
-save_plotly(race_US, width= 330, height=190)
+save_plotly(race_US, width= 340, height=240)
 
 (speak_US <- barres(vars = "speaks_well", df = e, miss=F, labels="How well do you speak english?"))
 save_plotly(speak_US, width= 750, height=140)
@@ -175,153 +178,175 @@ save_plotly(pro_US, width= 510, height=250) # TODO: Yes No
 
 ## 6. Pref 1: emission standards (full)
 
-(standard_exists_US <- barres(vars = "standard_exists", df = e, miss=T, labels="An emission limit for cars <br> exists in the U.S.")) # TODO : Yes No
-save_plotly(standard_exists_US, width= 870, height=140)
+(standard_exists_US <- barres(vars = "standard_exists", df = e, miss=T, labels="An emission limit for cars <br> exists in the U.S.", legend=c("Yes", "No", "Don't know"))) 
+save_plotly(standard_exists_US, width= 700, height=140)
 
-## TODO problem with variable encoding and PNR (no "No") for the two graphs below
-(standard_trust_US <- barres(vars = "standard_trust", df = e, miss=T, labels="U.S. government could correctly <br> implement an emission limits for cars"))
-save_plotly(standard_trust_US, width= 870, height=140)
+(standard_trust_US <- barres(vars = "standard_trust", df = e, miss=T, labels="U.S. government could correctly <br> implement an emission limits for cars", legend=c("Yes ", "No", "PNR")))
+save_plotly(standard_trust_US, width= 600, height=140)
 
-(standard_effective_US <- barres(vars = "standard_effective", df = e, miss=T, labels="An emission limit for cars <br> would be effective to flight climate change"))
-save_plotly(standard_effective_US, width= 870, height=140)
+(standard_effective_US <- barres(vars = "standard_effective", df = e, miss=T, labels="An emission limit for cars would <br> be effective to flight climate change", legend=c("Yes ", "No", "PNR")))
+save_plotly(standard_effective_US, width= 620, height=140)
 
 (standard_employment_US <- barres(vars = "standard_employment", df = e, miss=T, labels="Impact on employment of <br> an emission limit for cars"))
-save_plotly(standard_employment_US, width= 870, height=140)
+save_plotly(standard_employment_US, width= 620, height=140)
 
 (standard_side_effects_US <- barres(vars = "standard_side_effects", df = e, miss=T, labels="Side effects of <br> an emission limit for cars"))
-save_plotly(standard_side_effects_US, width= 870, height=140)
+save_plotly(standard_side_effects_US, width= 620, height=140)
 
-labels_standard_incidence <- c()
-for (v in variables_standard_incidence) labels_standard_incidence <- c(labels_standard_incidence, sub('.* - ', '', sub('.*: ', '', Label(e[[v]]))))
-labels_standard_incidence[5] <- "Rural"
-labels_standard_incidence[6] <- "Your household"
-(standard_incidence_US <- barres(vars = variables_standard_incidence, df = e, error_margin=T, rev = F, miss = T, labels=labels_standard_incidence, legend=c("Lose", "Unaffected", "Win", "PNR")))
-	save_plotly(standard_incidence_US, width= 260, height=250) 
+labels_incidence <- c()
+for (v in variables_standard_incidence) labels_incidence <- c(labels_incidence, sub('.* - ', '', sub('.*: ', '', Label(e[[v]]))))
+labels_incidence[5] <- "Rural"
+labels_incidence[6] <- "Your household"
+(standard_incidence_US <- barres(vars = variables_standard_incidence, df = e, rev_color=T, miss = T, labels=labels_standard_incidence, legend=c("Lose", "Unaffected", "Win", "PNR")))
+save_plotly(standard_incidence_US, width= 600, height=340) 
 
-# TODO: problem with no "Yes"
-(standard_support_US <- barres(vars = "standard_support", df = e, miss=T, labels="Support for an emission limit for cars"))
-save_plotly(standard_support_US, width= 870, height=140)
+(standard_support_US <- barres(vars = "standard_support", df = e, miss=T, labels="Support for an emission limit for cars", legend=c("Yes ", "No", "PNR")))
+save_plotly(standard_support_US, width= 670, height=140)
 
 ## 7. Pref 2: Green investments
 
-## TODO problem with variable encoding and PNR (no "No") for the two graphs below
-(investments_trust_US <- barres(vars = "investments_trust", df = e, miss=T, labels="U.S. government could correctly <br> implement a green infrastructure program"))
-save_plotly(investments_trust_US, width= 870, height=140)
+(investments_trust_US <- barres(vars = "investments_trust", df = e, miss=T, labels="U.S. govt could correctly implement<br>  a green infrastructure program", legend=c("Yes ", "No", "PNR")))
+save_plotly(investments_trust_US, width= 590, height=140)
 
-(investments_effective_US <- barres(vars = "investments_effective", df = e, miss=T, labels="A green infrastructure program for cars <br> would be effective to flight climate change"))
-save_plotly(investments_effective_US, width= 870, height=140)
+(investments_effective_US <- barres(vars = "investments_effective", df = e, miss=T, labels="A green infrastructure program would <br> be effective to flight climate change", legend=c("Yes ", "No", "PNR")))
+save_plotly(investments_effective_US, width= 620, height=140)
 
 (investments_employment_US <- barres(vars = "investments_employment", df = e, miss=T, labels="Impact on employment of <br> a green infrastructure program"))
-save_plotly(investments_employment_US, width= 870, height=140)
+save_plotly(investments_employment_US, width= 620, height=140)
 
 (investments_side_effects_US <- barres(vars = "investments_side_effects", df = e, miss=T, labels="Side effects of <br> a green infrastructure program"))
-save_plotly(investments_side_effects_US, width= 870, height=140)
+save_plotly(investments_side_effects_US, width= 620, height=140)
 
-labels_investments_incidence <- c()
-for (v in variables_investments_incidence) labels_investments_incidence <- c(labels_investments_incidence, sub('.* - ', '', sub('.*: ', '', Label(e[[v]]))))
-labels_investments_incidence[5] <- "Rural"
-labels_investments_incidence[6] <- "Your household"
-(investments_incidence_US <- barres(vars = variables_investments_incidence, df = e, error_margin=T, rev = F, miss = T, labels=labels_investments_incidence, legend=c("Lose", "Unaffected", "Win", "PNR")))
-	save_plotly(investments_incidence_US, width= 260, height=250) 
+(investments_incidence_US <- barres(vars = variables_investments_incidence, df = e, rev_color=T, miss = T, labels=labels_incidence, legend=c("Lose", "Unaffected", "Win", "PNR")))
+save_plotly(investments_incidence_US, width= 600, height=340) 
 
-# TODO: problem with no "Yes"
-(investments_support_US <- barres(vars = "investments_support", df = e, miss=T, labels="Support for a green infrastructure program"))
-save_plotly(investments_support_US, width= 870, height=140)
+(investments_support_US <- barres(vars = "investments_support", df = e, miss=T, labels="Support for a <br>green infrastructure program", legend=c("Yes ", "No", "PNR")))
+save_plotly(investments_support_US, width= 650, height=140)
 
 ## 8. Pref 3: Tax and dividend
 
-## TODO problem with variable encoding and PNR (no "No") for the two graphs below
-(tax_transfers_trust_US <- barres(vars = "tax_transfers_trust", df = e, miss=T, labels="U.S. government could correctly <br> implement a carbon tax with cash transfers"))
-save_plotly(tax_transfers_trust_US, width= 870, height=140)
+(tax_transfers_trust_US <- barres(vars = "tax_transfers_trust", df = e, miss=T, labels="U.S. govt could correctly implement <br> a carbon tax with cash transfers", legend=c("Yes ", "No", "PNR")))
+save_plotly(tax_transfers_trust_US, width= 590, height=140)
 
-(tax_transfers_effective_US <- barres(vars = "tax_transfers_effective", df = e, miss=T, labels="A carbon tax with cash transfers <br> would be effective to flight climate change"))
-save_plotly(tax_transfers_effective_US, width= 870, height=140)
+(tax_transfers_effective_US <- barres(vars = "tax_transfers_effective", df = e, miss=T, labels="A carbon tax with cash transfers would <br> be effective to flight climate change", legend=c("Yes ", "No", "PNR")))
+save_plotly(tax_transfers_effective_US, width= 625, height=140)
 
-(tax_transfers_employment_US <- barres(vars = "tax_transfers_employment", df = e, miss=T, labels="Impact on employment of <br> a carbon tax with cash transfers"))
-save_plotly(tax_transfers_employment_US, width= 870, height=140)
+(tax_transfers_employment_US <- barres(vars = "tax_transfers_employment", df = e, miss=T, labels="Impact on employment of a <br> carbon tax with cash transfers"))
+save_plotly(tax_transfers_employment_US, width= 620, height=140)
 
 (tax_transfers_side_effects_US <- barres(vars = "tax_transfers_side_effects", df = e, miss=T, labels="Side effects of <br> a carbon tax with cash transfers"))
-save_plotly(tax_transfers_side_effects_US, width= 870, height=140)
+save_plotly(tax_transfers_side_effects_US, width= 620, height=140)
 
-labels_tax_transfers_incidence <- c()
-for (v in variables_tax_transfers_incidence) labels_tax_transfers_incidence <- c(labels_tax_transfers_incidence, sub('.* - ', '', sub('.*: ', '', Label(e[[v]]))))
-labels_tax_transfers_incidence[5] <- "Rural"
-labels_tax_transfers_incidence[6] <- "Your household"
-(tax_transfers_incidence_US <- barres(vars = variables_tax_transfers_incidence, df = e, error_margin=T, rev = F, miss = T, labels=labels_tax_transfers_incidence, legend=c("Lose", "Unaffected", "Win", "PNR")))
-save_plotly(tax_transfers_incidence_US, width= 260, height=250) 
+(tax_transfers_incidence_US <- barres(vars = variables_tax_transfers_incidence, df = e, rev_color=T, miss = T, labels=labels_incidence, legend=c("Lose", "Unaffected", "Win", "PNR")))
+save_plotly(tax_transfers_incidence_US, width= 600, height=340) 
 
-# TODO: problem with no "Yes"
-(tax_transfers_support_US <- barres(vars = "tax_transfers_support", df = e, miss=T, labels="Support for a carbon tax with cash transfers"))
-save_plotly(tax_transfers_support_US, width= 870, height=140)
+(tax_transfers_support_US <- barres(vars = "tax_transfers_support", df = e, miss=T, labels="Support for a <br>carbon tax with cash transfers", legend=c("Yes ", "No", "PNR")))
+save_plotly(tax_transfers_support_US, width= 680, height=140)
+
+# TODO: group by policies, group by question
 
 ## 9. Pref on climate policies
 
 (CC_worries_US <- barres(vars = "CC_worries", df = e, miss=T, labels="Worry about impacts of climate change"))
-save_plotly(CC_worries_US, width= 870, height=140)
+save_plotly(CC_worries_US, width= 830, height=140)
 
-labels_policy <- c("Tax on flying", "Tax on fossil fuels", "Thermal renovation", "Ban polluting vehicles in city centers", "Subsidies", "Global climate fund")
-(policy_US <- barres(vars = variables_policy, df = e, error_margin=T, rev = F, miss = T, labels=labels_policy))
-save_plotly(policy_US, width= 260, height=250) 
+labels_policy <- c()
+for (v in variables_policy) labels_policy <- c(labels_policy, sub('.* - ', '', sub('.*: ', '', Label(e[[v]]))))
+labels_policy[3] <- "Required thermal renovation of buildings <br>(e.g., better insulation)"
+labels_policy[5] <- "Subsidies for low-carbon technologies <br>(renewable energy, capture and storage of carbon...)"
+labels_policy[6] <- "A contribution to a global climate fund<br> to finance clean energy in low-income countries"
+# labels_policy <- c("Tax on flying", "Tax on fossil fuels", "Required thermal renovation", "Ban polluting cars in city centers", "Subsidies to low-carbon", "Contribution to global climate fund")
+(policy_US <- barres(vars = variables_policy, df = e, miss = T, labels=labels_policy))
+save_plotly(policy_US, width= 870, height=320) 
 
-labels_tax <- c("Transfer to constrained HH", "Transfers to poorest", "Equal transfers", "Tax rebates for affected firms", "Infrastructure projects", "Technology subsidies", "Reduce deficit", "Reduce CIT", "Reduce PIT", "Other")
-(tax_US <- barres(vars = variables_tax, df = e, error_margin=T, rev = F, miss = T, labels=labels_tax))
-save_plotly(tax_US, width= 260, height=250) 	
+labels_tax <- c()
+for (v in variables_tax[1:9]) labels_tax <- c(labels_tax, sub('.* - ', '', sub('.*: ', '', Label(e[[v]]))))
+# labels_tax <- c("Transfer to constrained HH", "Transfers to poorest", "Equal transfers", "Tax rebates for affected firms", "Infrastructure projects", "Technology subsidies", "Reduce deficit", "Reduce CIT", "Reduce PIT")
+labels_tax[5] <- "Funding environmental infrastructure projects <br>(public transport, cycling ways, etc.)"
+labels_tax[6] <- "Subsidizing low-carbon technos, incl. renewable energy"
+labels_tax[1] <- "Transfers to HH with no alternative to using fossil fuels"
+(tax_US <- barres(vars = variables_tax[1:9], df = e, miss = T, labels=labels_tax))
+save_plotly(tax_US, width= 870, height=470) 	
 
 ## 10. Pref for bans vs. incentives
 
-(insulation_compulsory_US <- barres(vars = "insulation_compulsory", df = e, miss=T, labels="If government subsidizes <br> thermal renovation it should be"))
-save_plotly(insulation_compulsory_US, width= 870, height=140)
+(insulation_compulsory_US <- barres(vars = "insulation_compulsory", df = e, miss=F, labels="If government subsidizes <br> thermal renovation it should be"))
+save_plotly(insulation_compulsory_US, width= 550, height=140)
 
-# TODO: for those 3, how to display PNR while having the right N ?
-(flight_quota_1000km_US <- barres(vars = "flight_quota_1000km", df = e, miss=T, labels="Flight quota 1000km"))
-save_plotly(flight_quota_1000km_US, width= 870, height=140)
+(flight_quota_1000km_US <- barres(vars = "flight_quota_1000km", df = e, miss=F, labels="National quota:<br>1000km"))
+save_plotly(flight_quota_1000km_US, width= 510, height=140)
 
-(flight_quota_3000km_US <- barres(vars = "flight_quota_3000km", df = e, miss=T, labels="Flight quota 3000km"))
-save_plotly(flight_quota_3000km_US, width= 870, height=140)
+(flight_quota_1000km_global_US <- barres(vars = "flight_quota_1000km_global", df = e, miss=F, labels="Global quota:<br>1000km"))
+save_plotly(flight_quota_1000km_global_US, width= 510, height=140)
 
-(flight_quota_one_trip_US <- barres(vars = "flight_quota_one_trip", df = e, miss=T, labels="Flight quota 1 round-trip"))
-save_plotly(flight_quota_one_trip_US, width= 870, height=140)
+(flight_quota_one_trip_US <- barres(vars = "flight_quota_one_trip", df = e, miss=F, labels="National quota:<br>1 round-trip every 2 years"))
+save_plotly(flight_quota_one_trip_US, width= 510, height=140)
+# TODO: group them
 
-labels_beef <- c("Tax on cattle products (beefx2)", "Sub. Vegetables", "No sub. cattle", "Ban intensive cattle", "PNR")
-(beef_US <- barres(vars = variables_beef, df = e, error_margin=T, rev = F, miss = T, labels=labels_beef,showLegend=F))
-save_plotly(beef_US, width= 260, height=250) 
+labels_beef <- c()
+for (v in variables_beef) labels_beef <- c(labels_beef, sub('.* - ', '', sub('.*: ', '', Label(e[[v]]))))
+labels_beef[1] <- "A high tax on cattle products,<br>so that the price of beef doubles"
+labels_beef[2] <- "Subsidies on organic and local<br>vegetables, fruits and nuts"
+labels_beef[3] <- "Removal of subsidies for cattle farming"
+# labels_beef <- c("Tax on cattle products (beefx2)", "Sub. Vegetables", "No sub. cattle", "Ban intensive cattle", "PNR")
+(beef_pnr_US <- barres(vars = variables_beef, df = e, rev = F, miss = T, labels=labels_beef,showLegend=F))
+save_plotly(beef_pnr_US, width= 640, height=280)  
 
-(ban_incentives_US <- barres(vars = "ban_incentives", df = e, miss=T, labels="Views on incentives"))
-save_plotly(ban_incentives_US, width= 870, height=140)
+(beef_US <- barres(vars = variables_beef[1:4], df = e[e$beef_pnr==F,], rev = F, miss = T, labels=labels_beef[1:4],showLegend=F))
+save_plotly(beef_US, width= 640, height=280)  
+
+(ban_incentives_US <- barres(vars = "ban_incentives", df = e, miss=T, labels="To protect the environment,<br>the government should..."))
+save_plotly(ban_incentives_US, width= 550, height=140)
 
 ## 11. WTP
 
-#TODO : continuous
-(wtp_US <- barres(vars = "wtp", df = e, miss=F, labels="WTP to limit global warming"))
-save_plotly(wtp_US, width= 870, height=140)
+(wtp_US <- barres(vars = "wtp", df = e, miss=F, rev = F, color = color(20, theme = "rainbow"), labels="WTP to limit global warming ($/year)"))
+save_plotly(wtp_US, width= 1050, height=200)
+
+(wtp_agg_US <- barres(vars = "wtp_agg", df = e, miss=F, rev = F, rev_color = T, labels="WTP to limit global warming ($/year)"))
+save_plotly(wtp_agg_US, width= 950, height=140)
+
+mar_old <- par()$mar
+cex_old <- par()$cex
+par(mar = c(3.4, 3.4, 1.1, 0.1), cex=1.5)
+cdf_wtp_US <- Ecdf(e$wtp, weights = e$weight)
+plot(cdf_wtp_US$x, cdf_wtp_US$y, lwd=2, log='x', type='s', col="red", xlab="", ylab="")
+title(ylab=expression("Proportion "<=" x"), xlab="WTP (in $/year)", line=2.3)
+grid() # TODO legend
+par(mar = mar_old, cex = cex_old)
 
 ## 12. Political views
 
 (interest_politics_US <- barres(vars = "interest_politics", df = e, miss=T, labels="Interested in politics"))
-save_plotly(interest_politics_US, width= 870, height=140)
+save_plotly(interest_politics_US, width= 600, height=140)
 
-# TODO problem with those 2
 (member_environmental_orga_US <- barres(vars = "member_environmental_orga", df = e, miss=F, labels="Member of an<br> environmental organization"))
-save_plotly(member_environmental_orga_US, width= 870, height=140)
-(relative_environmentalist_US <- barres(vars = "relative_environmentalist", df = e, miss=F, labels="Relative is environmentalist"))
-save_plotly(relative_environmentalist_US, width= 870, height=140)
+save_plotly(member_environmental_orga_US, width= 622, height=140)
+
+(relative_environmentalist_US <- barres(vars = "relative_environmentalist", df = e, miss=F, labels="Has an environmentalist relative"))
+save_plotly(relative_environmentalist_US, width= 540, height=140)
 
 labels_political_identity <- c()
-for (v in variables_political_identity) labels_political_identity <- c(labels_political_identity, sub('.* - ', '', sub('.*: ', '', Label(e[[v]]))))
-labels_political_identity[8] <- "Other"
-(political_identity_US <- barres(vars = variables_political_identity, df = e, error_margin=T, rev = F, miss = F, labels=labels_political_identity, showLegend=F))
-save_plotly(political_identity_US, width= 260, height=250)
+for (v in variables_political_identity[1:7]) labels_political_identity <- c(labels_political_identity, sub('.* - ', '', sub('.*: ', '', Label(e[[v]]))))
+(political_identity_US <- barres(vars = variables_political_identity[1:7], df = e, rev = F, miss = F, labels=labels_political_identity, showLegend=F))
+save_plotly(political_identity_US, width= 330, height=290)
 
 (media_US <- barres(vars = "media", df = e, miss=F, labels="Main media used"))
-save_plotly(media_US, width= 870, height=140)
+save_plotly(media_US, width= 925, height=140) # TODO order
 
-(vote_participation_US <- barres(vars = "vote_participation", df = e, miss=F, labels="Voted in 2020 Presidential election"))
-save_plotly(vote_participation_US, width= 870, height=140)
+(vote_participation_US <- barres(vars = "vote_participation", df = e, miss=T, labels="Voted in 2020 election"))
+save_plotly(vote_participation_US, width= 540, height=140) 
 
-(vote_US <- barres(vars = "vote", df = e, miss=T, labels="Voted for"))
-save_plotly(vote_US, width= 870, height=140)
+(vote_US <- barres(vars = "vote", df = e, rev_color = T, miss=T, labels="Voted for"))
+save_plotly(vote_US, width= 480, height=140) 
+
+(vote_participation_2016_US <- barres(vars = "vote_participation_2016", df = e, miss=T, labels="Voted in 2020 election"))
+save_plotly(vote_participation_2016_US, width= 540, height=140) 
+
+(vote_2016_US <- barres(vars = "vote_2016", df = e, rev_color = T, miss=T, labels="Voted for"))
+save_plotly(vote_2016_US, width= 530, height=140) # TODO: order
 
 ## 13. Feedback
 
-(survey_biased_US <- barres(vars = "survey_biased", df = e, miss=F, labels="Survey biased"))
-save_plotly(survey_biased_US, width= 870, height=140)
+(survey_biased_US <- barres(vars = "survey_biased", df = e, rev_color = T, miss=F, labels="Survey biased"))
+save_plotly(survey_biased_US, width= 450, height=140)
